@@ -1,0 +1,15 @@
+﻿html {
+    --bg-color: #fff;
+}
+
+    html[data-theme='dark'] {
+        --bg-color: #282828;
+    }
+
+    html[data-theme='red'] {
+        --bg-color: #FF0000;
+    }
+
+    body{
+        background-color: var(--bg-color)!important;
+    }
