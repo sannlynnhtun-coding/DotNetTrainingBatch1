@@ -1,11 +1,57 @@
-﻿@{
-    Layout = "_MainLayout";
+﻿@model List<BlogDataModel>
+@{
+    // Layout = "_MainLayout";
+    // Layout = "_Layout";
     ViewData["Title"] = "Blog Index";
+    int count = 0;
+    string message = null;
+    bool isSuccess = false;
+    if(TempData["Message"] != null)
+    {
+        message = TempData["Message"].ToString();
+        isSuccess = Convert.ToBoolean(TempData["IsSuccess"]);
+    }
+}
+<h4>
+    <a href="/blog/create" class="btn btn-success">
+        <i class="fa fa-plus"></i>
+    </a>
+    Blog List
+</h4>
+
+@if(message is not null)
+{
+    <div class="alert alert-@(isSuccess ? "success" : "danger")" role="alert">
+        @message
+    </div>
 }
 
-<p>hello world</p>
 
-@section scripts{
+@* <p>hello world</p> *@
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Content</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@(++count)</th>
+                <td>@item.Blog_Title</td>
+                <td>@item.Blog_Author</td>
+                <td>@item.Blog_Content</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts {
     <script>
         console.log('test');
     </script>

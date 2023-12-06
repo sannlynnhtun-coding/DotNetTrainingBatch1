@@ -1,3 +1,7 @@
+https://www.dotnettricks.com/learn/mvc/viewdata-vs-viewbag-vs-tempdata-vs-session
+
+https://www.ezzylearning.net/wp-content/uploads/ASP.NET-Core-Service-Lifetime-Infographic.png
+
 <base href="/" />
 https://localhost:3000/style.css
 https://localhost:3000/blog/style.css

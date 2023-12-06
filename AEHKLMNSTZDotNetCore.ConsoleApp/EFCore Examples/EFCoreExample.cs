@@ -9,7 +9,6 @@ namespace AEHKLMNSTZDotNetCore.ConsoleApp.EFCore_Examples
 {
     public class EFCoreExample
     {
-
         private readonly AppDbContext _dbContext;
 
         public EFCoreExample()
