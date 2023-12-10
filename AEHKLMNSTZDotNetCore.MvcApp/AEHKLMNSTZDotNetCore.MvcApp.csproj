@@ -11,4 +11,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.14" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AEHKLMNSTZDotNetCore.RestApi\AEHKLMNSTZDotNetCore.RestApi.csproj" />
+  </ItemGroup>
+
 </Project>
