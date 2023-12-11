@@ -6,7 +6,7 @@
     int count = 0;
     string message = null;
     bool isSuccess = false;
-    if(TempData["Message"] != null)
+    if (TempData["Message"] != null)
     {
         message = TempData["Message"].ToString();
         isSuccess = Convert.ToBoolean(TempData["IsSuccess"]);
@@ -19,7 +19,7 @@
     Blog List
 </h4>
 
-@if(message is not null)
+@if (message is not null)
 {
     <div class="alert alert-@(isSuccess ? "success" : "danger")" role="alert">
         @message
@@ -32,6 +32,7 @@
 <table class="table">
     <thead>
         <tr>
+            <th></th>
             <th scope="col">#</th>
             <th scope="col">Title</th>
             <th scope="col">Author</th>
@@ -42,6 +43,14 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td>
+                    <a class="btn btn-warning" href="/blog/edit/@item.Blog_Id">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
+                    <a class="btn btn-danger" href="/blog/delete/@item.Blog_Id">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                </td>
                 <th scope="row">@(++count)</th>
                 <td>@item.Blog_Title</td>
                 <td>@item.Blog_Author</td>

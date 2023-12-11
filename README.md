@@ -1,3 +1,6 @@
+AsNoTracking = with (nolock)
+
+
 https://github.com/reactiveui/refit
 https://reactiveui.github.io/refit/
 https://www.ezzylearning.net/wp-content/uploads/ASP.NET-Core-Service-Lifetime-Infographic.png
