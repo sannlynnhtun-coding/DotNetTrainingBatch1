@@ -1,3 +1,39 @@
+https://github.com/reactiveui/refit
+https://reactiveui.github.io/refit/
+https://www.ezzylearning.net/wp-content/uploads/ASP.NET-Core-Service-Lifetime-Infographic.png
+https://www.c-sharpcorner.com/UploadFile/85ed7a/dependency-injection-in-C-Sharp/
+https://datatables.net/
+
+
+![Alt text](https://www.ezzylearning.net/wp-content/uploads/ASP.NET-Core-Service-Lifetime-Infographic.png)
+
+https://learn.microsoft.com/en-us/ef/core/providers/?tabs=dotnet-core-cli
+https://javabydeveloper.com/wp-content/uploads/2020/02/ORM-object-relational-mapping.png
+https://stackoverflow.com/questions/74451415/asp-net-core-7-0-error-on-login-the-certificate-chain-was-issued-by-an-authorit
+
+.NET     => https://www.nuget.org/
+Frontend => https://www.npmjs.com/
+Flutter  => https://pub.dev/
+Java     => https://mvnrepository.com/
+
+Pull
+Commit (local commit)
+Pull (server update or not?)
+
+https://dillinger.io/
+
+https://www.javatpoint.com/ado-net-tutorial
+> ADO.NET is a module of .Net Framework which is used to establish connection between application and data sources. Data sources can be such as SQL Server and XML. ADO.NET consists of classes that can be used to connect, retrieve, insert and delete data.
+
+https://www.microsoft.com/en-us/sql-server/sql-server-downloads
+
+https://medium.com/@buttertechn/qa-testing-what-is-dev-sit-uat-prod-ac97965ce4f
+
+DEV  — Development [Software developer]
+SIT  — System Integration Test [Software developer and QA engineer]
+UAT  — User Acceptance Test [Client]
+PROD — Production [Public user]
+
 https://www.dotnettricks.com/learn/mvc/viewdata-vs-viewbag-vs-tempdata-vs-session
 
 https://www.ezzylearning.net/wp-content/uploads/ASP.NET-Core-Service-Lifetime-Infographic.png
