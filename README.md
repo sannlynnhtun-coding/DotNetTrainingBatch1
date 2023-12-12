@@ -3,6 +3,8 @@ https://learn.microsoft.com/en-us/aspnet/core/mvc/views/partial?view=aspnetcore-
 @await Html.PartialAsync("_PartialName.cshtml")
 ```
 
+![Alt text](https://uxdworld.com/wp-content/uploads/2018/12/pagination-1.gif)
+
 AsNoTracking = with (nolock)
 
 
