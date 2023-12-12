@@ -1,0 +1,151 @@
+﻿@model BlogDataResponseModel
+@{
+    // Layout = "_MainLayout";
+    // Layout = "_Layout";
+    ViewData["Title"] = "Blog Index";
+    string message = null;
+    bool isSuccess = false;
+    if (TempData["Message"] != null)
+    {
+        message = TempData["Message"].ToString();
+        isSuccess = Convert.ToBoolean(TempData["IsSuccess"]);
+    }
+    int pageNo = Model.PageSetting.PageNo;
+    int pageSize = Model.PageSetting.PageSize;
+    int pageCount = Model.PageSetting.PageCount;
+    int count = (pageNo - 1) * pageSize;
+    string url = Model.PageSetting.PageUrl;
+}
+<h4>
+    <a href="/blog/create" class="btn btn-success">
+        <i class="fa fa-plus"></i>
+    </a>
+    Blog List
+</h4>
+
+@if (message is not null)
+{
+    <div class="alert alert-@(isSuccess ? "success" : "danger")" role="alert">
+        @message
+    </div>
+}
+
+
+@* <p>hello world</p> *@
+
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Content</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Blogs)
+        {
+            <tr>
+                <td>
+                    <a class="btn btn-warning" href="/blog/edit/@item.Blog_Id">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
+                    <a class="btn btn-danger" href="/blog/delete/@item.Blog_Id">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                </td>
+                <th scope="row">@(++count)</th>
+                <td>@item.Blog_Title</td>
+                <td>@item.Blog_Author</td>
+                <td>@item.Blog_Content</td>
+            </tr>
+        }
+    </tbody>
+</table>
+@await Html.PartialAsync("_Pagination", Model.PageSetting)
+@* <nav aria-label="...">
+    <ul class="pagination">
+        <li class="page-item @(pageNo == 1 ? "disabled" : "")">
+            <a class="page-link" href="@(pageNo == 1  ? "#" : $"{url}?pageNo={pageNo - 1}&pageSize={pageSize}")">Previous</a>
+        </li>
+        @if (pageCount <= 9)
+        {
+            @for (int i = 1; i <= pageCount; i++)
+            {
+                if (pageNo == i)
+                {
+                    <li class="page-item active" aria-current="page">
+                        <a class="page-link" href="#">@i</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item"><a class="page-link" href="@url?pageNo=@i&pageSize=@pageSize">@i</a></li>
+                }
+            }
+        }
+        else
+        {
+            if (pageNo <= 3 || pageNo >= pageCount - 2)
+            {
+                @for (int i = 1; i <= 4; i++)
+                {
+                    if (pageNo == i)
+                    {
+                        <li class="page-item active" aria-current="page">
+                            <a class="page-link" href="#">@i</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item"><a class="page-link" href="@url?pageNo=@i&pageSize=@pageSize">@i</a></li>
+                    }
+                }
+                <li class="page-item"><a class="page-link" href="#">...</a></li>
+                @for (int i = pageCount - 3; i <= pageCount; i++)
+                {
+                    if (pageNo == i)
+                    {
+                        <li class="page-item active" aria-current="page">
+                            <a class="page-link" href="#">@i</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item"><a class="page-link" href="@url?pageNo=@i&pageSize=@pageSize">@i</a></li>
+                    }
+                }
+            }
+            else
+            {
+                <li class="page-item"><a class="page-link" href="@url?pageNo=1&pageSize=@pageSize">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">...</a></li>
+                @for (int i = pageNo - 2; i <= pageNo + 2; i++)
+                {
+                    if (pageNo == i)
+                    {
+                        <li class="page-item active" aria-current="page">
+                            <a class="page-link" href="#">@i</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item"><a class="page-link" href="@url?pageNo=@i&pageSize=@pageSize">@i</a></li>
+                    }
+                }
+                <li class="page-item"><a class="page-link" href="#">...</a></li>
+                <li class="page-item"><a class="page-link" href="@url?pageNo=@pageCount&pageSize=@pageSize">@pageCount</a></li>
+            }
+        }
+        <li class="page-item @(pageNo == pageCount ? "disabled" : "")">
+            <a class="page-link" href="@(pageNo == pageCount  ? "#" : $"{url}?pageNo={pageNo + 1}&pageSize={pageSize}")">Next</a>
+        </li>
+    </ul>
+</nav> *@
+
+@section scripts {
+    <script>
+        console.log('test');
+    </script>
+}

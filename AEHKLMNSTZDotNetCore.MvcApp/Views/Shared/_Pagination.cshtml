@@ -1,0 +1,86 @@
+﻿@model PageSettingModel
+@{
+    int pageNo = Model.PageNo;
+    int pageSize = Model.PageSize;
+    int pageCount = Model.PageCount;
+    string url = Model.PageUrl;
+}
+<nav aria-label="...">
+    <ul class="pagination">
+        <li class="page-item @(pageNo == 1 ? "disabled" : "")">
+            <a class="page-link" href="@(pageNo == 1  ? "#" : $"{url}?pageNo={pageNo - 1}&pageSize={pageSize}")">Previous</a>
+        </li>
+        @if (pageCount <= 9)
+        {
+            @for (int i = 1; i <= pageCount; i++)
+            {
+                if (pageNo == i)
+                {
+                    <li class="page-item active" aria-current="page">
+                        <a class="page-link" href="#">@i</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item"><a class="page-link" href="@url?pageNo=@i&pageSize=@pageSize">@i</a></li>
+                }
+            }
+        }
+        else
+        {
+            if (pageNo <= 3 || pageNo >= pageCount - 2)
+            {
+                @for (int i = 1; i <= 4; i++)
+                {
+                    if (pageNo == i)
+                    {
+                        <li class="page-item active" aria-current="page">
+                            <a class="page-link" href="#">@i</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item"><a class="page-link" href="@url?pageNo=@i&pageSize=@pageSize">@i</a></li>
+                    }
+                }
+                <li class="page-item"><a class="page-link" href="#">...</a></li>
+                @for (int i = pageCount - 3; i <= pageCount; i++)
+                {
+                    if (pageNo == i)
+                    {
+                        <li class="page-item active" aria-current="page">
+                            <a class="page-link" href="#">@i</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item"><a class="page-link" href="@url?pageNo=@i&pageSize=@pageSize">@i</a></li>
+                    }
+                }
+            }
+            else
+            {
+                <li class="page-item"><a class="page-link" href="@url?pageNo=1&pageSize=@pageSize">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">...</a></li>
+                @for (int i = pageNo - 2; i <= pageNo + 2; i++)
+                {
+                    if (pageNo == i)
+                    {
+                        <li class="page-item active" aria-current="page">
+                            <a class="page-link" href="#">@i</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item"><a class="page-link" href="@url?pageNo=@i&pageSize=@pageSize">@i</a></li>
+                    }
+                }
+                <li class="page-item"><a class="page-link" href="#">...</a></li>
+                <li class="page-item"><a class="page-link" href="@url?pageNo=@pageCount&pageSize=@pageSize">@pageCount</a></li>
+            }
+        }
+        <li class="page-item @(pageNo == pageCount ? "disabled" : "")">
+            <a class="page-link" href="@(pageNo == pageCount  ? "#" : $"{url}?pageNo={pageNo + 1}&pageSize={pageSize}")">Next</a>
+        </li>
+    </ul>
+</nav>

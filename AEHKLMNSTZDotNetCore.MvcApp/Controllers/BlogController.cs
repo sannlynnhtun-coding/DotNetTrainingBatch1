@@ -19,10 +19,35 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
         [ActionName("Index")]
         public IActionResult BlogIndex()
         {
-            List<BlogDataModel> lst = _context.Blogs.ToList();
-            //ViewData["Title"] = "dfasdfsafsd";
+            List<BlogDataModel> lst = _context.Blogs.AsNoTracking()
+                .ToList();
             return View("BlogIndex", lst);
-            //return Redirect("/blog/create");
+        }
+
+        [ActionName("List")]
+        public async Task<IActionResult> BlogList(int pageNo = 1, int pageSize = 10)
+        {
+            BlogDataResponseModel model = new BlogDataResponseModel();
+            List<BlogDataModel> lst = _context.Blogs.AsNoTracking()
+                .Skip((pageNo - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            int rowCount = await _context.Blogs.CountAsync();
+            int pageCount = rowCount / pageSize;
+            if (rowCount % pageSize > 0)
+                pageCount++;
+
+            model.Blogs = lst;
+            //model.PageSetting = new PageSettingModel
+            //{
+            //    PageCount = pageCount,
+            //    PageNo = pageNo,
+            //    PageSize = pageSize
+            //};
+            model.PageSetting = new PageSettingModel(pageNo, pageSize, pageCount, "/blog/list");
+
+            return View("BlogList", model);
         }
 
         [ActionName("Create")]
@@ -54,7 +79,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
         [ActionName("Edit")]
         public async Task<IActionResult> BlogEdit(int id)
         {
-            if(!await _context.Blogs.AsNoTracking().AnyAsync(x=> x.Blog_Id == id))
+            if (!await _context.Blogs.AsNoTracking().AnyAsync(x => x.Blog_Id == id))
             {
                 TempData["Message"] = "No data found.";
                 TempData["IsSuccess"] = false;
