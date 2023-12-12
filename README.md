@@ -1,3 +1,8 @@
+https://learn.microsoft.com/en-us/aspnet/core/mvc/views/partial?view=aspnetcore-8.0
+```csharp
+@await Html.PartialAsync("_PartialName.cshtml")
+```
+
 AsNoTracking = with (nolock)
 
 
