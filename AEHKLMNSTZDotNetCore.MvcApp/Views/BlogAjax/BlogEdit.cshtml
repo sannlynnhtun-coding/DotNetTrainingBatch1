@@ -1,0 +1,61 @@
+﻿@model AEHKLMNSTZDotNetCore.MvcApp.Models.BlogDataModel
+
+@{
+    ViewData["Title"] = "Edit Blog";
+}
+
+<h4>Edit Blog</h4>
+
+<div class="mb-3">
+    <label class="form-label">Title</label>
+    <input type="text" id="Blog_Title" class="form-control" value="@Model.Blog_Title">
+</div>
+<div class="mb-3">
+    <label class="form-label">Author</label>
+    <input type="text" id="Blog_Author" class="form-control" value="@Model.Blog_Author">
+</div>
+<div class="mb-3">
+    <label class="form-label">Content</label>
+    <input type="text" id="Blog_Content" class="form-control" value="@Model.Blog_Content">
+</div>
+<a href="/blogajax/list" class="btn btn-secondary">Cancel</a>
+<button type="button" class="btn btn-primary ladda-button" data-style="expand-left" id="btnUpdate" data-blog-id="@Model.Blog_Id">
+    <span class="ladda-label">Update</span>
+</button>
+
+@section scripts {
+    <script>
+        $('#btnUpdate').click(function (e) {
+            e.preventDefault();
+
+            var l = Ladda.create(this);
+            l.start();
+
+            var _reqModel = {
+                //Blog_Id:@Model.Blog_Id,
+                Blog_Id: $(this).data('blog-id'), 
+                Blog_Title: $('#Blog_Title').val(),
+                Blog_Author: $('#Blog_Author').val(),
+                Blog_Content: $('#Blog_Content').val(),
+            };
+
+            //var blogId = $(this).data('blog-id');
+
+            $.ajax({
+                url: '/blogajax/update', //+ _reqModel.Blog_Id ,//+blogId,
+                type: 'POST',
+                data: {
+                    reqModel: _reqModel
+                },
+                success: function (data) {
+                    l.stop();
+                    showMessage(data, "/blogajax/list");
+                },
+                error: function (request, status, error) {
+                    console.log({ request, status, error });
+                }
+            });
+        })
+    </script>
+}
+
