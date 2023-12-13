@@ -1,5 +1,6 @@
 ﻿using AEHKLMNSTZDotNetCore.MvcApp.EFDbContext;
 using AEHKLMNSTZDotNetCore.MvcApp.Models;
+using AEHKLMNSTZDotNetCore.MvcApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -53,5 +54,23 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             MessageModel model = new MessageModel(result > 0, message);
             return Json(model);
         }
+
+        [ActionName("Delete")]
+        public async Task<IActionResult> BlogDelete(int id)
+        {
+            BlogDataModel? blog = await _context.Blogs.FirstOrDefaultAsync(b => b.Blog_Id == id);
+
+            if (blog is null)
+            {
+                Console.WriteLine("Blog is null");
+                return Redirect("/blogajax/list");
+            }
+
+            _context.Blogs.Remove(blog);
+            _context.SaveChanges();
+            Console.WriteLine("Blog is save successfully!");
+            return Redirect("/blogajax/list");
+        }
     }
 }
+ 
