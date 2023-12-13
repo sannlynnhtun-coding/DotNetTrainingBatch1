@@ -94,8 +94,6 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 
             return Json(new MessageModel(false, "No Data Found to Update"));
         }
-    }
-}
 
         [ActionName("Delete")]
         public async Task<IActionResult> BlogDelete(int id)
@@ -115,4 +113,3 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
         }
     }
 }
- 
