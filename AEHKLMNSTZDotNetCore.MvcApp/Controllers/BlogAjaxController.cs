@@ -1,6 +1,5 @@
 ﻿using AEHKLMNSTZDotNetCore.MvcApp.EFDbContext;
 using AEHKLMNSTZDotNetCore.MvcApp.Models;
-using AEHKLMNSTZDotNetCore.MvcApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -95,21 +94,25 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             return Json(new MessageModel(false, "No Data Found to Update"));
         }
 
+        [HttpPost]
         [ActionName("Delete")]
-        public async Task<IActionResult> BlogDelete(int id)
+        public async Task<IActionResult> BlogDelete(BlogDataModel reqModel)
         {
-            BlogDataModel? blog = await _context.Blogs.FirstOrDefaultAsync(b => b.Blog_Id == id);
+            BlogDataModel? blog = await _context.Blogs.FirstOrDefaultAsync(x => x.Blog_Id == reqModel.Blog_Id);
 
             if (blog is null)
             {
-                Console.WriteLine("Blog is null");
-                return Redirect("/blogajax/list");
-            }
+				return Json(new MessageModel(false, "No data found."));
+			}
 
             _context.Blogs.Remove(blog);
-            _context.SaveChanges();
-            Console.WriteLine("Blog is save successfully!");
-            return Redirect("/blogajax/list");
-        }
+			var result = await _context.SaveChangesAsync();
+			string message = result > 0 ? "Your blog has been deleted." : "Deleting Failed.";
+			TempData["Message"] = message;
+			TempData["IsSuccess"] = result > 0;
+
+			MessageModel model = new MessageModel(result > 0, message);
+			return Json(model);
+		}
     }
 }

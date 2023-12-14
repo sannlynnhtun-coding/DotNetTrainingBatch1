@@ -18,6 +18,20 @@ function successMessage(message, url) {
         }
     });
 }
+function confirmMessage(message) {
+    return new Promise((resolve, reject) => {
+        Swal.fire({
+            title: "Confirm",
+            text: message,
+            icon: "warning",
+            showCancelButton: true,
+        }).then((result) => {
+            // return result.isConfirmed;
+            resolve(result.isConfirmed)
+        });
+    });
+}
+
 
 function warningMessage(message) {
     Swal.fire({
