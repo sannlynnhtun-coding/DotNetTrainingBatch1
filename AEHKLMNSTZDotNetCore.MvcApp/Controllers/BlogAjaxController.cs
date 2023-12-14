@@ -70,17 +70,17 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 
         [HttpPost]
         [ActionName("Update")]
-        public async Task<IActionResult> BlogUpdate(BlogDataModel reqModel)
+        public async Task<IActionResult> BlogUpdate(int id, BlogDataModel reqModel)
         {
-            var Blog = await _context.Blogs.FindAsync(reqModel.Blog_Id);
+            var blog = await _context.Blogs.AsNoTracking().FirstOrDefaultAsync(x => x.Blog_Id == id);
 
-            if (Blog != null)
+            if (blog != null)
             {
-                Blog.Blog_Title = reqModel.Blog_Title;
-                Blog.Blog_Author = reqModel.Blog_Author;
-                Blog.Blog_Content = reqModel.Blog_Content;
+                blog.Blog_Title = reqModel.Blog_Title;
+                blog.Blog_Author = reqModel.Blog_Author;
+                blog.Blog_Content = reqModel.Blog_Content;
 
-                _context.Blogs.Update(Blog);
+                _context.Blogs.Update(blog);
                 var result = await _context.SaveChangesAsync();
 
                 string message = result > 0 ? "Update Successful." : "Update Failed.";
