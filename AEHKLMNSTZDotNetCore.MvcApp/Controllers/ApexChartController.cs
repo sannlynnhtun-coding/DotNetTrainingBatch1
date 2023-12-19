@@ -30,5 +30,15 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
+    
+        public IActionResult RadarChart()
+        {
+            ApexChartRadarChartModel model = new ApexChartRadarChartModel
+            {
+                Datas = new List<int> { 80, 50, 30, 40, 100, 20 },
+                Categories = new List<string> { "January", "February", "March", "April", "May", "June" }
+            };
+            return View(model);
+        }
     }
 }
