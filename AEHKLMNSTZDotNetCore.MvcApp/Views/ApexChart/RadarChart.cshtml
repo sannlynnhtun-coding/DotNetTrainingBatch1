@@ -1,0 +1,36 @@
+﻿@model ApexChartRadarChartModel
+@{
+    List<int> _data = Model.Datas;
+    List<string> _categories = Model.Categories;
+}
+@section scripts {
+    <div id="chart"></div>
+
+    <script>
+
+        let _data = @Html.Raw(JsonConvert.SerializeObject(_data));
+        let _categories = @Html.Raw(JsonConvert.SerializeObject(_categories));
+
+        var options = {
+            series: [{
+                name: "Series 1",
+                data: _data,
+            }],
+            chart: {
+                height: 350,
+                type: "radar",
+            },
+            title: {
+                text: "Basic Radar Chart"
+            },
+            xaxis: {
+                categories: _categories
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+
+
+    </script>
+}

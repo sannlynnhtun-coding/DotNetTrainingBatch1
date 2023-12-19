@@ -1,0 +1,49 @@
+﻿@model ApexChartRadialBarChartModel
+@{
+    List<int> _series = Model.Series;
+    List<string> _lables = Model.Lables;
+    string _label = Model.Label;
+}
+<div id="chart-one"></div>
+
+
+@section scripts {
+    <script>
+        //Multiple
+        let _series = @Html.Raw(JsonConvert.SerializeObject(_series));
+        let _lables = @Html.Raw(JsonConvert.SerializeObject(_lables));
+        let _label = @Html.Raw(JsonConvert.SerializeObject(_label));
+        var options = {
+            series: _series,
+            chart: {
+                height: 350,
+                type: 'radialBar',
+            },
+            plotOptions: {
+                radialBar: {
+                    dataLabels: {
+                        name: {
+                            fontSize: '22px',
+                        },
+                        value: {
+                            fontSize: '16px',
+                        },
+                        total: {
+                            show: true,
+                            label: _label,
+                            formatter: function (w) {
+                                // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
+                                return 249
+                            }
+                        }
+                    }
+                }
+            },
+            labels: _lables,
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart-one"), options);
+        chart.render();
+
+    </script>
+}
