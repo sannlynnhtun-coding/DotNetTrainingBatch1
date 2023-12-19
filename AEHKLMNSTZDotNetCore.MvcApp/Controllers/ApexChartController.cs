@@ -144,5 +144,22 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
+        public IActionResult LineChart()
+        {
+            ApexChartLineChartModel model = new ApexChartLineChartModel
+            {
+                Series = new List<LineChartSeriesModel>
+                {
+                    new LineChartSeriesModel
+                    {
+                        Name = "Desktops",
+                        Data = new List<int> { 10, 41, 35, 51, 49, 62, 69, 91, 148 }
+                    }
+                },
+                XAxisCategories = new List<string> { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep" }
+            };
+
+            return View(model);
+        }
     }
 }

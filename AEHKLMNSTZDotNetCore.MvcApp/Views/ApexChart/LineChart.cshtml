@@ -1,0 +1,48 @@
+﻿@model ApexChartLineChartModel
+
+@{
+    List<int> _data = Model.Series.First().Data;
+    List<string> _categories = Model.XAxisCategories;
+}
+
+<div id="chart"></div>
+
+@section scripts{
+    <script>
+        var options = {
+            series: [{
+                name: "@Model.Series.First().Name",
+                data: @Html.Raw(JsonConvert.SerializeObject(_data))
+                    }],
+            chart: {
+                height: 350,
+                type: 'line',
+                zoom: {
+                    enabled: false
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'straight'
+            },
+            title: {
+                text: 'Product Trends by Month',
+                align: 'left'
+            },
+            grid: {
+                row: {
+                    colors: ['#f3f3f3', 'transparent'],
+                    opacity: 0.5
+                },
+            },
+            xaxis: {
+                categories: @Html.Raw(JsonConvert.SerializeObject(_categories))
+                    }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+}
