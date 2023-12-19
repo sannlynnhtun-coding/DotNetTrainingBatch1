@@ -30,5 +30,29 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
+
+        public IActionResult RangeAreaChart() {
+
+            ApexChartRangeAreaResponseModel model = new ApexChartRangeAreaResponseModel
+            {
+                Data = new List<ApexChartRangeAreaModel> {
+                    new ApexChartRangeAreaModel { x ="Jan",y = new List<int>{ -2, 4 } },
+                    new ApexChartRangeAreaModel { x ="Feb",y = new List<int>{ -1, 6 } },
+                    new ApexChartRangeAreaModel { x ="Mar",y = new List<int>{ 3, 10 } },
+                    new ApexChartRangeAreaModel { x ="Apr",y = new List<int>{ 8, 16 } },
+                    new ApexChartRangeAreaModel { x ="May",y = new List<int>{ 13, 22 } },
+                    new ApexChartRangeAreaModel { x ="Jun",y = new List<int>{ 18, 26 } },
+                    new ApexChartRangeAreaModel { x ="Jul",y = new List<int>{ 21, 29 } },
+                    new ApexChartRangeAreaModel { x ="Aug",y = new List<int>{ 21, 28 } },
+                    new ApexChartRangeAreaModel { x ="Sep",y = new List<int>{ 17, 24 } },
+                    new ApexChartRangeAreaModel { x ="Oct",y = new List<int>{ 11, 18 } },
+                    new ApexChartRangeAreaModel { x ="Nov",y = new List<int>{ 6, 12 } },
+                    new ApexChartRangeAreaModel { x ="Dec",y = new List<int>{ 1, 7 } },
+
+                }
+                };
+            
+            return View(model); 
+        }
     }
 }
