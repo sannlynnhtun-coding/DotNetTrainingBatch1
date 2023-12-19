@@ -32,7 +32,8 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
         }
 
 
-        public IActionResult RangeAreaChart() {
+        public IActionResult RangeAreaChart()
+        {
 
             ApexChartRangeAreaResponseModel model = new ApexChartRangeAreaResponseModel
             {
@@ -53,10 +54,10 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
                 }
             };
 
-            return View(model); 
-        } 
+            return View(model);
+        }
 
-    
+
         public IActionResult RadarChart()
         {
             ApexChartRadarChartModel model = new ApexChartRadarChartModel
@@ -92,7 +93,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
         {
             ApexChartHeatMapChartResponseModel model = new ApexChartHeatMapChartResponseModel()
             {
-                Data=new List<ApexChartHeatMapChartModel>()
+                Data = new List<ApexChartHeatMapChartModel>()
                 {
                     new ApexChartHeatMapChartModel{Name="Random 1",Count=20,MinRange=0,MaxRange=90},
                     new ApexChartHeatMapChartModel{Name="Random 2",Count=20,MinRange=0,MaxRange=90},
@@ -114,16 +115,34 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
-    
 
-		public IActionResult FunnelChart()
-		{
-			ApexChartFunnelChartModel model = new ApexChartFunnelChartModel
-			{
-				Data = new List<int> { 70, 60, 50, 40, 30,20,10 },
-				Categories = new List<string> { "Team A", "Team B", "Team C", "Team D", "Team E","Team F","Team G" }
-			};
-			return View(model);
-		}
-	}
+
+        public IActionResult FunnelChart()
+        {
+            ApexChartFunnelChartModel model = new ApexChartFunnelChartModel
+            {
+                Data = new List<int> { 70, 60, 50, 40, 30, 20, 10 },
+                Categories = new List<string> { "Team A", "Team B", "Team C", "Team D", "Team E", "Team F", "Team G" }
+            };
+            return View(model);
+        }
+
+        public IActionResult BoxPlotChart()
+        {
+            ApexChartBoxPlotResponseModel model = new ApexChartBoxPlotResponseModel
+            {
+                Data = new List<ApexChartBoxPlotModel>()
+                {
+                    new ApexChartBoxPlotModel { x = "Jan 2015", y = new List<int> { 54, 66, 69, 75, 88 } },
+                    new ApexChartBoxPlotModel { x = "Jan 2016", y = new List<int> { 43, 65, 69, 76, 81 } },
+                    new ApexChartBoxPlotModel { x = "Jan 2017", y = new List<int> { 31, 39, 45, 51, 59 } },
+                    new ApexChartBoxPlotModel { x = "Jan 2018", y = new List<int> { 39, 46, 55, 65, 71 } },
+                    new ApexChartBoxPlotModel { x = "Jan 2019", y = new List<int> { 29, 31, 35, 39, 44 } },
+                    new ApexChartBoxPlotModel { x = "Jan 2020", y = new List<int> { 41, 49, 58, 61, 67 } },
+                    new ApexChartBoxPlotModel { x = "Jan 2021", y = new List<int> { 54, 59, 66, 71, 88 } },
+                }
+            };
+            return View(model);
+        }
+    }
 }
