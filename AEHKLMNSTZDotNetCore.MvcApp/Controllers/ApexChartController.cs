@@ -60,5 +60,15 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
+        public IActionResult RadialBarChart()
+        {
+            ApexChartRadialBarChartModel model = new ApexChartRadialBarChartModel()
+            {
+                Series = new List<int> { 44, 55, 67, 83 },
+                Lables = new List<string> { "Apples", "Oranges", "Bananas", "Berries" },
+                Label = "Total"
+            };
+            return View(model);
+        }
     }
 }
