@@ -1,0 +1,35 @@
+﻿@model ApexChartCandleStickChartResponseModel
+
+<div id="chart"></div>
+
+@section scripts{
+<script>
+
+    var options = {
+        series: [{
+            data: @Html.Raw(JsonConvert.SerializeObject(Model.Data))
+        }],
+        chart: {
+            type: 'candlestick',
+            height: 350
+        },
+        title: {
+            text: 'CandleStick Chart',
+            align: 'left'
+        },
+        xaxis: {
+            type: 'datetime'
+        },
+        yaxis: {
+            tooltip: {
+                enabled: true
+            }
+        }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+    chart.render();
+
+
+</script>
+}
