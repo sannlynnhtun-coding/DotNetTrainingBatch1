@@ -1,0 +1,92 @@
+﻿@model ApexChartHeatMapChartResponseModel
+@{
+    ViewData["Title"] = "Heat Map Chart";
+}
+
+<div id="chart"></div>
+
+@section scripts{
+
+    <script>
+
+        function generateData(count, yrange) {
+            var i = 0;
+            var series = [];
+            while (i < count) {
+                var x = 'w' + (i + 1).toString();
+                var y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+
+                series.push({
+                    x: x,
+                    y: y
+                });
+                i++;
+            }
+            return series;
+        }
+
+        var data = @Html.Raw(JsonConvert.SerializeObject(Model.Data))
+
+                const _series = [];
+        for (let item of data) {
+            console.log("Name ,", item.Name);
+            const obj = {
+                name: item.Name,
+                data: generateData(item.Count, {
+                    min: item.MinRange,
+                    max: item.MaxRange
+                })
+            }
+
+            _series.push(obj);
+        }
+
+        var options = {
+            series: _series,
+            chart: {
+                height: 350,
+                type: 'heatmap',
+            },
+            stroke: {
+                width: 0
+            },
+            plotOptions: {
+                heatmap: {
+                    radius: 30,
+                    enableShades: false,
+                    colorScale: {
+                        ranges: [{
+                            from: 0,
+                            to: 50,
+                            color: '#008FFB'
+                        },
+                        {
+                            from: 51,
+                            to: 100,
+                            color: '#00E396'
+                        },
+                        ],
+                    },
+
+                }
+            },
+            dataLabels: {
+                enabled: true,
+                style: {
+                    colors: ['#fff']
+                }
+            },
+            xaxis: {
+                type: 'category',
+            },
+            title: {
+                text: 'Random Heap Map Rounded Chart'
+            },
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+
+
+    </script>
+}
