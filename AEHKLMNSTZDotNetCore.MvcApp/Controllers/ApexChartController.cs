@@ -114,7 +114,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
-    }
+    
 
 		public IActionResult FunnelChart()
 		{
