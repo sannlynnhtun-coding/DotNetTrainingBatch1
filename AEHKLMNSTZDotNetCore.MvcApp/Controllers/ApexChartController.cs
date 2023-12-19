@@ -30,5 +30,15 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
-    }
+
+		public IActionResult FunnelChart()
+		{
+			ApexChartFunnelChartModel model = new ApexChartFunnelChartModel
+			{
+				Data = new List<int> { 70, 60, 50, 40, 30,20,10 },
+				Categories = new List<string> { "Team A", "Team B", "Team C", "Team D", "Team E","Team F","Team G" }
+			};
+			return View(model);
+		}
+	}
 }
