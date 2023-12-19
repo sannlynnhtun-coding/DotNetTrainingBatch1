@@ -30,5 +30,25 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
+        public IActionResult TreeMap()
+        {
+            ApexChatTreeMapResponseModel model = new ApexChatTreeMapResponseModel
+            {
+                Items = new List<ApexChatTreeMapModel>
+                {
+                    new ApexChatTreeMapModel {x = "Bangaluru", y = 336} ,
+                    new ApexChatTreeMapModel {x = "Ahmedabad", y = 132} ,
+                    new ApexChatTreeMapModel {x = "Mumbai", y = 240} ,
+                    new ApexChatTreeMapModel {x = "Kolkata", y =  28 },
+                    new ApexChatTreeMapModel {x ="New Delhi", y = 18},
+                    new ApexChatTreeMapModel {x = "Bangaluru", y = 36} ,
+                    new ApexChatTreeMapModel {x = "Ahmedabad", y = 12} ,
+                    new ApexChatTreeMapModel {x = "Mumbai", y = 240} ,
+                    new ApexChatTreeMapModel {x = "Kolkata", y =  358 },
+                    new ApexChatTreeMapModel {x ="New Delhi", y = 658},
+                }
+            };
+            return View(model);
+        }
     }
 }
