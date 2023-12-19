@@ -31,6 +31,63 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             return View(model);
         }
 
+
+        public IActionResult RangeAreaChart() {
+
+            ApexChartRangeAreaResponseModel model = new ApexChartRangeAreaResponseModel
+            {
+                Data = new List<ApexChartRangeAreaModel> {
+                    new ApexChartRangeAreaModel { x ="Jan",y = new List<int>{ -2, 4 } },
+                    new ApexChartRangeAreaModel { x ="Feb",y = new List<int>{ -1, 6 } },
+                    new ApexChartRangeAreaModel { x ="Mar",y = new List<int>{ 3, 10 } },
+                    new ApexChartRangeAreaModel { x ="Apr",y = new List<int>{ 8, 16 } },
+                    new ApexChartRangeAreaModel { x ="May",y = new List<int>{ 13, 22 } },
+                    new ApexChartRangeAreaModel { x ="Jun",y = new List<int>{ 18, 26 } },
+                    new ApexChartRangeAreaModel { x ="Jul",y = new List<int>{ 21, 29 } },
+                    new ApexChartRangeAreaModel { x ="Aug",y = new List<int>{ 21, 28 } },
+                    new ApexChartRangeAreaModel { x ="Sep",y = new List<int>{ 17, 24 } },
+                    new ApexChartRangeAreaModel { x ="Oct",y = new List<int>{ 11, 18 } },
+                    new ApexChartRangeAreaModel { x ="Nov",y = new List<int>{ 6, 12 } },
+                    new ApexChartRangeAreaModel { x ="Dec",y = new List<int>{ 1, 7 } },
+
+                }
+            };
+
+            return View(model); 
+        } 
+
+    
+        public IActionResult RadarChart()
+        {
+            ApexChartRadarChartModel model = new ApexChartRadarChartModel
+            {
+                Datas = new List<int> { 80, 50, 30, 40, 100, 20 },
+                Categories = new List<string> { "January", "February", "March", "April", "May", "June" }
+            };
+            return View(model);
+        }
+        public IActionResult TreeMap()
+        {
+            ApexChatTreeMapResponseModel model = new ApexChatTreeMapResponseModel
+            {
+                Items = new List<ApexChatTreeMapModel>
+                {
+                    new ApexChatTreeMapModel {x = "Bangaluru", y = 336} ,
+                    new ApexChatTreeMapModel {x = "Ahmedabad", y = 132} ,
+                    new ApexChatTreeMapModel {x = "Mumbai", y = 240} ,
+                    new ApexChatTreeMapModel {x = "Kolkata", y =  28 },
+                    new ApexChatTreeMapModel {x ="New Delhi", y = 18},
+                    new ApexChatTreeMapModel {x = "Bangaluru", y = 36} ,
+                    new ApexChatTreeMapModel {x = "Ahmedabad", y = 12} ,
+                    new ApexChatTreeMapModel {x = "Mumbai", y = 240} ,
+                    new ApexChatTreeMapModel {x = "Kolkata", y =  358 },
+                    new ApexChatTreeMapModel {x ="New Delhi", y = 658},
+                }
+            };
+            return View(model);
+
+        }
+
         public IActionResult HeatMapChart()
         {
             ApexChartHeatMapChartResponseModel model = new ApexChartHeatMapChartResponseModel()
