@@ -1,0 +1,27 @@
+﻿@model ApexChatTreeMapResponseModel
+<div id="chart"></div>
+@section scripts{
+<script>
+    console.log
+var options = {
+          series: [
+          {
+            data: @Html.Raw(JsonConvert.SerializeObject(Model.Items))
+          }
+        ],
+          legend: {
+          show: false
+        },
+        chart: {
+          height: 350,
+          type: 'treemap'
+        },
+        title: {
+          text: 'Basic Treemap'
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+</script>
+}
