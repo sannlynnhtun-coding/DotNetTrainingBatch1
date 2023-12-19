@@ -72,7 +72,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
         [ActionName("Update")]
         public async Task<IActionResult> BlogUpdate(int id, BlogDataModel reqModel)
         {
-            var blog = await _context.Blogs.AsNoTracking().FirstOrDefaultAsync(x => x.Blog_Id == id);
+            var blog = await _context.Blogs.FirstOrDefaultAsync(x => x.Blog_Id == id);
 
             if (blog != null)
             {
@@ -80,7 +80,6 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
                 blog.Blog_Author = reqModel.Blog_Author;
                 blog.Blog_Content = reqModel.Blog_Content;
 
-                _context.Blogs.Update(blog);
                 var result = await _context.SaveChangesAsync();
 
                 string message = result > 0 ? "Update Successful." : "Update Failed.";
