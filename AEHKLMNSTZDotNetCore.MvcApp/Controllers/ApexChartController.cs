@@ -1,6 +1,5 @@
 ﻿using AEHKLMNSTZDotNetCore.MvcApp.Models;
 using Microsoft.AspNetCore.Mvc;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 {
@@ -173,8 +172,9 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
-    }
-}
+ 
+
+
 
         public IActionResult MixedChart()
         {
