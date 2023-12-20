@@ -161,5 +161,16 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 
             return View(model);
         }
+
+        public IActionResult BarChart()
+        {
+            ApexChartBarChartModel model = new ApexChartBarChartModel
+            {
+                Data = new List<int> { 400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380},
+                Categories = new List<string> { "South Korea", "Canada", "United Kingdom", "Netherlands", "Italy", "France", "Japan",
+            "United States", "China", "Germany" }
+            };
+            return View(model);
+        }
     }
 }
