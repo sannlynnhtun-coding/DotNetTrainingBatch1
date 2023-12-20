@@ -172,8 +172,22 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
- 
 
+        public IActionResult BubbleChart()
+        {
+            ApexChartBubbleChartModel model = new ApexChartBubbleChartModel
+            {
+                Data = new List<BubbleChartDataItem>
+                {
+                    new BubbleChartDataItem { X = 10, Y = 20, Z = 30, Label = "Data Point 1" },
+                    new BubbleChartDataItem { X = 15, Y = 25, Z = 35, Label = "Data Point 2" },
+                    new BubbleChartDataItem { X = 20, Y = 30, Z = 40, Label = "Data Point 3" },
+                    new BubbleChartDataItem { X = 25, Y = 35, Z = 45, Label = "Data Point 4" },
+                    new BubbleChartDataItem { X = 30, Y = 40, Z = 50, Label = "Data Point 5" },
+                }
+            };
+            return View(model);
+        }
 
 
         public IActionResult MixedChart()

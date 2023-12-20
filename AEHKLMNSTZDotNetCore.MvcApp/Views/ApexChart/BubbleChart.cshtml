@@ -1,0 +1,56 @@
+﻿@model ApexChartBubbleChartModel
+
+<div id="bubble-chart"></div>
+
+@section scripts {
+    <script>
+        let bubbleData = @Html.Raw(Json.Serialize(Model.Data));
+
+        var options = {
+            chart: {
+                height: 350,
+                type: 'bubble',
+            },
+            series: [{
+                name: 'Bubble Chart',
+                data: bubbleData
+            }],
+            xaxis: {
+                tickAmount: 5,
+                title: {
+                    text: 'X Axis'
+                }
+            },
+            yaxis: {
+                tickAmount: 5,
+                title: {
+                    text: 'Y Axis'
+                }
+            },
+            colors: ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0'],
+            fill: {
+                opacity: 0.8
+            },
+            title: {
+                text: 'Beautiful Bubble Chart',
+                align: 'left'
+            },
+            tooltip: {
+                followCursor: true,
+                seriesName: 'Bubble Chart',
+                custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+                    var dataItem = w.globals.series[seriesIndex][dataPointIndex];
+                    return '<div class="tooltip-container">' +
+                        '<span>' + dataItem[3] + '</span>' +
+                        '<span>X: ' + dataItem[0] + '</span>' +
+                        '<span>Y: ' + dataItem[1] + '</span>' +
+                        '<span>Z: ' + dataItem[2] + '</span>' +
+                        '</div>';
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#bubble-chart"), options);
+        chart.render();
+    </script>
+}
