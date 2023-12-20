@@ -40,23 +40,18 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
-        public IActionResult TreeMap()
+        public IActionResult TimeLineChart()
         {
-            ApexChatTreeMapResponseModel model = new ApexChatTreeMapResponseModel
+
+            ApexChatTimelineChartResponseModel model = new ApexChatTimelineChartResponseModel
             {
-                Items = new List<ApexChatTreeMapModel>
-                {
-                    new ApexChatTreeMapModel {x = "Bangaluru", y = 336} ,
-                    new ApexChatTreeMapModel {x = "Ahmedabad", y = 132} ,
-                    new ApexChatTreeMapModel {x = "Mumbai", y = 240} ,
-                    new ApexChatTreeMapModel {x = "Kolkata", y =  28 },
-                    new ApexChatTreeMapModel {x ="New Delhi", y = 18},
-                    new ApexChatTreeMapModel {x = "Bangaluru", y = 36} ,
-                    new ApexChatTreeMapModel {x = "Ahmedabad", y = 12} ,
-                    new ApexChatTreeMapModel {x = "Mumbai", y = 240} ,
-                    new ApexChatTreeMapModel {x = "Kolkata", y =  358 },
-                    new ApexChatTreeMapModel {x ="New Delhi", y = 658},
-                }
+                Events = new List<ApexChatTimelineChartEventModel>
+        {
+            new ApexChatTimelineChartEventModel { Label = "Code", StartDate = new DateTime(2019, 3, 2), EndDate = new DateTime(2019, 3, 4) },
+            new ApexChatTimelineChartEventModel { Label = "Test", StartDate = new DateTime(2019, 3, 4), EndDate = new DateTime(2019, 3, 8) },
+            new ApexChatTimelineChartEventModel { Label = "Validation", StartDate = new DateTime(2019, 3, 8), EndDate = new DateTime(2019, 3, 12) },
+            new ApexChatTimelineChartEventModel { Label = "Deployment", StartDate = new DateTime(2019, 3, 12), EndDate = new DateTime(2019, 3, 18) },   
+        }
             };
             return View(model);
         }
