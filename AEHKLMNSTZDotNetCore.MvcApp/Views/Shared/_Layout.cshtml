@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/AEHKLMNSTZDotNetCore.MvcApp.styles.css" asp-append-version="true" />
+
+    @await RenderSectionAsync("style", required: false)
 </head>
 <body>
     <header>
@@ -39,13 +41,36 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/apexchart/piechart">Pie Chart</a></li>
-
                                 <li><a class="dropdown-item" href="/apexchart/candlestickchart">Candle Stick Chart</a></li>
                                 <li><a class="dropdown-item" href="/apexchart/rangeareachart">Range Area Chart</a></li>
                                 <li><a class="dropdown-item" href="/apexchart/radarchart">Radar Chart</a></li>
                                 <li><a class="dropdown-item" href="/apexchart/candlestickchart">Candle Stick  Chart</a></li>
                                 <li><a class="dropdown-item" href="/apexchart/treeMap">TreeMap</a></li>
                                 <li><a class="dropdown-item" href="/apexchart/heatmapchart">Heat Map Chart</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Chart Js
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/chartjs/piechart">Pie Chart</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Canvas Js
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/canvasjs/piechart">Pie Chart</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                HighCharts
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/highcharts/piechart">Pie Chart</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -74,6 +99,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ladda-bootstrap/0.9.4/ladda.min.js" integrity="sha512-OxowQ96EheBKRxTivGsizVvTK8bWt2xZlymiMZ9MArbmOmuxbv+2IlC46k4gZPhZH5eVQAm0F6lk9Yt6M4xu7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+    @* <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> *@
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/11.2.0/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/11.2.0/highcharts-more.js"></script>
 
     <script src="~/js/custom.js"></script>
 
