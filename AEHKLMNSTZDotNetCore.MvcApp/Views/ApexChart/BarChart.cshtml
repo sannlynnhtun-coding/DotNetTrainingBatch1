@@ -1,0 +1,44 @@
+﻿@model ApexChartBarChartModel
+<div id="chart"></div>
+@{
+    List<int> _data = Model.Data;
+    List<string> _categories = Model.Categories;
+}
+@section scripts{
+    <script>
+        // let _data = [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380];
+        // let _categories = ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan',
+        //     'United States', 'China', 'Germany'];
+      
+        let _data = @Html.Raw(JsonConvert.SerializeObject(_data));
+        let _categories = @Html.Raw(JsonConvert.SerializeObject(_categories));
+
+        var options = {
+            series: [{
+                data: _data
+            }],
+            chart: {
+                type: 'bar',
+                height: 350
+            },
+            plotOptions: {
+                bar: {
+                    borderRadius: 4,
+                    borderRadiusApplication: 'end',
+                    horizontal: true,
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            xaxis: {
+                categories: _categories,
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+
+
+    </script>
+}
