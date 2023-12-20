@@ -1,6 +1,7 @@
 ﻿using AEHKLMNSTZDotNetCore.MvcApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Collections;
 
 namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 {
@@ -32,7 +33,6 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             return View(model);
         }
 
-
         public IActionResult RangeAreaChart()
         {
 
@@ -58,7 +58,6 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             return View(model);
         }
 
-
         public IActionResult RadarChart()
         {
             ApexChartRadarChartModel model = new ApexChartRadarChartModel
@@ -68,6 +67,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
+
         public IActionResult TimeLineChart()
         {
 
@@ -101,6 +101,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
+
         public IActionResult RadialBarChart()
         {
             ApexChartRadialBarChartModel model = new ApexChartRadialBarChartModel()
@@ -111,7 +112,6 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
-
 
         public IActionResult FunnelChart()
         {
@@ -140,6 +140,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
+
         public IActionResult LineChart()
         {
             ApexChartLineChartModel model = new ApexChartLineChartModel
@@ -184,7 +185,6 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
-
 
         public IActionResult MixedChart()
         {
@@ -273,6 +273,13 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 
         public IActionResult ColumnChart()
         {
+            //List<int> lst = new();
+            //for (int i = 1; i <= 9; i++)
+            //{
+            //    int result = GenerateData(1, 10);
+            //    lst.Add(result);
+            //}
+
             ApexChartColumnChartModel model = new ApexChartColumnChartModel
             {
                 Series = new List<ColumnChartSeriesModel>
@@ -280,22 +287,52 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
                     new ColumnChartSeriesModel
                     {
                         Name1 = "Net Profit",
-                        Data = new List<int> { 44, 55, 57, 56, 61, 58, 63, 60, 66 }
+                        //Data = new List<int> { 44, 55, 57, 56, 61, 58, 63, 60, 66 }
+                        Data = Enumerable.Range(1, 9).Select(x => GenerateData(1, 100)).ToList(),
                     },
-            new ColumnChartSeriesModel
-            {
-                Name2 = "Revenue",
-                Data = new List<int> { 44, 55, 57, 56, 61, 58, 63, 60, 66 }
-            },
+                    new ColumnChartSeriesModel
+                    {
+                        Name2 = "Revenue",
+                        //Data = new List<int> { 44, 55, 57, 56, 61, 58, 63, 60, 66 }
+                        Data = Enumerable.Range(1, 9).Select(x => GenerateData(1, 100)).ToList(),
+                    },
                     new ColumnChartSeriesModel
                     {
                         Name3 = "Revenue",
-                        Data = new List<int> { 44, 55, 57, 56, 61, 58, 63, 60, 66 }
+                        //Data = new List<int> { 44, 55, 57, 56, 61, 58, 63, 60, 66 }
+                        Data = Enumerable.Range(1, 9).Select(x => GenerateData(1, 100)).ToList(),
                     }
                 },
                 XAxisCategories = new List<string> { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep" }
             };
             return View(model);
+        }
+
+        public IActionResult TreeMap()
+        {
+            ApexChatTreeMapResponseModel model = new ApexChatTreeMapResponseModel
+            {
+                Items = new List<ApexChatTreeMapModel>
+                {
+                    new ApexChatTreeMapModel {x = "Bangaluru", y = 336} ,
+                    new ApexChatTreeMapModel {x = "Ahmedabad", y = 132} ,
+                    new ApexChatTreeMapModel {x = "Mumbai", y = 240} ,
+                    new ApexChatTreeMapModel {x = "Kolkata", y =  28 },
+                    new ApexChatTreeMapModel {x ="New Delhi", y = 18},
+                    new ApexChatTreeMapModel {x = "Bangaluru", y = 36} ,
+                    new ApexChatTreeMapModel {x = "Ahmedabad", y = 12} ,
+                    new ApexChatTreeMapModel {x = "Mumbai", y = 240} ,
+                    new ApexChatTreeMapModel {x = "Kolkata", y =  358 },
+                    new ApexChatTreeMapModel {x ="New Delhi", y = 658},
+                }
+            };
+            return View(model);
+        }
+
+        private int GenerateData(int from, int to)
+        {
+            Random random = new Random();
+            return random.Next(from, to);
         }
     }
 }

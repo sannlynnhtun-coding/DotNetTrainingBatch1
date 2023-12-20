@@ -1,7 +1,9 @@
 ﻿@model ApexChartColumnChartModel
 
 @{
-    List<int> _data = Model.Series.First().Data;
+    List<int> _data1 = Model.Series[0].Data;
+    List<int> _data2 = Model.Series[1].Data;
+    List<int> _data3 = Model.Series[2].Data;
     List<string> _categories = Model.XAxisCategories;
 }
 
@@ -11,14 +13,14 @@
     <script>
         var options = {
             series: [{
-                name: "@Model.Series.First().Name1",
-                data: @Html.Raw(JsonConvert.SerializeObject(_data))
+                name: "@Model.Series[0].Name1",
+                data: @Html.Raw(JsonConvert.SerializeObject(_data1))
             }, {
-                name: "@Model.Series.First().Name2",
-                data: @Html.Raw(JsonConvert.SerializeObject(_data))
+                name: "@Model.Series[1].Name2",
+                data: @Html.Raw(JsonConvert.SerializeObject(_data2))
             }, {
-                name: "@Model.Series.First().Name3",
-                data: @Html.Raw(JsonConvert.SerializeObject(_data))
+                name: "@Model.Series[2].Name3",
+                data: @Html.Raw(JsonConvert.SerializeObject(_data3))
             }],
             chart: {
                 type: 'bar',
