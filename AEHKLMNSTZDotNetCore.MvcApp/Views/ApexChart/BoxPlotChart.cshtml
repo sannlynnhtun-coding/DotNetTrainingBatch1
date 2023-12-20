@@ -1,0 +1,39 @@
+﻿@model ApexChartBoxPlotResponseModel
+
+<div id="chart"></div>
+
+@section scripts {
+    <script>
+
+
+
+        var options = {
+            series: [{
+                data: @Html.Raw(JsonConvert.SerializeObject(Model.Data))
+            }],
+        chart: {
+            type: 'boxPlot',
+                height: 350
+        },
+        title: {
+            text: 'Basic BoxPlot Chart',
+                align: 'left'
+        },
+        plotOptions: {
+            boxPlot: {
+                colors: {
+                    upper: '#5C4742',
+                        lower: '#A5978B'
+                }
+            }
+        }
+                };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+
+
+
+
+    </script>
+}

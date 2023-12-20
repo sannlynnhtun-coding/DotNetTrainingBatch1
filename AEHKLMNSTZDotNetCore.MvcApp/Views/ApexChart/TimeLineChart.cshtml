@@ -1,0 +1,42 @@
+﻿@model ApexChatTimelineChartResponseModel
+<div id="chart"></div>
+
+@section scripts {
+    <script>
+        var events = @Html.Raw(JsonConvert.SerializeObject(Model.Events));
+
+        var options = {
+            series: [
+                {
+                    data: events.map(function (event) {
+                        return {
+                            x: event.Label,
+                            y: [
+                                new Date(event.StartDate).getTime(),
+                                new Date(event.EndDate).getTime()
+                            ]
+                        };
+                    })
+                }
+            ],
+            chart: {
+                height: 350,
+                type: 'rangeBar'
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: true
+                }
+            },
+            xaxis: {
+                type: 'datetime',
+                labels: {
+                    format: 'dd/MM/yyyy' 
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+}

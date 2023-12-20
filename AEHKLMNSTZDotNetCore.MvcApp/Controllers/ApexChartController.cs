@@ -1,5 +1,6 @@
 ﻿using AEHKLMNSTZDotNetCore.MvcApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 {
@@ -32,7 +33,8 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
         }
 
 
-        public IActionResult RangeAreaChart() {
+        public IActionResult RangeAreaChart()
+        {
 
             ApexChartRangeAreaResponseModel model = new ApexChartRangeAreaResponseModel
             {
@@ -53,10 +55,10 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
                 }
             };
 
-            return View(model); 
-        } 
+            return View(model);
+        }
 
-    
+
         public IActionResult RadarChart()
         {
             ApexChartRadarChartModel model = new ApexChartRadarChartModel
@@ -66,23 +68,18 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
-        public IActionResult TreeMap()
+        public IActionResult TimeLineChart()
         {
-            ApexChatTreeMapResponseModel model = new ApexChatTreeMapResponseModel
+
+            ApexChatTimelineChartResponseModel model = new ApexChatTimelineChartResponseModel
             {
-                Items = new List<ApexChatTreeMapModel>
-                {
-                    new ApexChatTreeMapModel {x = "Bangaluru", y = 336} ,
-                    new ApexChatTreeMapModel {x = "Ahmedabad", y = 132} ,
-                    new ApexChatTreeMapModel {x = "Mumbai", y = 240} ,
-                    new ApexChatTreeMapModel {x = "Kolkata", y =  28 },
-                    new ApexChatTreeMapModel {x ="New Delhi", y = 18},
-                    new ApexChatTreeMapModel {x = "Bangaluru", y = 36} ,
-                    new ApexChatTreeMapModel {x = "Ahmedabad", y = 12} ,
-                    new ApexChatTreeMapModel {x = "Mumbai", y = 240} ,
-                    new ApexChatTreeMapModel {x = "Kolkata", y =  358 },
-                    new ApexChatTreeMapModel {x ="New Delhi", y = 658},
-                }
+                Events = new List<ApexChatTimelineChartEventModel>
+        {
+            new ApexChatTimelineChartEventModel { Label = "Code", StartDate = new DateTime(2019, 3, 2), EndDate = new DateTime(2019, 3, 4) },
+            new ApexChatTimelineChartEventModel { Label = "Test", StartDate = new DateTime(2019, 3, 4), EndDate = new DateTime(2019, 3, 8) },
+            new ApexChatTimelineChartEventModel { Label = "Validation", StartDate = new DateTime(2019, 3, 8), EndDate = new DateTime(2019, 3, 12) },
+            new ApexChatTimelineChartEventModel { Label = "Deployment", StartDate = new DateTime(2019, 3, 12), EndDate = new DateTime(2019, 3, 18) },
+        }
             };
             return View(model);
 
@@ -92,7 +89,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
         {
             ApexChartHeatMapChartResponseModel model = new ApexChartHeatMapChartResponseModel()
             {
-                Data=new List<ApexChartHeatMapChartModel>()
+                Data = new List<ApexChartHeatMapChartModel>()
                 {
                     new ApexChartHeatMapChartModel{Name="Random 1",Count=20,MinRange=0,MaxRange=90},
                     new ApexChartHeatMapChartModel{Name="Random 2",Count=20,MinRange=0,MaxRange=90},
@@ -104,5 +101,202 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
+        public IActionResult RadialBarChart()
+        {
+            ApexChartRadialBarChartModel model = new ApexChartRadialBarChartModel()
+            {
+                Series = new List<int> { 44, 55, 67, 83 },
+                Lables = new List<string> { "Apples", "Oranges", "Bananas", "Berries" },
+                Label = "Total"
+            };
+            return View(model);
+        }
+
+
+        public IActionResult FunnelChart()
+        {
+            ApexChartFunnelChartModel model = new ApexChartFunnelChartModel
+            {
+                Data = new List<int> { 70, 60, 50, 40, 30, 20, 10 },
+                Categories = new List<string> { "Team A", "Team B", "Team C", "Team D", "Team E", "Team F", "Team G" }
+            };
+            return View(model);
+        }
+
+        public IActionResult BoxPlotChart()
+        {
+            ApexChartBoxPlotResponseModel model = new ApexChartBoxPlotResponseModel
+            {
+                Data = new List<ApexChartBoxPlotModel>()
+                {
+                    new ApexChartBoxPlotModel { x = "Jan 2015", y = new List<int> { 54, 66, 69, 75, 88 } },
+                    new ApexChartBoxPlotModel { x = "Jan 2016", y = new List<int> { 43, 65, 69, 76, 81 } },
+                    new ApexChartBoxPlotModel { x = "Jan 2017", y = new List<int> { 31, 39, 45, 51, 59 } },
+                    new ApexChartBoxPlotModel { x = "Jan 2018", y = new List<int> { 39, 46, 55, 65, 71 } },
+                    new ApexChartBoxPlotModel { x = "Jan 2019", y = new List<int> { 29, 31, 35, 39, 44 } },
+                    new ApexChartBoxPlotModel { x = "Jan 2020", y = new List<int> { 41, 49, 58, 61, 67 } },
+                    new ApexChartBoxPlotModel { x = "Jan 2021", y = new List<int> { 54, 59, 66, 71, 88 } },
+                }
+            };
+            return View(model);
+        }
+        public IActionResult LineChart()
+        {
+            ApexChartLineChartModel model = new ApexChartLineChartModel
+            {
+                Series = new List<LineChartSeriesModel>
+                {
+                    new LineChartSeriesModel
+                    {
+                        Name = "Desktops",
+                        Data = new List<int> { 10, 41, 35, 51, 49, 62, 69, 91, 148 }
+                    }
+                },
+                XAxisCategories = new List<string> { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep" }
+            };
+
+            return View(model);
+        }
+
+        public IActionResult BarChart()
+        {
+            ApexChartBarChartModel model = new ApexChartBarChartModel
+            {
+                Data = new List<int> { 400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380 },
+                Categories = new List<string> { "South Korea", "Canada", "United Kingdom", "Netherlands", "Italy", "France", "Japan",
+            "United States", "China", "Germany" }
+            };
+            return View(model);
+        }
+
+        public IActionResult BubbleChart()
+        {
+            ApexChartBubbleChartModel model = new ApexChartBubbleChartModel
+            {
+                Data = new List<BubbleChartDataItem>
+                {
+                    new BubbleChartDataItem { X = 10, Y = 20, Z = 30, Label = "Data Point 1" },
+                    new BubbleChartDataItem { X = 15, Y = 25, Z = 35, Label = "Data Point 2" },
+                    new BubbleChartDataItem { X = 20, Y = 30, Z = 40, Label = "Data Point 3" },
+                    new BubbleChartDataItem { X = 25, Y = 35, Z = 45, Label = "Data Point 4" },
+                    new BubbleChartDataItem { X = 30, Y = 40, Z = 50, Label = "Data Point 5" },
+                }
+            };
+            return View(model);
+        }
+
+
+        public IActionResult MixedChart()
+        {
+            ApexChartMixedChartResponseModel model = new ApexChartMixedChartResponseModel
+            {
+                Data = new List<ApexChartMixedChartModel>
+                {
+                    new ApexChartMixedChartModel {name="TEAM A", type="column",data = new List<int>{ 23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30 } },
+                    new ApexChartMixedChartModel {name="TEAM B", type="area",data = new List<int>{ 44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43 } },
+                    new ApexChartMixedChartModel {name="TEAM C", type="line",data = new List<int>{ 30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39 } },
+                },
+                Label = new List<string>
+                {
+                    "01/01/2003","02/01/2003", "03/01/2003", "04/01/2003", "05/01/2003", "06/01/2003", "07/01/2003",
+                    "08/01/2003", "09/01/2003", "10/01/2003", "11/01/2003"
+                }
+            };
+            return View(model);
+        }
+
+        public IActionResult PolarAreaChart()
+        {
+            ApexChartPolarAreaChartModel model = new ApexChartPolarAreaChartModel
+            {
+                PolarSeries = new List<int> { 14, 23, 21, 17, 15, 10, 12, 17, 21 }
+            };
+            return View(model);
+        }
+
+        public IActionResult AreaChart()
+        {
+            ApexChartAreaChartModel model = new ApexChartAreaChartModel
+            {
+                prices = new List<double>
+                {
+                      8423.7,
+      8423.5,
+      8514.3,
+      8481.85,
+      8487.7,
+      8506.9,
+      8626.2,
+      8668.95,
+      8602.3,
+      8607.55,
+      8512.9,
+      8496.25,
+      8600.65,
+      8881.1,
+      9040.85,
+      8340.7,
+      8165.5,
+      8122.9,
+      8107.85,
+      8128.0
+                },
+
+                dates = new List<string>
+                {
+                     "13 Nov 2017",
+      "14 Nov 2017",
+      "15 Nov 2017",
+      "16 Nov 2017",
+      "17 Nov 2017",
+      "20 Nov 2017",
+      "21 Nov 2017",
+      "22 Nov 2017",
+      "23 Nov 2017",
+      "24 Nov 2017",
+      "27 Nov 2017",
+      "28 Nov 2017",
+      "29 Nov 2017",
+      "30 Nov 2017",
+      "01 Dec 2017",
+      "04 Dec 2017",
+      "05 Dec 2017",
+      "06 Dec 2017",
+      "07 Dec 2017",
+      "08 Dec 2017"
+                }
+
+            };
+
+            return View(model);
+        }
+
+        public IActionResult ColumnChart()
+        {
+            ApexChartColumnChartModel model = new ApexChartColumnChartModel
+            {
+                Series = new List<ColumnChartSeriesModel>
+                {
+                    new ColumnChartSeriesModel
+                    {
+                        Name1 = "Net Profit",
+                        Data = new List<int> { 44, 55, 57, 56, 61, 58, 63, 60, 66 }
+                    },
+            new ColumnChartSeriesModel
+            {
+                Name2 = "Revenue",
+                Data = new List<int> { 44, 55, 57, 56, 61, 58, 63, 60, 66 }
+            },
+                    new ColumnChartSeriesModel
+                    {
+                        Name3 = "Revenue",
+                        Data = new List<int> { 44, 55, 57, 56, 61, 58, 63, 60, 66 }
+                    }
+                },
+                XAxisCategories = new List<string> { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep" }
+            };
+            return View(model);
+        }
     }
 }
+
