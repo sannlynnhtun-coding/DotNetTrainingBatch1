@@ -1,5 +1,6 @@
 ﻿using AEHKLMNSTZDotNetCore.MvcApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 {
@@ -203,6 +204,15 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
+
+        public IActionResult PolarAreaChart()
+        {
+            ApexChartPolarAreaChartModel model = new ApexChartPolarAreaChartModel
+            {
+                PolarSeries = new List<int> { 14, 23, 21, 17, 15, 10, 12, 17, 21 }
+            };
+                return View(model);
         }
     }
+}
 
