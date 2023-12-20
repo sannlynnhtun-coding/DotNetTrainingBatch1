@@ -30,7 +30,34 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
-    
+
+
+        public IActionResult RangeAreaChart()
+        {
+
+            ApexChartRangeAreaResponseModel model = new ApexChartRangeAreaResponseModel
+            {
+                Data = new List<ApexChartRangeAreaModel> {
+                    new ApexChartRangeAreaModel { x ="Jan",y = new List<int>{ -2, 4 } },
+                    new ApexChartRangeAreaModel { x ="Feb",y = new List<int>{ -1, 6 } },
+                    new ApexChartRangeAreaModel { x ="Mar",y = new List<int>{ 3, 10 } },
+                    new ApexChartRangeAreaModel { x ="Apr",y = new List<int>{ 8, 16 } },
+                    new ApexChartRangeAreaModel { x ="May",y = new List<int>{ 13, 22 } },
+                    new ApexChartRangeAreaModel { x ="Jun",y = new List<int>{ 18, 26 } },
+                    new ApexChartRangeAreaModel { x ="Jul",y = new List<int>{ 21, 29 } },
+                    new ApexChartRangeAreaModel { x ="Aug",y = new List<int>{ 21, 28 } },
+                    new ApexChartRangeAreaModel { x ="Sep",y = new List<int>{ 17, 24 } },
+                    new ApexChartRangeAreaModel { x ="Oct",y = new List<int>{ 11, 18 } },
+                    new ApexChartRangeAreaModel { x ="Nov",y = new List<int>{ 6, 12 } },
+                    new ApexChartRangeAreaModel { x ="Dec",y = new List<int>{ 1, 7 } },
+
+                }
+            };
+
+            return View(model);
+        }
+
+
         public IActionResult RadarChart()
         {
             ApexChartRadarChartModel model = new ApexChartRadarChartModel
@@ -54,6 +81,128 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
         }
             };
             return View(model);
+
+        }
+
+        public IActionResult HeatMapChart()
+        {
+            ApexChartHeatMapChartResponseModel model = new ApexChartHeatMapChartResponseModel()
+            {
+                Data = new List<ApexChartHeatMapChartModel>()
+                {
+                    new ApexChartHeatMapChartModel{Name="Random 1",Count=20,MinRange=0,MaxRange=90},
+                    new ApexChartHeatMapChartModel{Name="Random 2",Count=20,MinRange=0,MaxRange=90},
+                    new ApexChartHeatMapChartModel{Name="Random 3",Count=20,MinRange=0,MaxRange=90},
+                    new ApexChartHeatMapChartModel{Name="Random 4",Count=20,MinRange=0,MaxRange=90},
+                    new ApexChartHeatMapChartModel{Name="Random 5",Count=20,MinRange=0,MaxRange=90},
+                    new ApexChartHeatMapChartModel{Name="Random 6",Count=20,MinRange=0,MaxRange=90},
+                }
+            };
+            return View(model);
+        }
+        public IActionResult RadialBarChart()
+        {
+            ApexChartRadialBarChartModel model = new ApexChartRadialBarChartModel()
+            {
+                Series = new List<int> { 44, 55, 67, 83 },
+                Lables = new List<string> { "Apples", "Oranges", "Bananas", "Berries" },
+                Label = "Total"
+            };
+            return View(model);
+        }
+
+
+        public IActionResult FunnelChart()
+        {
+            ApexChartFunnelChartModel model = new ApexChartFunnelChartModel
+            {
+                Data = new List<int> { 70, 60, 50, 40, 30, 20, 10 },
+                Categories = new List<string> { "Team A", "Team B", "Team C", "Team D", "Team E", "Team F", "Team G" }
+            };
+            return View(model);
+        }
+
+        public IActionResult BoxPlotChart()
+        {
+            ApexChartBoxPlotResponseModel model = new ApexChartBoxPlotResponseModel
+            {
+                Data = new List<ApexChartBoxPlotModel>()
+                {
+                    new ApexChartBoxPlotModel { x = "Jan 2015", y = new List<int> { 54, 66, 69, 75, 88 } },
+                    new ApexChartBoxPlotModel { x = "Jan 2016", y = new List<int> { 43, 65, 69, 76, 81 } },
+                    new ApexChartBoxPlotModel { x = "Jan 2017", y = new List<int> { 31, 39, 45, 51, 59 } },
+                    new ApexChartBoxPlotModel { x = "Jan 2018", y = new List<int> { 39, 46, 55, 65, 71 } },
+                    new ApexChartBoxPlotModel { x = "Jan 2019", y = new List<int> { 29, 31, 35, 39, 44 } },
+                    new ApexChartBoxPlotModel { x = "Jan 2020", y = new List<int> { 41, 49, 58, 61, 67 } },
+                    new ApexChartBoxPlotModel { x = "Jan 2021", y = new List<int> { 54, 59, 66, 71, 88 } },
+                }
+            };
+            return View(model);
+        }
+        public IActionResult LineChart()
+        {
+            ApexChartLineChartModel model = new ApexChartLineChartModel
+            {
+                Series = new List<LineChartSeriesModel>
+                {
+                    new LineChartSeriesModel
+                    {
+                        Name = "Desktops",
+                        Data = new List<int> { 10, 41, 35, 51, 49, 62, 69, 91, 148 }
+                    }
+                },
+                XAxisCategories = new List<string> { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep" }
+            };
+
+            return View(model);
+        }
+
+        public IActionResult BarChart()
+        {
+            ApexChartBarChartModel model = new ApexChartBarChartModel
+            {
+                Data = new List<int> { 400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380},
+                Categories = new List<string> { "South Korea", "Canada", "United Kingdom", "Netherlands", "Italy", "France", "Japan",
+            "United States", "China", "Germany" }
+            };
+            return View(model);
+        }
+
+        public IActionResult BubbleChart()
+        {
+            ApexChartBubbleChartModel model = new ApexChartBubbleChartModel
+            {
+                Data = new List<BubbleChartDataItem>
+                {
+                    new BubbleChartDataItem { X = 10, Y = 20, Z = 30, Label = "Data Point 1" },
+                    new BubbleChartDataItem { X = 15, Y = 25, Z = 35, Label = "Data Point 2" },
+                    new BubbleChartDataItem { X = 20, Y = 30, Z = 40, Label = "Data Point 3" },
+                    new BubbleChartDataItem { X = 25, Y = 35, Z = 45, Label = "Data Point 4" },
+                    new BubbleChartDataItem { X = 30, Y = 40, Z = 50, Label = "Data Point 5" },
+                }
+            };
+            return View(model);
+        }
+
+
+        public IActionResult MixedChart()
+        {
+            ApexChartMixedChartResponseModel model=new ApexChartMixedChartResponseModel
+            {
+                Data = new List<ApexChartMixedChartModel>
+                {
+                    new ApexChartMixedChartModel {name="TEAM A", type="column",data = new List<int>{ 23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30 } },
+                    new ApexChartMixedChartModel {name="TEAM B", type="area",data = new List<int>{ 44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43 } },
+                    new ApexChartMixedChartModel {name="TEAM C", type="line",data = new List<int>{ 30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39 } },
+                },
+                Label=new List<string>
+                {
+                    "01/01/2003","02/01/2003", "03/01/2003", "04/01/2003", "05/01/2003", "06/01/2003", "07/01/2003",
+                    "08/01/2003", "09/01/2003", "10/01/2003", "11/01/2003"
+                }
+            };
+            return View(model);
+        }
         }
     }
-}
+
