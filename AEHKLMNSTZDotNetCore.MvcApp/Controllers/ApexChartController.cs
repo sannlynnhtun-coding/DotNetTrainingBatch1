@@ -78,7 +78,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             new ApexChatTimelineChartEventModel { Label = "Code", StartDate = new DateTime(2019, 3, 2), EndDate = new DateTime(2019, 3, 4) },
             new ApexChatTimelineChartEventModel { Label = "Test", StartDate = new DateTime(2019, 3, 4), EndDate = new DateTime(2019, 3, 8) },
             new ApexChatTimelineChartEventModel { Label = "Validation", StartDate = new DateTime(2019, 3, 8), EndDate = new DateTime(2019, 3, 12) },
-            new ApexChatTimelineChartEventModel { Label = "Deployment", StartDate = new DateTime(2019, 3, 12), EndDate = new DateTime(2019, 3, 18) },   
+            new ApexChatTimelineChartEventModel { Label = "Deployment", StartDate = new DateTime(2019, 3, 12), EndDate = new DateTime(2019, 3, 18) },
         }
             };
             return View(model);
@@ -162,7 +162,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
         {
             ApexChartBarChartModel model = new ApexChartBarChartModel
             {
-                Data = new List<int> { 400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380},
+                Data = new List<int> { 400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380 },
                 Categories = new List<string> { "South Korea", "Canada", "United Kingdom", "Netherlands", "Italy", "France", "Japan",
             "United States", "China", "Germany" }
             };
@@ -188,7 +188,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 
         public IActionResult MixedChart()
         {
-            ApexChartMixedChartResponseModel model=new ApexChartMixedChartResponseModel
+            ApexChartMixedChartResponseModel model = new ApexChartMixedChartResponseModel
             {
                 Data = new List<ApexChartMixedChartModel>
                 {
@@ -196,7 +196,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
                     new ApexChartMixedChartModel {name="TEAM B", type="area",data = new List<int>{ 44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43 } },
                     new ApexChartMixedChartModel {name="TEAM C", type="line",data = new List<int>{ 30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39 } },
                 },
-                Label=new List<string>
+                Label = new List<string>
                 {
                     "01/01/2003","02/01/2003", "03/01/2003", "04/01/2003", "05/01/2003", "06/01/2003", "07/01/2003",
                     "08/01/2003", "09/01/2003", "10/01/2003", "11/01/2003"
@@ -211,7 +211,64 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             {
                 PolarSeries = new List<int> { 14, 23, 21, 17, 15, 10, 12, 17, 21 }
             };
-                return View(model);
+            return View(model);
+        }
+
+        public IActionResult AreaChart()
+        {
+            ApexChartAreaChartModel model = new ApexChartAreaChartModel
+            {
+                prices = new List<double>
+                {
+                      8423.7,
+      8423.5,
+      8514.3,
+      8481.85,
+      8487.7,
+      8506.9,
+      8626.2,
+      8668.95,
+      8602.3,
+      8607.55,
+      8512.9,
+      8496.25,
+      8600.65,
+      8881.1,
+      9040.85,
+      8340.7,
+      8165.5,
+      8122.9,
+      8107.85,
+      8128.0
+                },
+
+                dates = new List<string>
+                {
+                     "13 Nov 2017",
+      "14 Nov 2017",
+      "15 Nov 2017",
+      "16 Nov 2017",
+      "17 Nov 2017",
+      "20 Nov 2017",
+      "21 Nov 2017",
+      "22 Nov 2017",
+      "23 Nov 2017",
+      "24 Nov 2017",
+      "27 Nov 2017",
+      "28 Nov 2017",
+      "29 Nov 2017",
+      "30 Nov 2017",
+      "01 Dec 2017",
+      "04 Dec 2017",
+      "05 Dec 2017",
+      "06 Dec 2017",
+      "07 Dec 2017",
+      "08 Dec 2017"
+                }
+
+            };
+
+            return View(model);
         }
     }
 }
