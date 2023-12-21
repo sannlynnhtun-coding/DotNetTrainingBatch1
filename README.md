@@ -1,3 +1,8 @@
+
+https://www.chartjs.org/docs/latest/getting-started/
+https://www.chartjs.org/docs/latest/samples/information.html
+https://www.chartjs.org/docs/latest/samples/utils.html
+
 https://learn.microsoft.com/en-us/aspnet/core/mvc/views/partial?view=aspnetcore-8.0
 ```csharp
 @await Html.PartialAsync("_PartialName.cshtml")

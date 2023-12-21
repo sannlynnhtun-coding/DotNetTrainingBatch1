@@ -1,0 +1,67 @@
+﻿@model ApexChartColumnChartModel
+
+@{
+    List<int> _data1 = Model.Series[0].Data;
+    List<int> _data2 = Model.Series[1].Data;
+    List<int> _data3 = Model.Series[2].Data;
+    List<string> _categories = Model.XAxisCategories;
+}
+
+<div id="chart"></div>
+
+@section scripts{
+    <script>
+        var options = {
+            series: [{
+                name: "@Model.Series[0].Name1",
+                data: @Html.Raw(JsonConvert.SerializeObject(_data1))
+            }, {
+                name: "@Model.Series[1].Name2",
+                data: @Html.Raw(JsonConvert.SerializeObject(_data2))
+            }, {
+                name: "@Model.Series[2].Name3",
+                data: @Html.Raw(JsonConvert.SerializeObject(_data3))
+            }],
+            chart: {
+                type: 'bar',
+                height: 350
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '55%',
+                    endingShape: 'rounded'
+                },
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+            },
+            xaxis: {
+                categories: @Html.Raw(JsonConvert.SerializeObject(_categories))
+             },
+            yaxis: {
+                title: {
+                    text: '$ (thousands)'
+                }
+            },
+            fill: {
+                opacity: 1
+            },
+            tooltip: {
+                y: {
+                    formatter: function (val) {
+                        return "$ " + val + " thousands"
+                    }
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+}

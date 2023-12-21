@@ -57,3 +57,14 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Models
         public string Message { get; set; }
     }
 }
+
+//public class ScatterResponseModel
+//{
+//    public List<ScatterModel> Data { get; set; }
+//}
+
+//public class ScatterModel
+//{
+//    public string name { get; set; }
+//    public float[][] data { get; set; }
+//}
