@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AEHKLMNSTZDotNetCore.MvcApp.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 {
@@ -8,5 +9,29 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
         {
             return View();
         }
-    }
+
+        public IActionResult BoxAndWhiskerChart()
+        {
+			CanvasChartBoxAndWhiskerChartResponseModel model = new CanvasChartBoxAndWhiskerChartResponseModel
+            {
+				XAxisTitle = "Daily Sleep Statistics of Age Group 12 - 20",
+                XAxisFormatting = "DDDD",
+                YAxisTitle = "Sleep Time (in Hours)",
+                Datas = new List<CanvasChartBoxAndWhiskerChartModel>
+                {  
+                    new CanvasChartBoxAndWhiskerChartModel { x = new DateTime(2017, 6, 3), y = new double[]{4, 6, 8, 9, 7}},
+                    new CanvasChartBoxAndWhiskerChartModel { x = new DateTime(2017, 6, 4), y = new double[]{5, 6, 7, 8, 6.5}},
+                    new CanvasChartBoxAndWhiskerChartModel { x = new DateTime(2017, 6, 5), y = new double[]{4, 5, 7, 8, 6.5}},
+                    new CanvasChartBoxAndWhiskerChartModel { x = new DateTime(2017, 6, 6), y = new double[]{3, 5, 6, 9, 5.5}},
+                    new CanvasChartBoxAndWhiskerChartModel { x = new DateTime(2017, 6, 7), y = new double[]{6, 8, 10, 11, 8.5}},
+                    new CanvasChartBoxAndWhiskerChartModel { x = new DateTime(2017, 6, 8), y = new double[]{5, 7, 9, 12, 7.5}},
+                    new CanvasChartBoxAndWhiskerChartModel { x = new DateTime(2017, 6, 9), y = new double[]{4, 6, 8, 9, 7}}
+
+                }
+			};
+
+            return View(model);
+        }
+
+	}
 }

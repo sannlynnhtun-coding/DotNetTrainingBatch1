@@ -1,7 +1,7 @@
 ﻿@model ApexChartCandleStickChartResponseModel
 
 <div id="chart"></div>
-
+@Html.Raw(JsonConvert.SerializeObject(Model.Data))
 @section scripts{
 <script>
 

@@ -17,13 +17,13 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 
         public IActionResult StackedBarLineChart()
         {
-            ChartJsStackedBarLineChartModel model = new ChartJsStackedBarLineChartModel
+            ChartJsStackedBarLineChartResponseModel model = new ChartJsStackedBarLineChartResponseModel
             { 
                 DataCount = 7,
                 Labels = new List<string> { "June", "July", "August", "September", "October", "November", "December" },
-                DataSets = new List<DataSetModel>
+                DataSets = new List<ChartJsStackedBarLineChartModel>
                 {
-                    new DataSetModel
+                    new ChartJsStackedBarLineChartModel
                     {
                         Datas = Enumerable.Range(1, 7).Select(x => GenerateData (1, 100)).ToList(),
                         Label = "Dataset 1",
@@ -31,7 +31,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
                         BackgroundColor = "rgb(255, 99, 132)"
 
                     },
-                     new DataSetModel
+                     new ChartJsStackedBarLineChartModel
                     {
                         Datas = Enumerable.Range(1, 7).Select(x => GenerateData (1, 100)).ToList(),
                         Label = "Dataset 2",
