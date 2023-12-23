@@ -1,0 +1,45 @@
+﻿@using Newtonsoft.Json;
+@model CanvasChartPyramidChartModel
+
+@{
+	List<int> _series = Model.Data;
+	List<string> _labels = Model.Categories;
+
+}
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+
+@section scripts {
+    <script>
+		let _data = @Html.Raw(JsonConvert.SerializeObject(Model.Data));
+		let _categories = @Html.Raw(JsonConvert.SerializeObject(Model.Categories));
+
+		window.onload = function () {
+
+			var dataPoints = [];
+
+			for (var i = 0; i < _data.length && i < _categories.length; i++) {
+				var dataPoint = { y: _data[i], label: _categories[i] };
+				dataPoints.push(dataPoint);
+			}
+
+			var chart = new CanvasJS.Chart("chartContainer", {
+				animationEnabled: true,
+				exportEnabled: true,
+				theme: "light1",
+				title: {
+					text: "Software Sales Conversion"
+				},
+				data: [{
+					type: "pyramid",
+					yValueFormatString: "#\"%\"",
+					indexLabelFontColor: "black",
+					indexLabelFontSize: 16,
+					indexLabel: "{label} - {y}",
+					dataPoints: dataPoints,
+				}]
+			});
+			chart.render();
+
+		}
+    </script>
+}

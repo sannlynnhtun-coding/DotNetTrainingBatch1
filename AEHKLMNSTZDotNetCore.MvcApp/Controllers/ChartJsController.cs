@@ -110,5 +110,15 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
+        public IActionResult PointStylingChart()
+        {
+            ChartJSPointStylingChartModel model = new ChartJSPointStylingChartModel
+            {
+                Categories = new List<string> { "Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7" },
+                Data = new List<int> { 300, 50, 100, 300, 50, 100, 20 },
+
+            };
+            return View(model);
+        }
     }
 }
