@@ -1,0 +1,60 @@
+﻿@model ChartJsLegendPointStyleModel
+
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+@{
+    int _dataCount = Model.DataCount;
+    List<string> _labels = Model.Labels;
+    string _title = Model.Title;
+    List<int> _data = Model.Data;
+    string _borderColor = Model.BorderColor;
+    string _backgroundColor = Model.BackgroundColor;
+}
+
+@section scripts {
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        let _dataCount = @Html.Raw(JsonConvert.SerializeObject(_dataCount));
+        let _labels = @Html.Raw(JsonConvert.SerializeObject(_labels));
+        let _title = @Html.Raw(JsonConvert.SerializeObject(_title));
+        let _data = @Html.Raw(JsonConvert.SerializeObject(_data));
+        let _borderColor = @Html.Raw(JsonConvert.SerializeObject(_borderColor));
+        let _backgroundColor = @Html.Raw(JsonConvert.SerializeObject(_backgroundColor));
+       
+        const DATA_COUNT = _dataCount;
+        const NUMBER_CFG = { count: DATA_COUNT, min: -100, max: 100 };
+        const data = {
+            labels: _labels,
+            datasets: [
+                {
+                    label: _title,
+                    data: _data,
+                    fill: false,
+                    borderColor: _borderColor,
+                    backgroundColor: _backgroundColor,
+                    borderWidth: 1,
+                    pointStyle: 'rectRot',
+                    pointRadius: 5,
+                    pointBorderColor: 'rgb(0, 0, 0)'
+                },
+            ]
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                plugins: {
+                    legend: {
+                        labels: {
+                            usePointStyle: true,
+                        },
+                    }
+                }
+            }
+        };
+        new Chart(ctx, config);
+    </script>
+}

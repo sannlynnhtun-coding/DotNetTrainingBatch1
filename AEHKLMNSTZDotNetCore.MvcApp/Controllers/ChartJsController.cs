@@ -45,7 +45,21 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             return View(model);
         }
 
-        private int GenerateData(int from,  int to)
+		public IActionResult LegendPointStyle()
+		{
+            ChartJsLegendPointStyleModel model = new ChartJsLegendPointStyleModel
+            {
+                DataCount = 7,
+                Labels = new List<string> { "January", "February", "March", "April", "May", "June", "July" },
+                Title = "Dataset 1",
+                Data = new List<int> { 34, -59, -18, -83, -81, 61, -47 },
+                BorderColor = "rgb(255, 99, 132)",
+                BackgroundColor = "rgb(255, 99, 132)"
+            };
+            return View(model);
+		}
+
+		private int GenerateData(int from,  int to)
         {
             Random random = new Random();
             return random.Next(from,to);
