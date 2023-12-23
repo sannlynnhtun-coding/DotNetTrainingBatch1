@@ -1,0 +1,72 @@
+﻿@model ChartJsScatterMultiAxisChartResponseModel
+
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+
+@section scripts{
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        var _datasets = @Html.Raw(Json.Serialize(Model.Datasets));
+
+        var data = {
+            datasets: []
+        };
+
+        _datasets.forEach(function (dataset) {
+            var jsDataset = {
+                label: dataset.label,
+                data: [],
+                borderColor: dataset.borderColor,
+                backgroundColor: dataset.backgroundColor,
+                yAxisID: dataset.yAxisID
+            };
+
+            dataset.data.forEach(function (point) {
+                jsDataset.data.push({ x: point.x, y: point.y });
+            });
+
+            data.datasets.push(jsDataset);
+        });
+
+        const config = {
+            type: 'scatter',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Chart.js Scatter Multi Axis Chart'
+                    }
+                },
+                scales: {
+                    y: {
+                        type: 'linear',
+                        position: 'left',
+                        ticks: {
+                            color: 'rgb(255, 99, 132)'
+                        }
+                    },
+                    y2: {
+                        type: 'linear',
+                        position: 'right',
+                        reverse: true,
+                        ticks: {
+                            color: 'rgb(54, 162, 235)'
+                        },
+                        grid: {
+                            drawOnChartArea: true
+                        }
+                    }
+                }
+            },
+        };
+        new Chart(ctx, config);
+
+    </script>
+}
