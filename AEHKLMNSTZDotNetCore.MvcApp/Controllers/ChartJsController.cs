@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AEHKLMNSTZDotNetCore.MvcApp.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 {
@@ -12,6 +13,42 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
         public IActionResult HorizontalBarChart()
         {
             return View();
+        }
+
+        public IActionResult StackedBarLineChart()
+        {
+            ChartJsStackedBarLineChartModel model = new ChartJsStackedBarLineChartModel
+            { 
+                DataCount = 7,
+                Labels = new List<string> { "June", "July", "August", "September", "October", "November", "December" },
+                DataSets = new List<DataSetModel>
+                {
+                    new DataSetModel
+                    {
+                        Datas = Enumerable.Range(1, 7).Select(x => GenerateData (1, 100)).ToList(),
+                        Label = "Dataset 1",
+                        BorderColor = "rgb(255, 99, 132)",
+                        BackgroundColor = "rgb(255, 99, 132)"
+
+                    },
+                     new DataSetModel
+                    {
+                        Datas = Enumerable.Range(1, 7).Select(x => GenerateData (1, 100)).ToList(),
+                        Label = "Dataset 2",
+                        BorderColor = "rgb(54, 162, 235)",
+                        BackgroundColor = "rgb(54, 162, 235)"
+
+                    },
+                }
+            };
+
+            return View(model);
+        }
+
+        private int GenerateData(int from,  int to)
+        {
+            Random random = new Random();
+            return random.Next(from,to);
         }
     }
 }
