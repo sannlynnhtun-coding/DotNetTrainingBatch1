@@ -1,6 +1,5 @@
 ﻿using AEHKLMNSTZDotNetCore.MvcApp.Models;
 using Microsoft.AspNetCore.Mvc;
-using AEHKLMNSTZDotNetCore.MvcApp.Models;
 using System.Reflection.Emit;
 
 namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
@@ -9,12 +8,44 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
     {
         public IActionResult PieChart()
         {
-            return View();
+            ChartJsPieChartModel model = new ChartJsPieChartModel
+            {
+                Labels = new List<string> { "Red", "Blue", "Yellow"},
+                Label = "My First Dataset",
+                Data = new List<int> { 300, 50, 100 },
+                BackgroundColor = new List<string> { "rgb(255, 99, 132)", "rgb(54, 162, 235)", "rgb(255, 205, 86)" }
+
+            };
+            return View(model);
         }
 
         public IActionResult HorizontalBarChart()
         {
-            return View();
+            ChartJsHorizontalBarChartResponseModel model = new ChartJsHorizontalBarChartResponseModel
+            {
+                DataCount = 7,
+                Labels = new List<string> { "January", "February", "March", "April", "May", "June", "July" },
+                DataSets = new List<ChartJsHorizontalBarChartModel>
+                {
+                    new ChartJsHorizontalBarChartModel
+                    {
+                        Data = Enumerable.Range(1, 7).Select(x => GenerateData (1, 100)).ToList(),
+                        Label = "Dataset 1",
+                        BorderColor = "rgb(255, 99, 132)",
+                        BackgroundColor = "rgb(255, 99, 132)"
+
+                    },
+                     new ChartJsHorizontalBarChartModel
+                    {
+                        Data = Enumerable.Range(1, 7).Select(x => GenerateData (1, 100)).ToList(),
+                        Label = "Dataset 2",
+                        BorderColor = "rgb(54, 162, 235)",
+                        BackgroundColor = "rgb(54, 162, 235)"
+
+                    },
+                }
+            };
+            return View(model);
         }
 
         public IActionResult StackedBarLineChart()
