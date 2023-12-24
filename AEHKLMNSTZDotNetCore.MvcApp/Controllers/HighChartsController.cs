@@ -75,5 +75,30 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             return View(model);
         }
 
+        public IActionResult LineChart()
+        {
+            HighChartLineChartResponseModel model = new HighChartLineChartResponseModel
+            { 
+                Title = "U.S Solar Employment Growth",
+                YAxisTitle = "Number of Employees",
+                RangeDescription = "Range: 2010 to 2020",
+                PointStart = 2000,
+                Datas = new List<HighChartLineChartModel>
+                { 
+                    new HighChartLineChartModel { name = "Installation & Developers", data = Enumerable.Range(1,11).Select(x => GenerateData(1,5000)).ToList()},
+                    new HighChartLineChartModel { name = "Manufacturing", data = Enumerable.Range(1,11).Select(x => GenerateData(1,5000)).ToList()},
+                    new HighChartLineChartModel { name = "Operations & Maintenance", data = Enumerable.Range(1,11).Select(x => GenerateData(1,5000)).ToList()},
+                    new HighChartLineChartModel { name = "Other", data = Enumerable.Range(1,11).Select(x => GenerateData(1,5000)).ToList()},
+                }
+            };
+
+            return View(model);
+        }
+
+        private int GenerateData(int from, int to)
+        {
+            Random random = new Random();
+            return random.Next(from, to);
+        }
     }
 }

@@ -27,7 +27,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
                 {
                     new ChartJsStackedBarLineChartModel
                     {
-                        Datas = Enumerable.Range(1, 7).Select(x => GenerateData (1, 100)).ToList(),
+                        Data = Enumerable.Range(1, 7).Select(x => GenerateData (1, 100)).ToList(),
                         Label = "Dataset 1",
                         BorderColor = "rgb(255, 99, 132)",
                         BackgroundColor = "rgb(255, 99, 132)"
@@ -35,7 +35,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
                     },
                      new ChartJsStackedBarLineChartModel
                     {
-                        Datas = Enumerable.Range(1, 7).Select(x => GenerateData (1, 100)).ToList(),
+                        Data = Enumerable.Range(1, 7).Select(x => GenerateData (1, 100)).ToList(),
                         Label = "Dataset 2",
                         BorderColor = "rgb(54, 162, 235)",
                         BackgroundColor = "rgb(54, 162, 235)"
