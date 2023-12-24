@@ -1,6 +1,6 @@
 ﻿namespace AEHKLMNSTZDotNetCore.MvcApp.Models
 {
-    public class CanvasChartBoxAndWhiskerChartModel
+    public class CanvasJsChartBoxAndWhiskerChartModel
 	{
 		public DateTime x {  get; set; }
 

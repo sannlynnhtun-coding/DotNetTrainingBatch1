@@ -1,6 +1,6 @@
 ﻿namespace AEHKLMNSTZDotNetCore.MvcApp.Models
 {
-    public class CanvasChartBoxAndWhiskerChartResponseModel
+    public class CanvasJsChartBoxAndWhiskerChartResponseModel
 	{
 		public string XAxisTitle { get; set; }
 
@@ -8,6 +8,6 @@
 
 		public string YAxisTitle { get; set;}
 
-		public List<CanvasChartBoxAndWhiskerChartModel> Data {  get; set; }
+		public List<CanvasJsChartBoxAndWhiskerChartModel> Data {  get; set; }
 	}
 }
