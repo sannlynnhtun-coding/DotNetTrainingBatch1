@@ -60,6 +60,36 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             return View(model);
         }
 
+        public IActionResult SplineAreaChart()
+        {
+            CanvasJsSplineAreaChartResponseModel model = new CanvasJsSplineAreaChartResponseModel
+            {
+                Title = "Company Revenue by Year",
+                Ytitle = "Revenue in USD",
+                Datapoints = new List<CanvasJsSplineAreaChartModel>
+                {
+					 new CanvasJsSplineAreaChartModel { X= new DateTime(2000,1,1),Y=3289000},
+                     new CanvasJsSplineAreaChartModel { X= new DateTime(2001,1,2),Y=3830000},
+                     new CanvasJsSplineAreaChartModel { X= new DateTime(2002,1,3),Y=2009000},
+                     new CanvasJsSplineAreaChartModel { X= new DateTime(2003,1,4),Y=2840000},
+                     new CanvasJsSplineAreaChartModel { X= new DateTime(2004,1,5),Y=2396000},
+                     new CanvasJsSplineAreaChartModel { X= new DateTime(2005,1,6),Y=1613000},
+                     new CanvasJsSplineAreaChartModel { X= new DateTime(2006,1,7),Y=2821000},
+                     new CanvasJsSplineAreaChartModel { X= new DateTime(2007,1,8),Y=2000000},
+                     new CanvasJsSplineAreaChartModel { X= new DateTime(2008,1,9),Y=1397000},
+                     new CanvasJsSplineAreaChartModel { X= new DateTime(2009,1,10),Y=2506000},
+                     new CanvasJsSplineAreaChartModel { X= new DateTime(2010,1,11),Y=2798000},
+                     new CanvasJsSplineAreaChartModel { X= new DateTime(2011,1,12),Y=3386000},
+                     new CanvasJsSplineAreaChartModel { X= new DateTime(2012,1,1),Y=6704000},
+                     new CanvasJsSplineAreaChartModel { X= new DateTime(2013,1,2),Y=6026000},
+                     new CanvasJsSplineAreaChartModel { X= new DateTime(2014,1,3),Y=2394000},
+                     new CanvasJsSplineAreaChartModel { X= new DateTime(2015,1,4),Y=1872000},
+                     new CanvasJsSplineAreaChartModel { X= new DateTime(2016,1,5),Y=2140000}
+				}
+			};
+            return View(model);
+        }
+
     }
 }
 
