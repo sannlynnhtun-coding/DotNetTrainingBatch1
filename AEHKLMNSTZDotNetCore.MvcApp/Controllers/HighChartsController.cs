@@ -25,6 +25,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
+
         public IActionResult BasicColumnChart()
         {
             HighChartBasicColumnChartModel model = new HighChartBasicColumnChartModel
@@ -40,5 +41,39 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 
             return View(model);
         }
+
+        public IActionResult StackedBarChart()
+        {
+            HighChartStackedBarResponseModel model = new HighChartStackedBarResponseModel
+            {
+                Title = "UEFA CL top scorers by season",
+                Categories = new List<string> { "2020/21", "2019/20", "2018/19", "2017/18", "2016/17" },
+                Ytitle = "Goals",
+                Series = new List<HighChartStackedBarModel>
+                {
+                    new HighChartStackedBarModel {Name = "Cristiano Ronaldo",Data = new List<int>{4, 4, 6, 15, 12}},
+                    new HighChartStackedBarModel {Name = "Lionel Messi",Data = new List<int>{5, 3, 12, 6, 11}},
+                    new HighChartStackedBarModel {Name = "Robert Lewandowski",Data = new List<int>{5, 15, 8, 5, 8}}
+                }
+            };
+            return View(model);
+        }
+
+        public IActionResult InvertedAreaChart()
+        {
+            HighChartInvertedAreaResponseModel model = new HighChartInvertedAreaResponseModel
+            {
+                Title = "Alibaba and Meta (Facebook) revenue",
+                Ytitle = "Revenue (billions USD)",
+                Startpoint = 2016,
+                Series = new List<HighChartInvertedAreaModel>
+                {
+                    new HighChartInvertedAreaModel {Name = "Alibaba",Data = new List<double>{11.44, 14.89, 21.40, 34.03, 51.52, 70.49, 94.46, 129.44} },
+                    new HighChartInvertedAreaModel {Name = "Meta (Facebook)",Data = new List<double>{11.49, 17.08, 26.88, 39.94, 55.01, 69.65, 84.17, 117.93}},
+                }
+            };
+            return View(model);
+        }
+
     }
 }
