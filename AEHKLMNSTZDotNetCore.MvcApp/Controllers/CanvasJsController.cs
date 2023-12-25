@@ -68,7 +68,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
                 Ytitle = "Revenue in USD",
                 Datapoints = new List<CanvasJsSplineAreaChartModel>
                 {
-					 new CanvasJsSplineAreaChartModel { X= new DateTime(2000,1,1),Y=3289000},
+                     new CanvasJsSplineAreaChartModel { X= new DateTime(2000,1,1),Y=3289000},
                      new CanvasJsSplineAreaChartModel { X= new DateTime(2001,1,2),Y=3830000},
                      new CanvasJsSplineAreaChartModel { X= new DateTime(2002,1,3),Y=2009000},
                      new CanvasJsSplineAreaChartModel { X= new DateTime(2003,1,4),Y=2840000},
@@ -85,11 +85,44 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
                      new CanvasJsSplineAreaChartModel { X= new DateTime(2014,1,3),Y=2394000},
                      new CanvasJsSplineAreaChartModel { X= new DateTime(2015,1,4),Y=1872000},
                      new CanvasJsSplineAreaChartModel { X= new DateTime(2016,1,5),Y=2140000}
-				}
-			};
+                }
+            };
             return View(model);
         }
-
+        public IActionResult ScatterAndBubbleChart()
+        {
+            CanvasScatterAndBubbleResponseModel model = new CanvasScatterAndBubbleResponseModel
+            {
+                Title = "Real Estate Rates",
+                XAxisTitle = "Area (in sq. ft)",
+                YAxisTitle = "Price (in USD)",
+                Data = new List<CanvasScatterAndBubbleModel> {
+                    new CanvasScatterAndBubbleModel {X = 800,Y = 350},
+                    new CanvasScatterAndBubbleModel {X = 900,Y = 450},
+                    new CanvasScatterAndBubbleModel {X = 850,Y = 450},
+                    new CanvasScatterAndBubbleModel {X = 1250,Y = 700},
+                    new CanvasScatterAndBubbleModel {X = 1100,Y = 650},
+					new CanvasScatterAndBubbleModel {X = 1350,Y = 850},
+					new CanvasScatterAndBubbleModel {X = 1200,Y = 900},
+                    new CanvasScatterAndBubbleModel {X = 1410,Y = 1250},
+                    new CanvasScatterAndBubbleModel {X = 1250,Y = 1100},
+                    new CanvasScatterAndBubbleModel {X = 1400,Y = 1150},
+					new CanvasScatterAndBubbleModel {X = 1580,Y = 1220},
+					new CanvasScatterAndBubbleModel {X = 1620,Y = 1400},
+					new CanvasScatterAndBubbleModel {X = 1250,Y = 1450},
+					new CanvasScatterAndBubbleModel {X = 1350,Y = 1600},
+					new CanvasScatterAndBubbleModel {X = 1650,Y = 1300},
+                    new CanvasScatterAndBubbleModel {X = 1700,Y = 1620},
+                    new CanvasScatterAndBubbleModel {X = 1750,Y = 1700},
+                    new CanvasScatterAndBubbleModel {X = 1830,Y = 1800},
+                    new CanvasScatterAndBubbleModel {X = 1900,Y = 2000},
+                    new CanvasScatterAndBubbleModel {X = 2050,Y = 2200},
+                    new CanvasScatterAndBubbleModel {X = 2150,Y = 1960},
+                    new CanvasScatterAndBubbleModel {X = 2250,Y = 1990},
+                }
+            };
+            return View(model);
+        }
     }
 }
 

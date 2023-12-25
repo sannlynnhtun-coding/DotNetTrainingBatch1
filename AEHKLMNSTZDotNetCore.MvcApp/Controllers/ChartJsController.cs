@@ -10,7 +10,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
         {
             ChartJsPieChartModel model = new ChartJsPieChartModel
             {
-                Labels = new List<string> { "Red", "Blue", "Yellow"},
+                Labels = new List<string> { "Red", "Blue", "Yellow" },
                 Label = "My First Dataset",
                 Data = new List<int> { 300, 50, 100 },
                 BackgroundColor = new List<string> { "rgb(255, 99, 132)", "rgb(54, 162, 235)", "rgb(255, 205, 86)" }
@@ -51,7 +51,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
         public IActionResult StackedBarLineChart()
         {
             ChartJsStackedBarLineChartResponseModel model = new ChartJsStackedBarLineChartResponseModel
-            { 
+            {
                 DataCount = 7,
                 Labels = new List<string> { "June", "July", "August", "September", "October", "November", "December" },
                 DataSets = new List<ChartJsStackedBarLineChartModel>
@@ -78,8 +78,8 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             return View(model);
         }
 
-		public IActionResult LegendPointStyle()
-		{
+        public IActionResult LegendPointStyle()
+        {
             ChartJsLegendPointStyleModel model = new ChartJsLegendPointStyleModel
             {
                 DataCount = 7,
@@ -90,12 +90,12 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
                 BackgroundColor = "rgb(255, 99, 132)"
             };
             return View(model);
-		}
+        }
 
-		private int GenerateData(int from,  int to)
+        private int GenerateData(int from, int to)
         {
             Random random = new Random();
-            return random.Next(from,to);
+            return random.Next(from, to);
         }
 
         public IActionResult ScatterMultiAxisChart()
@@ -152,5 +152,31 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             return View(model);
         }
 
+        public IActionResult VerticalBarChart()
+        {
+            ChartJsVerticalBarChartResponseModel model = new ChartJsVerticalBarChartResponseModel
+            {
+                DataCount = 7,
+                Labels = new List<string> { "January", "February", "March", "April", "May", "June", "July" },
+                Charts = new List<ChartJsVerticalBarChartModel>
+                {
+                    new ChartJsVerticalBarChartModel
+                    {
+                        Data = Enumerable.Range(1, 7).Select(x => GenerateData (1, 100)).ToList(),
+                        Label = "Dataset 1",
+                        BorderColor = "rgb(255, 99, 132)",
+                        BackgroundColor = "rgb(255, 99, 132)"
+                    },
+                    new ChartJsVerticalBarChartModel
+                    {
+                        Data = Enumerable.Range(1, 7).Select(x => GenerateData (1, 100)).ToList(),
+                        Label = "Dataset 2",
+                        BorderColor = "rgb(54, 162, 235)",
+                        BackgroundColor = "rgb(54, 162, 235)"
+                    }
+                }
+            };
+            return View(model);
+        }
     }
 }

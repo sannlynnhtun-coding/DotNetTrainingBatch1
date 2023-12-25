@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using AEHKLMNSTZDotNetCore.MvcApp.Models;
 using System.Collections.Generic;
-using  AEHKLMNSTZDotNetCore.MvcApp.Models;
+using AEHKLMNSTZDotNetCore.MvcApp.Models;
 
 namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 {
@@ -78,13 +78,13 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
         public IActionResult LineChart()
         {
             HighChartLineChartResponseModel model = new HighChartLineChartResponseModel
-            { 
+            {
                 Title = "U.S Solar Employment Growth",
                 YAxisTitle = "Number of Employees",
                 RangeDescription = "Range: 2010 to 2020",
                 PointStart = 2000,
                 Datas = new List<HighChartLineChartModel>
-                { 
+                {
                     new HighChartLineChartModel { name = "Installation & Developers", data = Enumerable.Range(1,11).Select(x => GenerateData(1,5000)).ToList()},
                     new HighChartLineChartModel { name = "Manufacturing", data = Enumerable.Range(1,11).Select(x => GenerateData(1,5000)).ToList()},
                     new HighChartLineChartModel { name = "Operations & Maintenance", data = Enumerable.Range(1,11).Select(x => GenerateData(1,5000)).ToList()},
@@ -92,6 +92,22 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
                 }
             };
 
+            return View(model);
+        }
+        public IActionResult LollipopChart()
+        {
+            HighChartLollipopResponseModel model = new HighChartLollipopResponseModel
+            {
+                XAxisTitle = "Top 10 Countries by Population",
+                Data = new List<HighChartLollipopModel>
+                {
+                    new HighChartLollipopModel {Name = "India", YData = 1444216107},
+                    new HighChartLollipopModel {Name = "Myanmar", YData = 50000000},
+                    new HighChartLollipopModel {Name = "United States", YData = 332915073},
+                    new HighChartLollipopModel {Name = "Mexico", YData = 130262216},
+                    new HighChartLollipopModel {Name = "China", YData = 1444216107}
+                }
+            };
             return View(model);
         }
 
