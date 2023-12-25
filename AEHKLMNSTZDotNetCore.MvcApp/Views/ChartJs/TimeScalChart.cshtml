@@ -1,0 +1,83 @@
+﻿@model ChartJsTimeScaleResponseModel
+<div>
+    <canvas id="timeScaleChart"></canvas>
+</div>
+
+@section scripts {
+   
+    
+    <script>
+        // Get the chart canvas element
+        var ctx = document.getElementById('timeScaleChart');
+        var date = @Html.Raw(JsonConvert.SerializeObject(Model.Data))
+        const DATA_COUNT = 7;
+        const NUMBER_CFG = { count: DATA_COUNT, min: 0, max: 100 };
+        console.log(date)
+        console.log(date.labels)
+        const data = {
+            labels: date.lables,
+
+            datasets: [{
+                label: 'My First dataset',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                fill: false,
+                data:date.number[0],
+            }, {
+                label: 'My Second dataset',
+                backgroundColor: 'rgb(54, 162, 235)',
+                borderColor: 'rgb(54, 162, 235)',
+                fill: false,
+                data: date.number[1],
+            }, {
+                label: 'Dataset with point data',
+                backgroundColor: 'rgb(75, 192, 192)',
+                borderColor: 'rgb(75, 192, 192)',
+                fill: false,
+                data: date.number[2],
+            }]
+        };
+
+        const config = {
+            type: 'line',
+            data: {
+                labels: date.labels,
+                // labels: data.labels.map(label => new Date(label)),
+                datasets: data.datasets,
+            },
+            options: {
+                plugins: {
+                    title: {
+                        text: 'Chart.js Time Scale',
+                        display: true
+                    }
+                },
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            tooltipFormat: 'DD T',
+                            unit: 'day',
+                            displayFormats: {
+                                day: 'MMM D'
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Date'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Value'
+                        }
+                    }
+                },
+            },
+        };
+
+        // Create the TimeScale chart
+        new Chart(ctx, config);
+    </script>
+}
