@@ -1,0 +1,43 @@
+﻿@model CanvasJsSplineChartResponseModel
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+
+@section scripts{
+	<script>
+		window.onload = function () {
+			var dataPoints = [];
+
+			@foreach (var dataPoint in Model.DataPoints)
+			{
+				<text>
+						dataPoints.push({
+							x: new Date("@dataPoint.X"),
+							y: @dataPoint.Y
+						});
+				</text>
+			}
+
+			var chart = new CanvasJS.Chart("chartContainer", {
+				animationEnabled: true,
+				title: {
+					text: @Html.Raw(JsonConvert.SerializeObject(Model.Title))
+				},
+				axisY: {
+					title: @Html.Raw(JsonConvert.SerializeObject(Model.AxisYTitle)),
+					valueFormatString: "#0,,.",
+					suffix: "mn",
+					stripLines: [{
+						value: 3366500,
+						label: "Average"
+					}]
+				},
+				data: [{
+					yValueFormatString: "#,### Units",
+					xValueFormatString: "YYYY",
+					type: "spline",
+					dataPoints: dataPoints
+				 }]
+			});
+			chart.render();
+		}
+	</script>
+}

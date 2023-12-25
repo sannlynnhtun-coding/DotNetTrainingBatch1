@@ -141,6 +141,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
+
         public IActionResult PointStylingChart()
         {
             ChartJSPointStylingChartModel model = new ChartJSPointStylingChartModel
@@ -207,6 +208,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 
             return View(model);
         }
+
         public IActionResult TimeScalChart()
         {
             List<string> date = new List<string> {"2023-02-01T20:30:00.000Z",
@@ -231,6 +233,17 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 
             model.Data = chartJs;
             
+            return View(model);
+        }
+
+        public IActionResult RadarChart()
+        {
+            ChartJsRadarChartModel model = new ChartJsRadarChartModel
+            {
+                Data = new List<int> { 65, 59, 90, 81, 56, 55, 40 },
+                Labels = new List<string> { "Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running" },
+                SecondDataSet = new List<int> { 28, 48, 40, 19, 96, 27, 100 }
+            };
             return View(model);
         }
     }

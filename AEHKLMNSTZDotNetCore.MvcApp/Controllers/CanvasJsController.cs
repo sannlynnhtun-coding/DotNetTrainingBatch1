@@ -89,6 +89,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
+
         public IActionResult ScatterAndBubbleChart()
         {
             CanvasScatterAndBubbleResponseModel model = new CanvasScatterAndBubbleResponseModel
@@ -123,6 +124,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
+
         public IActionResult WaterfallChart()
         {
             // Sample data for Waterfall Chart
@@ -141,6 +143,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 
             return View(model);
         }
+
         public IActionResult ParetoChart()
         {
             CanvasJSParetoChartResponseModel model = new CanvasJSParetoChartResponseModel()
@@ -157,6 +160,35 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 
             return View(model);
         }
+
+        public IActionResult SplineChart()
+        {
+			CanvasJsSplineChartResponseModel model = new CanvasJsSplineChartResponseModel
+			{
+				Title = "Music Album Sales by Year",
+				AxisYTitle = "Units Sold",
+				DataPoints = new List<CanvasJsSplineChartModel>
+		        {
+			        new CanvasJsSplineChartModel { X = new DateTime(2002, 1, 1), Y = 2506000 },
+			        new CanvasJsSplineChartModel { X = new DateTime(2003, 1, 1), Y = 2798000 },
+			        new CanvasJsSplineChartModel { X = new DateTime(2004, 1, 1), Y = 3386000 },
+			        new CanvasJsSplineChartModel { X = new DateTime(2005, 1, 1), Y = 6944000 },
+			        new CanvasJsSplineChartModel { X = new DateTime(2006, 1, 1), Y = 6026000 },
+			        new CanvasJsSplineChartModel { X = new DateTime(2007, 1, 1), Y = 2394000 },
+			        new CanvasJsSplineChartModel { X = new DateTime(2008, 1, 1), Y = 1872000 },
+			        new CanvasJsSplineChartModel { X = new DateTime(2009, 1, 1), Y = 2140000 },
+			        new CanvasJsSplineChartModel { X = new DateTime(2010, 1, 1), Y = 7289000 },
+			        new CanvasJsSplineChartModel { X = new DateTime(2011, 1, 1), Y = 4830000 },
+			        new CanvasJsSplineChartModel { X = new DateTime(2012, 1, 1), Y = 2009000 },
+			        new CanvasJsSplineChartModel { X = new DateTime(2013, 1, 1), Y = 2840000 },
+			        new CanvasJsSplineChartModel { X = new DateTime(2014, 1, 1), Y = 2396000 },
+			        new CanvasJsSplineChartModel { X = new DateTime(2015, 1, 1), Y = 1613000 },
+			        new CanvasJsSplineChartModel { X = new DateTime(2016, 1, 1), Y = 2821000 },
+			        new CanvasJsSplineChartModel { X = new DateTime(2017, 1, 1), Y = 2000000 }
+		        }
+			};
+			return View(model);
+		}
     }
 
 }
