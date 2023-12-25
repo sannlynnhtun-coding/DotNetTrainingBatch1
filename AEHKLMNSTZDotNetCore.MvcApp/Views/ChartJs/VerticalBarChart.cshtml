@@ -1,0 +1,53 @@
+﻿@model ChartJsVerticalBarChartResponseModel
+
+@{
+    List<int> _data1 = Model.Charts[0].Data;
+    List<int> _data2 = Model.Charts[1].Data;
+}
+
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+
+@section scripts {
+    <script>
+        const ctx = document.getElementById('myChart');
+        const DATA_COUNT = 7;
+        const NUMBER_CFG = { count: DATA_COUNT, min: -100, max: 100 };
+        const labels = @Html.Raw(JsonConvert.SerializeObject(Model.Labels))
+                const data = {
+            labels: labels,
+            datasets: [
+                {
+                    label: '@Model.Charts[0].Label',
+                    data: @Html.Raw(JsonConvert.SerializeObject(_data1)),
+                    borderColor: "@Model.Charts[0].BorderColor",
+                    backgroundColor: "@Model.Charts[0].BackgroundColor",
+                },
+                {
+                    label: '@Model.Charts[1].Label',
+                    data: @Html.Raw(JsonConvert.SerializeObject(_data2)),
+                    borderColor: "@Model.Charts[1].BorderColor",
+                    backgroundColor: "@Model.Charts[1].BackgroundColor",
+                }
+            ]
+        };
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Chart.js Bar Chart'
+                    }
+                }
+            },
+        };
+        new Chart(ctx, config);
+    </script>
+}
