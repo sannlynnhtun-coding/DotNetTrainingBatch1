@@ -157,6 +157,146 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 
             return View(model);
         }
+
+        public IActionResult CandleStick()
+        {
+            CanvasJsCandleStickResponseModel model = new CanvasJsCandleStickResponseModel();
+            model.Text = "Netflix Stock Price in 2016";
+            model.AxisX = new CandleStickAxisXModel
+            {
+                interval = 1,
+                valueFormatString = "MMM",
+            };
+            model.AxisY = new CandleStickAxisYModel
+            {
+                prefix = "$",
+                title = "Price",
+            };
+            model.Data = new List<CanvasJsCandleStickModel>
+                {
+                    new CanvasJsCandleStickModel
+                    {
+                        x = Convert.ToDateTime("2016-01-04"),
+                        y = new List<double>{ 109, 122.18, 104.959999, 111.389999}
+                    },
+                    new CanvasJsCandleStickModel
+                    {
+                        x = Convert.ToDateTime("2016-01-11"),
+                        y = new List<double>{ 112.129997, 117.779999, 101.209999, 104.040001}
+                    },
+                    new CanvasJsCandleStickModel
+                    {
+                        x = Convert.ToDateTime("2016-01-18"),
+                        y = new List<double>{ 109, 122.18, 104.959999, 111.389999}
+                    },
+                    new CanvasJsCandleStickModel
+                    {
+                        x = Convert.ToDateTime("2016-01-25"),
+                        y = new List<double>{ 80.57, 92.209999, 79.949997, 87.400002}
+                    },
+                    new CanvasJsCandleStickModel
+                    {
+                        x = Convert.ToDateTime("2016-01-1"),
+                        y = new List<double>{ 89, 94.900002, 87.540001, 89.230003}
+                    },
+                    new CanvasJsCandleStickModel
+                    {
+                        x = Convert.ToDateTime("2016-08-1"),
+                        y = new List<double>{ 90.75, 97.480003, 86.699997, 94.790001}
+                    },
+                    new CanvasJsCandleStickModel
+                    {
+                        x = Convert.ToDateTime("2016-01-25"),
+                        y = new List<double>{ 94.809998, 102.220001, 93.339996, 101.580002}
+                    },
+                    new CanvasJsCandleStickModel
+                    {
+                        x = Convert.ToDateTime("2016-01-15"),
+                        y = new List<double>{ 101, 101.790001, 94.5, 97.660004}
+                    },
+                    new CanvasJsCandleStickModel
+                    {
+                        x = Convert.ToDateTime("2016-01-22"),
+                        y = new List<double>{ 97.199997, 102.410004, 96.43, 101.120003}
+                    },
+                    new CanvasJsCandleStickModel
+                    {
+                        x = Convert.ToDateTime("2016-01-29"),
+                        y = new List<double>{ 101.150002, 102.099998, 97.07, 98.360001}
+                    },
+                    new CanvasJsCandleStickModel
+                    {
+                        x = Convert.ToDateTime("2016-02-7"),
+                        y = new List<double>{ 98.339996, 105.790001, 97.82, 105.699997}
+                    },
+                    new CanvasJsCandleStickModel
+                    {
+                        x = Convert.ToDateTime("2016-02-14"),
+                        y = new List<double>{105.900002, 106.440002, 102.82, 103.809998}
+                    },
+                    new CanvasJsCandleStickModel
+                    {
+                        x = Convert.ToDateTime("2016-02-21"),
+                        y = new List<double>{104.040001, 111.849998, 102.209999, 111.510002}
+                    },
+                    new CanvasJsCandleStickModel
+                    {
+                        x = Convert.ToDateTime("2016-02-28"),
+                        y = new List<double>{109.900002, 110.699997, 93.139999, 95.900002}
+                    },
+                    new CanvasJsCandleStickModel
+                    {
+                        x = Convert.ToDateTime("2016-03-4"),
+                        y = new List<double>{95.699997, 95.75, 88.209999, 90.029999}
+                    },
+                    new CanvasJsCandleStickModel
+                    {
+                        x = Convert.ToDateTime("2016-03-11"),
+                        y = new List<double>{90.410004, 93.25, 88.110001, 90.839996}
+                    },
+                    new CanvasJsCandleStickModel
+                    {
+                        x = Convert.ToDateTime("2016-03-18"),
+                        y = new List<double>{90.730003, 93.25, 85.739998, 87.879997}
+                    },
+                    new CanvasJsCandleStickModel
+                    {
+                        x = Convert.ToDateTime("2016-03-25"),
+                        y = new List<double>{87.559998, 93.279999, 86.150002, 92.489998}
+                    },
+                    new CanvasJsCandleStickModel
+                    {
+                        x = Convert.ToDateTime("2016-04-2"),
+                        y = new List<double>{92.980003, 104, 92.849998, 103.300003}
+                    },
+                    new CanvasJsCandleStickModel
+                    {
+                        x = Convert.ToDateTime("2016-04-9"),
+                        y = new List<double>{102.949997, 103.449997, 98.529999, 99.589996}
+                    },
+                    new CanvasJsCandleStickModel
+                    {
+                        x = Convert.ToDateTime("2016-04-16"),
+                        y = new List<double>{100.290001, 101.629997, 93.279999, 93.75}
+                    },
+                    new CanvasJsCandleStickModel
+                    {
+                        x = Convert.ToDateTime("2016-04-23"),
+                        y = new List<double>{95.019997, 97.199997, 93.25, 94.449997}
+                    },
+                    new CanvasJsCandleStickModel
+                    {
+                        x = Convert.ToDateTime("2016-04-30"),
+                        y = new List<double>{95.220001, 95.879997, 87.209999, 88.440002}
+                    },
+                    new CanvasJsCandleStickModel
+                    {
+                        x = Convert.ToDateTime("2016-05-6"),
+                        y = new List<double>{87.879997, 97, 84.809998, 96.669998}
+                    },
+                };
+            return View(model);
+        }
     }
 
 }

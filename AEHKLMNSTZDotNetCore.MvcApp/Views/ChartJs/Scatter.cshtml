@@ -1,0 +1,33 @@
+﻿@model ChartJsScatterChartResponseModel
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+
+@section scripts {
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        const data = {
+            datasets: [{
+                label: @Html.Raw(JsonConvert.SerializeObject(Model.Label)),
+                data: @Html.Raw(JsonConvert.SerializeObject(Model.Data)),
+                backgroundColor: @Html.Raw(JsonConvert.SerializeObject(Model.backgroundColor)),
+            }],
+        };
+
+        const config = {
+            type: 'scatter',
+            data: data,
+            options: {
+                scales: {
+                    x: {
+                        type: 'linear',
+                        position: 'bottom'
+                    }
+                }
+            }
+        };
+
+        new Chart(ctx, config);
+    </script>
+}
