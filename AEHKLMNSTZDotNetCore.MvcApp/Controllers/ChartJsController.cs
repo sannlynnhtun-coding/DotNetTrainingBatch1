@@ -178,5 +178,34 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
+
+        public IActionResult StackedLineChart()
+        {
+            var model = new ChartJsStackedLineChartResponseModel
+            {
+                Labels = new List<string> { "January", "February", "March", "April", "May", "June", "July" },
+                Datasets = new List<ChartJsStackedLineChartModel>
+                {
+                    new ChartJsStackedLineChartModel
+                    {
+                        Label = "Dataset 1",
+                        Data = new List<int> { 10, 20, 15, 25, 30, 22, 18 },
+                        BorderColor = "#FF5733",
+                        BackgroundColor = "#FF5733",
+                        Fill = true
+                    },
+                    new ChartJsStackedLineChartModel
+                    {
+                        Label = "Dataset 2",
+                        Data = new List<int> { 15, 25, 18, 35, 28, 20, 15 },
+                        BorderColor = "#3385FF",
+                        BackgroundColor = "#3385FF",
+                        Fill = true
+                    }
+                }
+            };
+
+            return View(model);
+        }
     }
 }
