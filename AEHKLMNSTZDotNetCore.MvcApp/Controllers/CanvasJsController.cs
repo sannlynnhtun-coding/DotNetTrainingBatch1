@@ -123,6 +123,27 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
+
+        public IActionResult WaterfallChart()
+        {
+            // Sample data for Waterfall Chart
+            CanvasJsWaterfallChartResponseModel model = new CanvasJsWaterfallChartResponseModel
+            {
+                Data = new List<CanvasJsWaterfallChartModel>
+                {
+                    new CanvasJsWaterfallChartModel { Label = "Start", Y = 100 },
+                    new CanvasJsWaterfallChartModel { Label = "Addition 1", Y = 50 },
+                    new CanvasJsWaterfallChartModel { Label = "Subtraction 1", Y = -30 },
+                    new CanvasJsWaterfallChartModel { Label = "Addition 2", Y = 20 },
+                    new CanvasJsWaterfallChartModel { Label = "Subtraction 2", Y = -10 },
+                    new CanvasJsWaterfallChartModel { Label = "End", Y = 130 },
+                }
+            };
+
+            return View(model);
+        }
     }
+
+
 }
 
