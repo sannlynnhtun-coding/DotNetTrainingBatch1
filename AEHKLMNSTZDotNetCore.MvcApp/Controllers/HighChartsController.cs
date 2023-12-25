@@ -111,6 +111,27 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             return View(model);
         }
 
+        public IActionResult FanChart()
+        {
+            // Sample data for the fan chart
+            var model = new HighchartsFanChartResponseModel
+            {
+                Data = new List<HighchartsFanChartModel>
+                {
+                    new HighchartsFanChartModel { Name = "Point 1", Y = 10, Low = 5, High = 15 },
+                    new HighchartsFanChartModel { Name = "Point 2", Y = 158, Low = 100, High = 208 },
+                    new HighchartsFanChartModel { Name = "Point 3", Y = 207, Low = 80, High = 350 },
+                    new HighchartsFanChartModel { Name = "Point 4", Y = 180, Low = 111, High = 426 },
+                    new HighchartsFanChartModel { Name = "Point 5", Y = 224, Low = 124, High = 524 },
+                    new HighchartsFanChartModel { Name = "Point 6", Y = 455, Low = 246, High = 600 },
+                    
+
+                }
+            };
+
+            return View(model);
+        }
+
         private int GenerateData(int from, int to)
         {
             Random random = new Random();

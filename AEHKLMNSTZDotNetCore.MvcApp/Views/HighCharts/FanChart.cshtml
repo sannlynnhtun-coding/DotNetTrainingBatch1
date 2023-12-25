@@ -1,0 +1,45 @@
+﻿<!-- FanChart.cshtml -->
+@model HighchartsFanChartResponseModel
+
+<div id="fanChartContainer" style="height: 300px; width: 100%;"></div>
+
+@section scripts {
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Highcharts.chart('fanChartContainer', {
+                chart: {
+                    type: 'arearange',
+                    zoomType: 'x'
+                },
+                title: {
+                    text: 'Fan Chart'
+                },
+                xAxis: {
+                    type: 'category'
+                },
+                yAxis: {
+                    title: {
+                        text: 'Values'
+                    }
+                },
+                series: [{
+                    name: 'Observation',
+                    type: 'line',
+                    data: @Html.Raw(Json.Serialize(Model.Data.Select(d => new { name = d.Name, y = d.Y })))
+                        }, {
+                    name: 'Forecast Range',
+                    type: 'arearange',
+                    lineWidth: 0,
+                    linkedTo: ':previous',
+                    color: Highcharts.getOptions().colors[0],
+                    fillOpacity: 0.3,
+                    zIndex: 0,
+                    data: @Html.Raw(Json.Serialize(Model.Data.Select(d => new { name = d.Name, low = d.Low, high = d.High })))
+                        }]
+            });
+        });
+    </script>
+}
