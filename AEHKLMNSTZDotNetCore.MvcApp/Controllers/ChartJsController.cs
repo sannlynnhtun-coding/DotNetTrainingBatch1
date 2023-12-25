@@ -236,6 +236,28 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             return View(model);
         }
 
+        public IActionResult Scatter()
+        {
+            ChartJsScatterChartResponseModel model = new ChartJsScatterChartResponseModel
+            {
+                Label = "Scatter Dataset",
+                Data = new List<ChartJsScatterChartModel>
+                {
+                    new ChartJsScatterChartModel {x=-10, y= 2},
+                    new ChartJsScatterChartModel {x=-8, y= 9},
+                    new ChartJsScatterChartModel {x=-10, y= 5},
+                    new ChartJsScatterChartModel {x=-6, y= 4},
+                    new ChartJsScatterChartModel {x=-4, y= 6},
+                    new ChartJsScatterChartModel {x=-5, y= 3},
+                    new ChartJsScatterChartModel {x=-3, y= 3},
+                    new ChartJsScatterChartModel {x=-8, y= 6},
+                    new ChartJsScatterChartModel {x=-7, y= 4},
+                },
+                backgroundColor = "#166a8f"
+            };
+            return View(model);
+        }
+
         public IActionResult RadarChart()
         {
             ChartJsRadarChartModel model = new ChartJsRadarChartModel

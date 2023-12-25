@@ -166,5 +166,26 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             Random random = new Random();
             return random.Next(from, to);
         }
-    }
+
+		public IActionResult DoeNetChart()
+		{
+			HighChartsDoeNetResponseModel model = new HighChartsDoeNetResponseModel
+			{
+				Name = "Medals",
+				Data = new List<HighChartsDoeNetModel>
+				{
+					new HighChartsDoeNetModel {Country = "Norway", Count=16},
+					new HighChartsDoeNetModel {Country = "Germany", Count=12},
+					new HighChartsDoeNetModel {Country = "USA", Count=8},
+					new HighChartsDoeNetModel {Country = "Sweden", Count=8},
+					new HighChartsDoeNetModel {Country = "Netherlands", Count=8},
+					new HighChartsDoeNetModel {Country = "ROC", Count=6},
+					new HighChartsDoeNetModel {Country = "Austria", Count=7},
+					new HighChartsDoeNetModel {Country = "Canada", Count=4},
+					new HighChartsDoeNetModel {Country = "Japan", Count=3},
+				}
+			};
+			return View(model);
+		}
+	}
 }
