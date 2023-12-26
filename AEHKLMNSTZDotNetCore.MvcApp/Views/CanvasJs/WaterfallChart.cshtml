@@ -1,0 +1,32 @@
+﻿<!-- WaterfallChart.cshtml -->
+@model CanvasJsWaterfallChartResponseModel
+
+<div id="waterfallChartContainer" style="height: 300px; width: 100%;"></div>
+
+@section scripts {
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script>
+        window.onload = function () {
+            var chart = new CanvasJS.Chart("waterfallChartContainer", {
+                animationEnabled: true,
+                title: {
+                    text: "Waterfall Chart"
+                },
+                axisX: {
+                    interval: 1,
+                    labelFontSize: 12
+                },
+                axisY: {
+                    title: "Values",
+                    labelFontSize: 12
+                },
+                data: [{
+                    type: "waterfall",
+                    dataPoints: @Html.Raw(Json.Serialize(Model.Data))
+                        }]
+            });
+
+            chart.render();
+        }
+    </script>
+}

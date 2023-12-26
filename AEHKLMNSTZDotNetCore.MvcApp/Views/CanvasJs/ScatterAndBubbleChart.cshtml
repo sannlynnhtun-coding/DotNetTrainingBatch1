@@ -1,0 +1,55 @@
+﻿@model CanvasScatterAndBubbleResponseModel
+
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+@section scripts{
+    <script>
+        window.onload = function () {
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                zoomEnabled: true,
+                title: {
+                    text: @Html.Raw(JsonConvert.SerializeObject(Model.Title))
+                                },
+                axisX: {
+                    title: @Html.Raw(JsonConvert.SerializeObject(Model.XAxisTitle)),
+                    minimum: 790,
+                    maximum: 2260
+                },
+                axisY: {
+                    title: @Html.Raw(JsonConvert.SerializeObject(Model.YAxisTitle)),
+                    valueFormatString: "$#,##0k"
+                },
+                data: [{
+                    type: "scatter",
+                    toolTipContent: "<b>Area: </b>{x} sq.ft<br/><b>Price: </b>${y}k",
+                    dataPoints: [
+                        { x: @Html.Raw(JsonConvert.SerializeObject(Model.Data[0].X)), y: @Html.Raw(JsonConvert.SerializeObject(Model.Data[0].Y)) },
+                        { x: @Html.Raw(JsonConvert.SerializeObject(Model.Data[1].X)), y: @Html.Raw(JsonConvert.SerializeObject(Model.Data[1].Y)) },
+                        { x: @Html.Raw(JsonConvert.SerializeObject(Model.Data[2].X)), y: @Html.Raw(JsonConvert.SerializeObject(Model.Data[2].Y)) },
+                        { x: @Html.Raw(JsonConvert.SerializeObject(Model.Data[3].X)), y: @Html.Raw(JsonConvert.SerializeObject(Model.Data[3].Y)) },
+                        { x: @Html.Raw(JsonConvert.SerializeObject(Model.Data[4].X)), y: @Html.Raw(JsonConvert.SerializeObject(Model.Data[4].Y)) },
+                        { x: @Html.Raw(JsonConvert.SerializeObject(Model.Data[5].X)), y: @Html.Raw(JsonConvert.SerializeObject(Model.Data[5].Y)) },
+                        { x: @Html.Raw(JsonConvert.SerializeObject(Model.Data[6].X)), y: @Html.Raw(JsonConvert.SerializeObject(Model.Data[6].Y)) },
+                        { x: @Html.Raw(JsonConvert.SerializeObject(Model.Data[7].X)), y: @Html.Raw(JsonConvert.SerializeObject(Model.Data[7].Y)) },
+                        { x: @Html.Raw(JsonConvert.SerializeObject(Model.Data[8].X)), y: @Html.Raw(JsonConvert.SerializeObject(Model.Data[8].Y)) },
+                        { x: @Html.Raw(JsonConvert.SerializeObject(Model.Data[9].X)), y: @Html.Raw(JsonConvert.SerializeObject(Model.Data[9].Y)) },
+                        { x: @Html.Raw(JsonConvert.SerializeObject(Model.Data[10].X)), y: @Html.Raw(JsonConvert.SerializeObject(Model.Data[10].Y)) },
+                        { x: @Html.Raw(JsonConvert.SerializeObject(Model.Data[11].X)), y: @Html.Raw(JsonConvert.SerializeObject(Model.Data[11].Y)) },
+                        { x: @Html.Raw(JsonConvert.SerializeObject(Model.Data[12].X)), y: @Html.Raw(JsonConvert.SerializeObject(Model.Data[12].Y)) },
+                        { x: @Html.Raw(JsonConvert.SerializeObject(Model.Data[13].X)), y: @Html.Raw(JsonConvert.SerializeObject(Model.Data[13].Y)) },
+                        { x: @Html.Raw(JsonConvert.SerializeObject(Model.Data[14].X)), y: @Html.Raw(JsonConvert.SerializeObject(Model.Data[14].Y)) },
+                        { x: @Html.Raw(JsonConvert.SerializeObject(Model.Data[15].X)), y: @Html.Raw(JsonConvert.SerializeObject(Model.Data[15].Y)) },
+                        { x: @Html.Raw(JsonConvert.SerializeObject(Model.Data[16].X)), y: @Html.Raw(JsonConvert.SerializeObject(Model.Data[16].Y)) },
+                        { x: @Html.Raw(JsonConvert.SerializeObject(Model.Data[17].X)), y: @Html.Raw(JsonConvert.SerializeObject(Model.Data[17].Y)) },
+                        { x: @Html.Raw(JsonConvert.SerializeObject(Model.Data[18].X)), y: @Html.Raw(JsonConvert.SerializeObject(Model.Data[18].Y)) },
+                        { x: @Html.Raw(JsonConvert.SerializeObject(Model.Data[19].X)), y: @Html.Raw(JsonConvert.SerializeObject(Model.Data[19].Y)) },
+                        { x: @Html.Raw(JsonConvert.SerializeObject(Model.Data[20].X)), y: @Html.Raw(JsonConvert.SerializeObject(Model.Data[20].Y)) },
+                        { x: @Html.Raw(JsonConvert.SerializeObject(Model.Data[21].X)), y: @Html.Raw(JsonConvert.SerializeObject(Model.Data[21].Y)) },
+                    ]
+                }]
+            });
+            chart.render();
+        }
+    </script>
+}

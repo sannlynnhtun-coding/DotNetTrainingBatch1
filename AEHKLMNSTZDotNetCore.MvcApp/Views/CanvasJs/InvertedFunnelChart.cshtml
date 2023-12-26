@@ -1,0 +1,52 @@
+﻿@model CanvasJsInvertedFunnelChartModel
+
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+@section scripts{
+    <script>
+
+        let _dataPoints = @Html.Raw(JsonConvert.SerializeObject(Model.DataPoints));
+
+        let dataPoints = _dataPoints.map(item => {
+            return {
+                y: item.Y,
+                label: item.Label
+            };
+        });
+
+        window.onload = function () {
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                exportEnabled: true,
+                title: {
+                    text: "Sales via Advertisement"
+                },
+                data: [{
+                    type: "funnel",
+                    reversed: true,
+                    showInLegend: true,
+                    legendText: "{label}",
+                    indexLabel: "{label} - {y}",
+                    toolTipContent: "<b>{label}</b>: {y} <b>({percentage}%)</b>",
+                    indexLabelFontColor: "black",
+                    dataPoints: dataPoints
+                }]
+            });
+            calculatePercentage();
+            chart.render();
+
+            function calculatePercentage() {
+                var dataPoint = chart.options.data[0].dataPoints;
+                var total = dataPoint[0].y;
+                for (var i = 0; i < dataPoint.length; i++) {
+                    if (i == 0) {
+                        chart.options.data[0].dataPoints[i].percentage = 100;
+                    } else {
+                        chart.options.data[0].dataPoints[i].percentage = ((dataPoint[i].y / total) * 100).toFixed(2);
+                    }
+                }
+            }
+
+		}
+    </script>
+}

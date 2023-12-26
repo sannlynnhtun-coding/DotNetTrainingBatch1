@@ -1,0 +1,35 @@
+﻿@model ApexChartScatterChartResponseModel
+<div id="chart"></div>
+
+@section scripts {
+    <script>
+
+        var options = {
+            series: @Html.Raw(JsonConvert.SerializeObject(Model.Series)),
+            chart: {
+                height: 350,
+                type: 'scatter',
+                zoom: {
+                    enabled: true,
+                    type: 'xy'
+                }
+            },
+            xaxis: {
+                tickAmount: 10,
+                labels: {
+                    formatter: function (val) {
+                        return parseFloat(val).toFixed(1)
+                    }
+                }
+            },
+            yaxis: {
+                tickAmount: 7
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+
+
+    </script>
+}

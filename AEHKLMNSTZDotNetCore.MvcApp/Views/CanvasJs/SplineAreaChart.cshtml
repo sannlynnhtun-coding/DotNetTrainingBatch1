@@ -1,0 +1,50 @@
+﻿@model CanvasJsSplineAreaChartResponseModel
+
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+
+@section scripts{
+    <script>
+		window.onload = function () {
+
+			var chart = new CanvasJS.Chart("chartContainer", {
+				animationEnabled: true,
+				title: {
+					text: @Html.Raw(JsonConvert.SerializeObject(Model.Title))
+				},
+				axisY: {
+					title: @Html.Raw(JsonConvert.SerializeObject(Model.Ytitle)),
+					valueFormatString: "#0,,.",
+					suffix: "mn",
+					prefix: "$"
+				},
+				data: [{
+					type: "splineArea",
+					color: "rgba(54,158,173,.7)",
+					markerSize: 5,
+					xValueFormatString: "YYYY",
+					yValueFormatString: "$#,##0.##",
+					dataPoints: [
+						{ x: new Date("@Model.Datapoints[0].X"), y: @Html.Raw(JsonConvert.SerializeObject(Model.Datapoints[0].Y)) },
+						{ x: new Date("@Model.Datapoints[1].X"), y: @Html.Raw(JsonConvert.SerializeObject(Model.Datapoints[1].Y)) },
+						{ x: new Date("@Model.Datapoints[2].X"), y: @Html.Raw(JsonConvert.SerializeObject(Model.Datapoints[2].Y)) },
+						{ x: new Date("@Model.Datapoints[3].X"), y: @Html.Raw(JsonConvert.SerializeObject(Model.Datapoints[3].Y)) },
+						{ x: new Date("@Model.Datapoints[4].X"), y: @Html.Raw(JsonConvert.SerializeObject(Model.Datapoints[4].Y)) },
+						{ x: new Date("@Model.Datapoints[5].X"), y: @Html.Raw(JsonConvert.SerializeObject(Model.Datapoints[5].Y)) },
+						{ x: new Date("@Model.Datapoints[6].X"), y: @Html.Raw(JsonConvert.SerializeObject(Model.Datapoints[6].Y)) },
+						{ x: new Date("@Model.Datapoints[7].X"), y: @Html.Raw(JsonConvert.SerializeObject(Model.Datapoints[7].Y)) },
+						{ x: new Date("@Model.Datapoints[8].X"), y: @Html.Raw(JsonConvert.SerializeObject(Model.Datapoints[8].Y)) },
+						{ x: new Date("@Model.Datapoints[9].X"), y: @Html.Raw(JsonConvert.SerializeObject(Model.Datapoints[9].Y)) },
+						{ x: new Date("@Model.Datapoints[10].X"), y: @Html.Raw(JsonConvert.SerializeObject(Model.Datapoints[10].Y)) },
+						{ x: new Date("@Model.Datapoints[11].X"), y: @Html.Raw(JsonConvert.SerializeObject(Model.Datapoints[11].Y)) },
+						{ x: new Date("@Model.Datapoints[12].X"), y: @Html.Raw(JsonConvert.SerializeObject(Model.Datapoints[12].Y)) },
+						{ x: new Date("@Model.Datapoints[13].X"), y: @Html.Raw(JsonConvert.SerializeObject(Model.Datapoints[13].Y)) },
+						{ x: new Date("@Model.Datapoints[14].X"), y: @Html.Raw(JsonConvert.SerializeObject(Model.Datapoints[14].Y)) },
+						{ x: new Date("@Model.Datapoints[15].X"), y: @Html.Raw(JsonConvert.SerializeObject(Model.Datapoints[15].Y)) },
+						{ x: new Date("@Model.Datapoints[16].X"), y: @Html.Raw(JsonConvert.SerializeObject(Model.Datapoints[16].Y)) }
+					]
+				}]
+			});
+			chart.render();
+		}
+    </script>
+}

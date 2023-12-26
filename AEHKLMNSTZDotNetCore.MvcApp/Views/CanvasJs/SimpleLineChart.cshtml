@@ -1,0 +1,47 @@
+﻿@model CanvasJsSimpleLineChartResponseModel
+
+<div>
+    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+</div>
+
+@section scripts {
+
+    <script>
+        window.onload = function () {
+            var dataPoints = [];
+
+        @foreach (var dataPoint in Model.DataPoints)
+        {
+            <text>
+                    dataPoints.push({
+                        y: @dataPoint.Y,
+                        indexLabel: "@dataPoint.IndexLabel",
+                        markerColor: "@dataPoint.MarkerColor",
+                        markerType: "@dataPoint.MarkerType"
+                    });
+            </text>
+        }
+
+                    var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                theme: "light2",
+                title: {
+                    text: "@Model.ChartTitle"
+                },
+                axisX: {
+                    title: "@Model.XAxisTitle"
+                },
+                axisY: {
+                    title: "@Model.YAxisTitle"
+                },
+                data: [{
+                    type: "line",
+                    indexLabelFontSize: 16,
+                    dataPoints: dataPoints
+                }]
+            });
+
+            chart.render();
+        }
+    </script>
+}

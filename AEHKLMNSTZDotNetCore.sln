@@ -14,7 +14,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AEHKLMNSTZDotNetCore.Consol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AEHKLMNSTZDotNetCore.WindowFormApp", "AEHKLMNSTZDotNetCore.WindowFormApp\AEHKLMNSTZDotNetCore.WindowFormApp.csproj", "{819FF067-7421-4F6C-92FA-F9403DBF19C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AEHKLMNSTZDotNetCore.RestApi", "AEHKLMNSTZDotNetCore.RestApi\AEHKLMNSTZDotNetCore.RestApi.csproj", "{21FA760D-6B64-4EF4-99B8-CDA459A51FE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AEHKLMNSTZDotNetCore.RestApi", "AEHKLMNSTZDotNetCore.RestApi\AEHKLMNSTZDotNetCore.RestApi.csproj", "{21FA760D-6B64-4EF4-99B8-CDA459A51FE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AEHKLMNSTZDotNetCore.ThemeMvcApp", "AEHKLMNSTZDotNetCore.ThemeMvcApp\AEHKLMNSTZDotNetCore.ThemeMvcApp.csproj", "{101388E8-7958-422A-9988-BF6290061448}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +40,10 @@ Global
 		{21FA760D-6B64-4EF4-99B8-CDA459A51FE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21FA760D-6B64-4EF4-99B8-CDA459A51FE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21FA760D-6B64-4EF4-99B8-CDA459A51FE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{101388E8-7958-422A-9988-BF6290061448}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{101388E8-7958-422A-9988-BF6290061448}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{101388E8-7958-422A-9988-BF6290061448}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{101388E8-7958-422A-9988-BF6290061448}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

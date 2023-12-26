@@ -1,4 +1,11 @@
-﻿<div>
+﻿@model ChartJsHorizontalBarChartResponseModel
+
+@{
+    List<int> _data1 = Model.DataSets[0].Data;
+    List<int> _data2 = Model.DataSets[0].Data;
+}
+
+<div>
     <canvas id="myChart"></canvas>
 </div>
 
@@ -9,29 +16,22 @@
         const DATA_COUNT = 7;
         const NUMBER_CFG = { count: DATA_COUNT, min: -100, max: 100 };
 
-        const labels =  [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-];
+        const labels = @Html.Raw(JsonConvert.SerializeObject(Model.Labels));
+  
         const data = {
             labels: labels,
             datasets: [
                 {
-                    label: 'Dataset 1',
-                    data: [1, 2, 3, 4, 5, 6, 7],
-                    borderColor: 'rgb(255, 99, 132)',
-                    backgroundColor: 'rgb(255, 99, 132)',
+                    label: "@Model.DataSets[0].Label",
+                    data: @Html.Raw(JsonConvert.SerializeObject(_data1)),
+                    borderColor: "@Model.DataSets[0].BorderColor",
+                    backgroundColor: "@Model.DataSets[0].BackgroundColor",
                 },
                 {
-                    label: 'Dataset 2',
-                    data: [-1, -2, -3, -4, -5, -6, -7],
-                    borderColor:'rgb(54, 162, 235)',
-                    backgroundColor: 'rgb(54, 162, 235)',
+                    label: "@Model.DataSets[1].Label",
+                    data: @Html.Raw(JsonConvert.SerializeObject(_data2)) ,
+                    borderColor: "@Model.DataSets[1].BorderColor",
+                    backgroundColor: "@Model.DataSets[1].BackgroundColor",
                 }
             ]
         };

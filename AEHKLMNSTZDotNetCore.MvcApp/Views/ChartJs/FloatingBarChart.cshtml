@@ -1,0 +1,57 @@
+﻿@model AEHKLMNSTZDotNetCore.MvcApp.Models.ChartJsFloatingBarChartResponseModel
+
+@{
+    List<int> _data1 = Model.DataSets[0].Data;
+    List<int> _data2 = Model.DataSets[1].Data;
+}
+
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+
+@section scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('myChart');
+        const DATA_COUNT = 7;
+
+        const labels = @Html.Raw(JsonConvert.SerializeObject(Model.Labels));
+        const _data1 = @Html.Raw(JsonConvert.SerializeObject(Model.DataSets[0].Data));
+        const _data2 = @Html.Raw(JsonConvert.SerializeObject(Model.DataSets[1].Data));
+
+        const config = {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: "@Model.DataSets[0].Label",
+                        data: _data1,
+                        borderColor: "@Model.DataSets[0].BorderColor",
+                        backgroundColor: "@Model.DataSets[0].BackgroundColor",
+                    },
+                    {
+                        label: "@Model.DataSets[1].Label",
+                        data: _data2,
+                        borderColor: "@Model.DataSets[1].BorderColor",
+                        backgroundColor: "@Model.DataSets[1].BackgroundColor",
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Chart.js Floating Bar Chart'
+                    }
+                }
+            }
+        };
+
+        const myChart = new Chart(ctx, config);
+    </script>
+}
