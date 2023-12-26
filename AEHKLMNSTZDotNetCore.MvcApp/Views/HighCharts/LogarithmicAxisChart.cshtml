@@ -1,0 +1,59 @@
+﻿@model HighChartLogarithmicAxisChartResponseModel
+
+<figure class="highcharts-figure">
+    <div id="container" style="height: 400px;"></div>
+    <p class="highcharts-description">
+        This chart shows the use of a logarithmic y-axis. Logarithmic axes can
+        be useful when dealing with data with spikes or large value gaps,
+        as they allow variance in the smaller values to remain visible.
+    </p>
+</figure>
+
+@section scripts {
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var dataPoints = [];
+
+            if (@Json.Serialize(Model) !== 'null' && @Json.Serialize(Model.DataPoints) !== 'null') {
+        @foreach (var dataPoint in Model.DataPoints)
+        {
+            <text>
+                        dataPoints.push({
+                            x: @dataPoint.X,
+                            y: @dataPoint.Y
+                                    });
+            </text>
+        }
+                    }
+
+            Highcharts.chart('container', {
+                title: {
+                    text: '@Model.ChartTitle'
+                },
+                xAxis: {
+                    tickInterval: 1,
+                    type: 'logarithmic',
+                    accessibility: {
+                        rangeDescription: 'Range: 1 to 10'
+                    }
+                },
+                yAxis: {
+                    type: 'logarithmic',
+                    minorTickInterval: 0.1,
+                    accessibility: {
+                        rangeDescription: 'Range: 0.1 to 1000'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<b>{series.name}</b><br />',
+                    pointFormat: 'x = {point.x}, y = {point.y}'
+                },
+                series: [{
+                    data: dataPoints
+                }]
+            });
+        });
+    </script>
+}

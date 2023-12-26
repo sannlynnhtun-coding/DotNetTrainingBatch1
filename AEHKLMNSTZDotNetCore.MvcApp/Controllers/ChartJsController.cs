@@ -77,6 +77,33 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 
             return View(model);
         }
+        public IActionResult FloatingBarChart()
+        {
+            ChartJsFloatingBarChartResponseModel model = new ChartJsFloatingBarChartResponseModel
+            {
+                DataCount = 7,
+                Labels = new List<string> { "January", "February", "March", "April", "May", "June", "July" },
+                DataSets = new List<ChartJsFloatingBarChartModel>
+            {
+                new ChartJsFloatingBarChartModel
+                {
+                    Data =  Enumerable.Range(1, 7).Select(x => GenerateData (1, 100)).ToList(),
+                    Label = "Dataset 1",
+                    BorderColor = "rgb(255, 99, 132)",
+                    BackgroundColor = "rgba(255, 99, 132, 0.7)"
+                },
+                new ChartJsFloatingBarChartModel
+                {
+                    Data = Enumerable.Range(1, 7).Select(x => GenerateData (1, 100)).ToList(),
+                    Label = "Dataset 2",
+                    BorderColor = "rgb(54, 162, 235)",
+                    BackgroundColor = "rgba(54, 162, 235, 0.7)"
+                }
+            }
+            };
+
+            return View(model);
+        }
 
         public IActionResult LegendPointStyle()
         {
@@ -268,5 +295,6 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
+     
     }
 }
