@@ -329,6 +329,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 			};
 			return View(model);
 		}
+
 		public IActionResult SimpleLineChart()
 		{
 			CanvasJsSimpleLineChartResponseModel model = new CanvasJsSimpleLineChartResponseModel

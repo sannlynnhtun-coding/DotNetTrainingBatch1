@@ -77,6 +77,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 
             return View(model);
         }
+
         public IActionResult FloatingBarChart()
         {
             ChartJsFloatingBarChartResponseModel model = new ChartJsFloatingBarChartResponseModel
@@ -295,6 +296,5 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
-     
     }
 }
