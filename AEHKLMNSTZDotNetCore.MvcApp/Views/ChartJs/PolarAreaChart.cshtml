@@ -1,0 +1,26 @@
+﻿@model ChartJsPolarAreaChartModel
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+@section scripts{
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        const data = {
+            labels:@Html.Raw(JsonConvert.SerializeObject(Model.Labels)),
+            datasets: [{
+                label: "@Model.Label",
+                data:@Html.Raw(JsonConvert.SerializeObject(Model.Data)),
+                backgroundColor: @Html.Raw(JsonConvert.SerializeObject(Model.BackgroundColor))
+            }]
+        };
+
+        const config = {
+            type: 'polarArea',
+            data: data,
+            options: {}
+        };
+
+        new Chart(ctx, config);
+    </script>
+}
