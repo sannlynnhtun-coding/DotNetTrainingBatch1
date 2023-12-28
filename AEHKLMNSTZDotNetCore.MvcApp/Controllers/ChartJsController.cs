@@ -1,5 +1,6 @@
 ﻿using AEHKLMNSTZDotNetCore.MvcApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using System.Reflection.Emit;
 
 namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
@@ -293,6 +294,40 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
                 Data = new List<int> { 65, 59, 90, 81, 56, 55, 40 },
                 Labels = new List<string> { "Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running" },
                 SecondDataSet = new List<int> { 28, 48, 40, 19, 96, 27, 100 }
+            };
+            return View(model);
+        }
+
+        public IActionResult DoughnutChart()
+        {
+            ChartJsDoughnutChartResponseModel model = new ChartJsDoughnutChartResponseModel()
+            {
+                DataCount = 5,
+                Labels = new List<string>
+                {
+                    "Red", "Orange", "Yellow", "Green", "Blue"
+                },
+                DataSet = new List<ChartJsDoughnutChartModel>
+                {
+                    new ChartJsDoughnutChartModel
+                    {
+                        Label = "Dataset 1",
+                        Data = new List<int> {1, 2, 3, 4, 5},
+                         BackgroundColor = new List<string> { "rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)", "rgb(75, 192, 192)", "rgb(54, 162, 235)" }
+                    }
+                }
+            };
+            return View(model);
+        }
+        public IActionResult PolarAreaChart()
+        {
+            ChartJsPolarAreaChartModel model = new ChartJsPolarAreaChartModel
+            {
+                Labels = new List<string> { "Red", "Green", "Yellow", "Grey", "Blue" },
+                Label = "My First Dataset",
+                Data = new List<int> { 11,16,7,3,14},
+                BackgroundColor = new List<string> { "rgb(255, 99, 132)", "rgb(75, 192, 192)", "rgb(255, 205, 86)", "rgb(201, 203, 207)", "rgb(54, 162, 235)" }
+
             };
             return View(model);
         }
