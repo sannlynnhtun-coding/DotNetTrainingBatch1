@@ -1,0 +1,78 @@
+﻿@{
+    ViewData["Title"] = "Area Chart";
+}
+@model CanvasJsChartAreaChartResponseModel
+
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+
+@section scripts{
+    <script>
+
+        var data = @Html.Raw(JsonConvert.SerializeObject(Model.Data))
+        var minimumDate = @Html.Raw(JsonConvert.SerializeObject(Model.MinimumDate))
+        var maximumDate = @Html.Raw(JsonConvert.SerializeObject(Model.MaximumDate))
+        var emailRecievedDataPoint = [];
+        var emailSentDataPoint = [];
+
+        for(let item of data){
+            var recievedEmail = {
+                x: new Date(item.Date),
+                y: item.EmailRecieved
+            }
+            var sentEmail = {
+                x: new Date(item.Date),
+                y: item.EmailSent
+            }
+
+            emailRecievedDataPoint.push(recievedEmail);
+            emailSentDataPoint.push(sentEmail);
+
+        }
+
+        window.onload = function () {
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                title: {
+                    text: "Daily Email Analysis"
+                },
+                axisX: {
+                    valueFormatString: "DDD",
+                    minimum: new Date(minimumDate),
+                    maximum: new Date(maximumDate)
+                },
+                axisY: {
+                    title: "Number of Messages"
+                },
+                legend: {
+                    verticalAlign: "top",
+                    horizontalAlign: "right",
+                    dockInsidePlotArea: true
+                },
+                toolTip: {
+                    shared: true
+                },
+                data: [{
+                    name: "Received",
+                    showInLegend: true,
+                    legendMarkerType: "square",
+                    type: "area",
+                    color: "rgba(40,175,101,0.6)",
+                    markerSize: 0,
+                    dataPoints: emailRecievedDataPoint
+                },
+                {
+                    name: "Sent",
+                    showInLegend: true,
+                    legendMarkerType: "square",
+                    type: "area",
+                    color: "rgba(0,75,141,0.7)",
+                    markerSize: 0,
+                    dataPoints: emailSentDataPoint
+                }]
+            });
+            chart.render();
+
+        }
+    </script>
+}
