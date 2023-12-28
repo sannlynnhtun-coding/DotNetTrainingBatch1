@@ -253,9 +253,14 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             return View(model);
         }
 
-        public IActionResult BasicColumnChart()
+        public IActionResult ColumnPyramidChart()
         {
-            return View();
+            HighChartColumnPyramidChartModel model = new HighChartColumnPyramidChartModel
+            {
+                Color = new List<string> { "#C79D6D", "#B5927B", "#CE9B84", "#B7A58C", "#C7A58C" }
+
+            };
+            return View(model);
         }
     }
 }
