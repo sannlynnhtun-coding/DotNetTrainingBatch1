@@ -250,18 +250,18 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             double[][] number = new double[][]{ new double[] { 3, 4, 2, 1, 8, 5, 5},
                                                   new double[] { 6, 9, 3, 4, 1, 2, 3},
                                                   new double[] { 8, 3, 7, 6, 4, 4, 6} };
-            ChartJsTimeScaleModel chartJs=new ChartJsTimeScaleModel()
+            ChartJsTimeScaleModel chartJs = new ChartJsTimeScaleModel()
             {
-                labels=date,
-                number=number,
+                labels = date,
+                number = number,
             };
             ChartJsTimeScaleResponseModel model = new ChartJsTimeScaleResponseModel()
             {
-                Data=chartJs
+                Data = chartJs
             };
 
             model.Data = chartJs;
-            
+
             return View(model);
         }
 
@@ -329,6 +329,24 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
                 BackgroundColor = new List<string> { "rgb(255, 99, 132)", "rgb(75, 192, 192)", "rgb(255, 205, 86)", "rgb(201, 203, 207)", "rgb(54, 162, 235)" }
 
             };
+            return View(model);
+        }
+
+        public IActionResult AreaChart()
+        {
+            ChartJsAreaChartResponseModel model = new ChartJsAreaChartResponseModel();
+            List<ChartJsAreaChartModel> areaChartList = new List<ChartJsAreaChartModel>()
+            {
+            new ChartJsAreaChartModel() {Month="January",Improve=20,Reduce=0},
+            new ChartJsAreaChartModel() { Month = "February", Improve = 60, Reduce = 0 },
+            new ChartJsAreaChartModel() { Month = "March", Improve = 0, Reduce = -20 },
+            new ChartJsAreaChartModel() { Month = "April", Improve = 40, Reduce = 0 },
+            new ChartJsAreaChartModel() { Month = "May", Improve = 0, Reduce = -40 },
+            new ChartJsAreaChartModel() { Month = "June", Improve = 0, Reduce = -20 },
+            new ChartJsAreaChartModel() { Month = "July", Improve = 30, Reduce = 0 }
+        };
+            model.Data = areaChartList;
+
             return View(model);
         }
     }

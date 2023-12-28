@@ -17,7 +17,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
         {
             HighSplineResponseChart model = new HighSplineResponseChart();
             model.items = new List<HighSplineChart>();
-            for (var i = 1; i <= 19 ; i++)
+            for (var i = 1; i <= 19; i++)
             {
                 long timestamp = DateTimeOffset.UtcNow.AddSeconds(i).ToUnixTimeMilliseconds(); ;
                 model.items.Add(new HighSplineChart { x = timestamp, y = GenerateData(0, 10) });
@@ -152,7 +152,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
                     new HighchartsFanChartModel { Name = "Point 4", Y = 180, Low = 111, High = 426 },
                     new HighchartsFanChartModel { Name = "Point 5", Y = 224, Low = 124, High = 524 },
                     new HighchartsFanChartModel { Name = "Point 6", Y = 455, Low = 246, High = 600 },
-                    
+
 
                 }
             };
@@ -166,26 +166,26 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             return random.Next(from, to);
         }
 
-		public IActionResult DoeNetChart()
-		{
-			HighChartsDoeNetResponseModel model = new HighChartsDoeNetResponseModel
-			{
-				Name = "Medals",
-				Data = new List<HighChartsDoeNetModel>
-				{
-					new HighChartsDoeNetModel {Country = "Norway", Count=16},
-					new HighChartsDoeNetModel {Country = "Germany", Count=12},
-					new HighChartsDoeNetModel {Country = "USA", Count=8},
-					new HighChartsDoeNetModel {Country = "Sweden", Count=8},
-					new HighChartsDoeNetModel {Country = "Netherlands", Count=8},
-					new HighChartsDoeNetModel {Country = "ROC", Count=6},
-					new HighChartsDoeNetModel {Country = "Austria", Count=7},
-					new HighChartsDoeNetModel {Country = "Canada", Count=4},
-					new HighChartsDoeNetModel {Country = "Japan", Count=3},
-				}
-			};
-			return View(model);
-		}
+        public IActionResult DoeNetChart()
+        {
+            HighChartsDoeNetResponseModel model = new HighChartsDoeNetResponseModel
+            {
+                Name = "Medals",
+                Data = new List<HighChartsDoeNetModel>
+                {
+                    new HighChartsDoeNetModel {Country = "Norway", Count=16},
+                    new HighChartsDoeNetModel {Country = "Germany", Count=12},
+                    new HighChartsDoeNetModel {Country = "USA", Count=8},
+                    new HighChartsDoeNetModel {Country = "Sweden", Count=8},
+                    new HighChartsDoeNetModel {Country = "Netherlands", Count=8},
+                    new HighChartsDoeNetModel {Country = "ROC", Count=6},
+                    new HighChartsDoeNetModel {Country = "Austria", Count=7},
+                    new HighChartsDoeNetModel {Country = "Canada", Count=4},
+                    new HighChartsDoeNetModel {Country = "Japan", Count=3},
+                }
+            };
+            return View(model);
+        }
 
         public IActionResult LogarithmicAxisChart()
         {
@@ -224,7 +224,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
                     new HighChartsPieWithLegendModel { Name = "Internet Explorer", Y = 2.02 },
                     new HighChartsPieWithLegendModel { Name = "Other", Y = 3.28 }
                 }
-             };
+            };
 
             HighChartsPieWithLegendResponseModel model = new HighChartsPieWithLegendResponseModel
             {
@@ -253,6 +253,42 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             return View(model);
         }
 
+        public IActionResult Bubble3DChart()
+        {
+            List<HighChartBubbleChartModel> bubbleChartList = new List<HighChartBubbleChartModel>()
+            {
+                // Data for Men
+                new HighChartBubbleChartModel() { Age = 20, WeightGained = 20, Calories = 500, Role = "Men" },
+                new HighChartBubbleChartModel() { Age = 25, WeightGained = 15, Calories = 550, Role = "Men" },
+                new HighChartBubbleChartModel() { Age = 30, WeightGained = 18, Calories = 600, Role = "Men" },
+                new HighChartBubbleChartModel() { Age = 35, WeightGained = 22, Calories = 650, Role = "Men" },
+                new HighChartBubbleChartModel() { Age = 40, WeightGained = 25, Calories = 700, Role = "Men" },
+                new HighChartBubbleChartModel() { Age = 45, WeightGained = 30, Calories = 750, Role = "Men" },
+                new HighChartBubbleChartModel() { Age = 50, WeightGained = 28, Calories = 800, Role = "Men" },
+                new HighChartBubbleChartModel() { Age = 55, WeightGained = 32, Calories = 850, Role = "Men" },
+                new HighChartBubbleChartModel() { Age = 60, WeightGained = 35, Calories = 900, Role = "Men" },
+                new HighChartBubbleChartModel() { Age = 65, WeightGained = 40, Calories = 950, Role = "Men" },
+
+                // Data for Women
+                new HighChartBubbleChartModel() { Age = 20, WeightGained = 18, Calories = 450, Role = "Women" },
+                new HighChartBubbleChartModel() { Age = 25, WeightGained = 20, Calories = 480, Role = "Women" },
+                new HighChartBubbleChartModel() { Age = 30, WeightGained = 15, Calories = 520, Role = "Women" },
+                new HighChartBubbleChartModel() { Age = 35, WeightGained = 23, Calories = 580, Role = "Women" },
+                new HighChartBubbleChartModel() { Age = 40, WeightGained = 28, Calories = 620, Role = "Women" },
+                new HighChartBubbleChartModel() { Age = 45, WeightGained = 32, Calories = 670, Role = "Women" },
+                new HighChartBubbleChartModel() { Age = 50, WeightGained = 26, Calories = 720, Role = "Women" },
+                new HighChartBubbleChartModel() { Age = 55, WeightGained = 29, Calories = 780, Role = "Women" },
+                new HighChartBubbleChartModel() { Age = 60, WeightGained = 33, Calories = 830, Role = "Women" },
+                new HighChartBubbleChartModel() { Age = 65, WeightGained = 38, Calories = 880, Role = "Women" },
+            };
+
+            HighChartBubbleChartResponseModel model = new HighChartBubbleChartResponseModel()
+            {
+                Data = bubbleChartList
+            };
+            return View(model);
+
+        }
         public IActionResult ColumnPyramidChart()
         {
             HighChartColumnPyramidChartModel model = new HighChartColumnPyramidChartModel
@@ -262,6 +298,8 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
+
     }
+
 }
 
