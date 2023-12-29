@@ -355,6 +355,23 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 			};
 			return View(model);
 		}
+
+		public IActionResult DoughnutChart()
+		{
+			CanvasJsDoughnutChartResponseModel model = new CanvasJsDoughnutChartResponseModel()
+			{
+				DataPoints = new List<CanvasJsDoughnutChartModel>
+				{
+					new CanvasJsDoughnutChartModel {x = 67, lable = "Inbox"},
+					new CanvasJsDoughnutChartModel {x = 28, lable = "Archives"},
+					new CanvasJsDoughnutChartModel {x = 10, lable = "Labels"},
+					new CanvasJsDoughnutChartModel {x = 7, lable = "Drafts"},
+					new CanvasJsDoughnutChartModel {x = 15, lable = "Trash"},
+					new CanvasJsDoughnutChartModel {x = 6, lable = "Spam"},
+				}
+			};
+			return View(model);
+		}
 	}
 
 }
