@@ -379,63 +379,8 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             return View(model);
         }
 
-    }
-		public IActionResult SplineChart()
-		{
-			CanvasJsSplineChartResponseModel model = new CanvasJsSplineChartResponseModel
-			{
-				Title = "Music Album Sales by Year",
-				AxisYTitle = "Units Sold",
-				DataPoints = new List<CanvasJsSplineChartModel>
-				{
-					new CanvasJsSplineChartModel { X = new DateTime(2002, 1, 1), Y = 2506000 },
-					new CanvasJsSplineChartModel { X = new DateTime(2003, 1, 1), Y = 2798000 },
-					new CanvasJsSplineChartModel { X = new DateTime(2004, 1, 1), Y = 3386000 },
-					new CanvasJsSplineChartModel { X = new DateTime(2005, 1, 1), Y = 6944000 },
-					new CanvasJsSplineChartModel { X = new DateTime(2006, 1, 1), Y = 6026000 },
-					new CanvasJsSplineChartModel { X = new DateTime(2007, 1, 1), Y = 2394000 },
-					new CanvasJsSplineChartModel { X = new DateTime(2008, 1, 1), Y = 1872000 },
-					new CanvasJsSplineChartModel { X = new DateTime(2009, 1, 1), Y = 2140000 },
-					new CanvasJsSplineChartModel { X = new DateTime(2010, 1, 1), Y = 7289000 },
-					new CanvasJsSplineChartModel { X = new DateTime(2011, 1, 1), Y = 4830000 },
-					new CanvasJsSplineChartModel { X = new DateTime(2012, 1, 1), Y = 2009000 },
-					new CanvasJsSplineChartModel { X = new DateTime(2013, 1, 1), Y = 2840000 },
-					new CanvasJsSplineChartModel { X = new DateTime(2014, 1, 1), Y = 2396000 },
-					new CanvasJsSplineChartModel { X = new DateTime(2015, 1, 1), Y = 1613000 },
-					new CanvasJsSplineChartModel { X = new DateTime(2016, 1, 1), Y = 2821000 },
-					new CanvasJsSplineChartModel { X = new DateTime(2017, 1, 1), Y = 2000000 }
-				}
-			};
-			return View(model);
-		}
-		public IActionResult SimpleLineChart()
-		{
-			CanvasJsSimpleLineChartResponseModel model = new CanvasJsSimpleLineChartResponseModel
-			{
-				DataPoints = new List<CanvasJsSimpleLineChartModel>
-				{
-					new CanvasJsSimpleLineChartModel { Y = 450 },
-					new CanvasJsSimpleLineChartModel { Y = 414 },
-					new CanvasJsSimpleLineChartModel { Y = 520, IndexLabel = "\u2191 highest", MarkerColor = "red", MarkerType = "triangle" },
-					new CanvasJsSimpleLineChartModel { Y = 460 },
-					new CanvasJsSimpleLineChartModel { Y = 450 },
-					new CanvasJsSimpleLineChartModel { Y = 500 },
-					new CanvasJsSimpleLineChartModel { Y = 480 },
-					new CanvasJsSimpleLineChartModel { Y = 480 },
-					new CanvasJsSimpleLineChartModel { Y = 410, IndexLabel = "\u2193 lowest", MarkerColor = "DarkSlateGrey", MarkerType = "cross" },
-					new CanvasJsSimpleLineChartModel { Y = 500 },
-					new CanvasJsSimpleLineChartModel { Y = 480 },
-					new CanvasJsSimpleLineChartModel { Y = 510 }
-				},
-				ChartTitle = "Simple Line Chart",
-				XAxisTitle = "X Axis Label",
-				YAxisTitle = "Y Axis Label"
-			};
-			return View(model);
-		}
-
-		public IActionResult ErrorLineChart()
-		{
+        public IActionResult ErrorLineChart()
+        {
             CanvasJsErrorLineChartResponseModel model = new CanvasJsErrorLineChartResponseModel
             {
                 predictedData = new List<CanvasJsErrorLineChartForPredictedModel>
@@ -446,7 +391,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
                     new CanvasJsErrorLineChartForPredictedModel { y= 4.06, label="Apr" },
                     new CanvasJsErrorLineChartForPredictedModel { y= 4.48, label="May" },
                     new CanvasJsErrorLineChartForPredictedModel { y= 3.45, label= "Jun" },
-					new CanvasJsErrorLineChartForPredictedModel { y= 4.17, label= "Jul" },
+                    new CanvasJsErrorLineChartForPredictedModel { y= 4.17, label= "Jul" },
                     new CanvasJsErrorLineChartForPredictedModel { y= 4.05, label= "Aug" },
                     new CanvasJsErrorLineChartForPredictedModel { y= 4.05, label= "Sep" },
                     new CanvasJsErrorLineChartForPredictedModel { y= 3.5, label= "Oct" },
@@ -454,9 +399,9 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
                     new CanvasJsErrorLineChartForPredictedModel { y= 3.86, label="Dec" }
                 },
 
-				errors=new List<CanvasJsErrorLineChartForErrorModel>
-				{
-					new CanvasJsErrorLineChartForErrorModel{y=new List<double>{3.6, 3.8 },label="Jan"},
+                errors = new List<CanvasJsErrorLineChartForErrorModel>
+                {
+                    new CanvasJsErrorLineChartForErrorModel{y=new List<double>{3.6, 3.8 },label="Jan"},
                     new CanvasJsErrorLineChartForErrorModel{y=new List<double>{3.0, 3.4},label="Feb" },
                     new CanvasJsErrorLineChartForErrorModel{y=new List<double>{3.8, 4.3},label="Mar" },
                     new CanvasJsErrorLineChartForErrorModel{y=new List<double>{3.9, 4.2},label="Apr" },
@@ -472,6 +417,8 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
-	}
-
+    }
 }
+	
+
+
