@@ -12,6 +12,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
         {
             return View();
         }
+
         public IActionResult SplineChart()
         {
             HighSplineResponseChart model = new HighSplineResponseChart();
@@ -120,6 +121,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 
             return View(model);
         }
+
         public IActionResult LollipopChart()
         {
             HighChartLollipopResponseModel model = new HighChartLollipopResponseModel
@@ -184,6 +186,27 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
+
+        public IActionResult DoeNetChart()
+        {
+            HighChartsDoeNetResponseModel model = new HighChartsDoeNetResponseModel
+            {
+                Name = "Medals",
+                Data = new List<HighChartsDoeNetModel>
+                {
+                    new HighChartsDoeNetModel {Country = "Norway", Count=16},
+                    new HighChartsDoeNetModel {Country = "Germany", Count=12},
+                    new HighChartsDoeNetModel {Country = "USA", Count=8},
+                    new HighChartsDoeNetModel {Country = "Sweden", Count=8},
+                    new HighChartsDoeNetModel {Country = "Netherlands", Count=8},
+                    new HighChartsDoeNetModel {Country = "ROC", Count=6},
+                    new HighChartsDoeNetModel {Country = "Austria", Count=7},
+                    new HighChartsDoeNetModel {Country = "Canada", Count=4},
+                    new HighChartsDoeNetModel {Country = "Japan", Count=3},
+                }
+            };
+            return View(model);
+        }
         public IActionResult LogarithmicAxisChart()
         {
             HighChartLogarithmicAxisChartResponseModel model = new HighChartLogarithmicAxisChartResponseModel
@@ -206,6 +229,96 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 
             return View(model);
         }
+
+        public IActionResult PieWithLegendChart()
+        {
+            HighChartsPieWithLegendDataModel data = new HighChartsPieWithLegendDataModel
+            {
+                ChartTitle = "Browser market shares in March, 2022",
+                ChartData = new List<HighChartsPieWithLegendModel>
+                {
+                    new HighChartsPieWithLegendModel { Name = "Chrome", Y = 74.77, Sliced = true, Selected = true },
+                    new HighChartsPieWithLegendModel { Name = "Edge", Y = 12.82 },
+                    new HighChartsPieWithLegendModel { Name = "Firefox", Y = 4.63 },
+                    new HighChartsPieWithLegendModel { Name = "Safari", Y = 2.44 },
+                    new HighChartsPieWithLegendModel { Name = "Internet Explorer", Y = 2.02 },
+                    new HighChartsPieWithLegendModel { Name = "Other", Y = 3.28 }
+                }
+            };
+
+            HighChartsPieWithLegendResponseModel model = new HighChartsPieWithLegendResponseModel
+            {
+                ChartTitle = data.ChartTitle,
+                ChartData = data.ChartData
+            };
+            return View(model);
+        }
+
+        public IActionResult RadialBarChart()
+        {
+            List<HighChartsRadialBarChartModel> medalData = new List<HighChartsRadialBarChartModel>
+            {
+                new HighChartsRadialBarChartModel { Country = "Norway", GoldMedals = 148, SilverMedals = 113, BronzeMedals = 124 },
+                new HighChartsRadialBarChartModel { Country = "United States", GoldMedals = 113, SilverMedals = 122, BronzeMedals = 95 },
+                new HighChartsRadialBarChartModel { Country = "Germany", GoldMedals = 104, SilverMedals = 98, BronzeMedals = 65 },
+                new HighChartsRadialBarChartModel { Country = "Austria", GoldMedals = 71, SilverMedals = 88, BronzeMedals = 91 },
+                new HighChartsRadialBarChartModel { Country = "Canada", GoldMedals = 77, SilverMedals = 72, BronzeMedals = 76 }
+            };
+
+            HighChartsRadialBarChartResponseModel model = new HighChartsRadialBarChartResponseModel
+            {
+                MedalData = medalData
+            };
+
+            return View(model);
+        }
+
+        public IActionResult Bubble3DChart()
+        {
+            List<HighChartBubbleChartModel> bubbleChartList = new List<HighChartBubbleChartModel>()
+            {
+                // Data for Men
+                new HighChartBubbleChartModel() { Age = 20, WeightGained = 20, Calories = 500, Role = "Men" },
+                new HighChartBubbleChartModel() { Age = 25, WeightGained = 15, Calories = 550, Role = "Men" },
+                new HighChartBubbleChartModel() { Age = 30, WeightGained = 18, Calories = 600, Role = "Men" },
+                new HighChartBubbleChartModel() { Age = 35, WeightGained = 22, Calories = 650, Role = "Men" },
+                new HighChartBubbleChartModel() { Age = 40, WeightGained = 25, Calories = 700, Role = "Men" },
+                new HighChartBubbleChartModel() { Age = 45, WeightGained = 30, Calories = 750, Role = "Men" },
+                new HighChartBubbleChartModel() { Age = 50, WeightGained = 28, Calories = 800, Role = "Men" },
+                new HighChartBubbleChartModel() { Age = 55, WeightGained = 32, Calories = 850, Role = "Men" },
+                new HighChartBubbleChartModel() { Age = 60, WeightGained = 35, Calories = 900, Role = "Men" },
+                new HighChartBubbleChartModel() { Age = 65, WeightGained = 40, Calories = 950, Role = "Men" },
+
+                // Data for Women
+                new HighChartBubbleChartModel() { Age = 20, WeightGained = 18, Calories = 450, Role = "Women" },
+                new HighChartBubbleChartModel() { Age = 25, WeightGained = 20, Calories = 480, Role = "Women" },
+                new HighChartBubbleChartModel() { Age = 30, WeightGained = 15, Calories = 520, Role = "Women" },
+                new HighChartBubbleChartModel() { Age = 35, WeightGained = 23, Calories = 580, Role = "Women" },
+                new HighChartBubbleChartModel() { Age = 40, WeightGained = 28, Calories = 620, Role = "Women" },
+                new HighChartBubbleChartModel() { Age = 45, WeightGained = 32, Calories = 670, Role = "Women" },
+                new HighChartBubbleChartModel() { Age = 50, WeightGained = 26, Calories = 720, Role = "Women" },
+                new HighChartBubbleChartModel() { Age = 55, WeightGained = 29, Calories = 780, Role = "Women" },
+                new HighChartBubbleChartModel() { Age = 60, WeightGained = 33, Calories = 830, Role = "Women" },
+                new HighChartBubbleChartModel() { Age = 65, WeightGained = 38, Calories = 880, Role = "Women" },
+            };
+
+            HighChartBubbleChartResponseModel model = new HighChartBubbleChartResponseModel()
+            {
+                Data = bubbleChartList
+            };
+            return View(model);
+
+        }
+        public IActionResult ColumnPyramidChart()
+        {
+            HighChartColumnPyramidChartModel model = new HighChartColumnPyramidChartModel
+            {
+                Color = new List<string> { "#C79D6D", "#B5927B", "#CE9B84", "#B7A58C", "#C7A58C" }
+
+            };
+            return View(model);
+        }
+
 
         public IActionResult AreaRangeChart()
         {
@@ -307,5 +420,6 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             return View(model);
         }
     }
+
 }
 

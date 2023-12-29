@@ -1,5 +1,6 @@
 ﻿using AEHKLMNSTZDotNetCore.MvcApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using System.Reflection.Emit;
 
 namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
@@ -77,6 +78,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 
             return View(model);
         }
+
         public IActionResult FloatingBarChart()
         {
             ChartJsFloatingBarChartResponseModel model = new ChartJsFloatingBarChartResponseModel
@@ -248,18 +250,18 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             double[][] number = new double[][]{ new double[] { 3, 4, 2, 1, 8, 5, 5},
                                                   new double[] { 6, 9, 3, 4, 1, 2, 3},
                                                   new double[] { 8, 3, 7, 6, 4, 4, 6} };
-            ChartJsTimeScaleModel chartJs=new ChartJsTimeScaleModel()
+            ChartJsTimeScaleModel chartJs = new ChartJsTimeScaleModel()
             {
-                labels=date,
-                number=number,
+                labels = date,
+                number = number,
             };
             ChartJsTimeScaleResponseModel model = new ChartJsTimeScaleResponseModel()
             {
-                Data=chartJs
+                Data = chartJs
             };
 
             model.Data = chartJs;
-            
+
             return View(model);
         }
 
@@ -293,6 +295,58 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
                 Labels = new List<string> { "Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running" },
                 SecondDataSet = new List<int> { 28, 48, 40, 19, 96, 27, 100 }
             };
+            return View(model);
+        }
+
+        public IActionResult DoughnutChart()
+        {
+            ChartJsDoughnutChartResponseModel model = new ChartJsDoughnutChartResponseModel()
+            {
+                DataCount = 5,
+                Labels = new List<string>
+                {
+                    "Red", "Orange", "Yellow", "Green", "Blue"
+                },
+                DataSet = new List<ChartJsDoughnutChartModel>
+                {
+                    new ChartJsDoughnutChartModel
+                    {
+                        Label = "Dataset 1",
+                        Data = new List<int> {1, 2, 3, 4, 5},
+                         BackgroundColor = new List<string> { "rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)", "rgb(75, 192, 192)", "rgb(54, 162, 235)" }
+                    }
+                }
+            };
+            return View(model);
+        }
+        public IActionResult PolarAreaChart()
+        {
+            ChartJsPolarAreaChartModel model = new ChartJsPolarAreaChartModel
+            {
+                Labels = new List<string> { "Red", "Green", "Yellow", "Grey", "Blue" },
+                Label = "My First Dataset",
+                Data = new List<int> { 11,16,7,3,14},
+                BackgroundColor = new List<string> { "rgb(255, 99, 132)", "rgb(75, 192, 192)", "rgb(255, 205, 86)", "rgb(201, 203, 207)", "rgb(54, 162, 235)" }
+
+            };
+            return View(model);
+        }
+
+        public IActionResult AreaChart()
+        {
+            ChartJsAreaChartResponseModel model = new ChartJsAreaChartResponseModel();
+            List<ChartJsAreaChartModel> areaChartList = new List<ChartJsAreaChartModel>()
+            {
+            new ChartJsAreaChartModel() {Month="January",Improve=20,Reduce=0},
+            new ChartJsAreaChartModel() { Month = "February", Improve = 60, Reduce = 0 },
+            new ChartJsAreaChartModel() { Month = "March", Improve = 0, Reduce = -20 },
+            new ChartJsAreaChartModel() { Month = "April", Improve = 40, Reduce = 0 },
+            new ChartJsAreaChartModel() { Month = "May", Improve = 0, Reduce = -40 },
+            new ChartJsAreaChartModel() { Month = "June", Improve = 0, Reduce = -20 },
+            new ChartJsAreaChartModel() { Month = "July", Improve = 30, Reduce = 0 }
+        };
+            model.Data = areaChartList;
+
             return View(model);
         }
 
