@@ -16,7 +16,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
         {
             HighSplineResponseChart model = new HighSplineResponseChart();
             model.items = new List<HighSplineChart>();
-            for (var i = 1; i <= 19 ; i++)
+            for (var i = 1; i <= 19; i++)
             {
                 long timestamp = DateTimeOffset.UtcNow.AddSeconds(i).ToUnixTimeMilliseconds(); ;
                 model.items.Add(new HighSplineChart { x = timestamp, y = GenerateData(0, 10) });
@@ -150,7 +150,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
                     new HighchartsFanChartModel { Name = "Point 4", Y = 180, Low = 111, High = 426 },
                     new HighchartsFanChartModel { Name = "Point 5", Y = 224, Low = 124, High = 524 },
                     new HighchartsFanChartModel { Name = "Point 6", Y = 455, Low = 246, High = 600 },
-                    
+
 
                 }
             };
@@ -164,26 +164,26 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             return random.Next(from, to);
         }
 
-		public IActionResult DoeNetChart()
-		{
-			HighChartsDoeNetResponseModel model = new HighChartsDoeNetResponseModel
-			{
-				Name = "Medals",
-				Data = new List<HighChartsDoeNetModel>
-				{
-					new HighChartsDoeNetModel {Country = "Norway", Count=16},
-					new HighChartsDoeNetModel {Country = "Germany", Count=12},
-					new HighChartsDoeNetModel {Country = "USA", Count=8},
-					new HighChartsDoeNetModel {Country = "Sweden", Count=8},
-					new HighChartsDoeNetModel {Country = "Netherlands", Count=8},
-					new HighChartsDoeNetModel {Country = "ROC", Count=6},
-					new HighChartsDoeNetModel {Country = "Austria", Count=7},
-					new HighChartsDoeNetModel {Country = "Canada", Count=4},
-					new HighChartsDoeNetModel {Country = "Japan", Count=3},
-				}
-			};
-			return View(model);
-		}
+        public IActionResult DoeNetChart()
+        {
+            HighChartsDoeNetResponseModel model = new HighChartsDoeNetResponseModel
+            {
+                Name = "Medals",
+                Data = new List<HighChartsDoeNetModel>
+                {
+                    new HighChartsDoeNetModel {Country = "Norway", Count=16},
+                    new HighChartsDoeNetModel {Country = "Germany", Count=12},
+                    new HighChartsDoeNetModel {Country = "USA", Count=8},
+                    new HighChartsDoeNetModel {Country = "Sweden", Count=8},
+                    new HighChartsDoeNetModel {Country = "Netherlands", Count=8},
+                    new HighChartsDoeNetModel {Country = "ROC", Count=6},
+                    new HighChartsDoeNetModel {Country = "Austria", Count=7},
+                    new HighChartsDoeNetModel {Country = "Canada", Count=4},
+                    new HighChartsDoeNetModel {Country = "Japan", Count=3},
+                }
+            };
+            return View(model);
+        }
         public IActionResult LogarithmicAxisChart()
         {
             HighChartLogarithmicAxisChartResponseModel model = new HighChartLogarithmicAxisChartResponseModel
@@ -204,6 +204,106 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
                 },
             };
 
+            return View(model);
+        }
+
+        public IActionResult AreaRangeChart()
+        {
+            HighChartAreaRangeChartResponseModel model = new HighChartAreaRangeChartResponseModel()
+            {
+                data = new List<HighChartAreaRangeChartModel>
+                {
+                    new HighChartAreaRangeChartModel { timestamp = 1483232400000, low = 1.4, high = 4.7 },
+                    new HighChartAreaRangeChartModel { timestamp = 1485824400000, low = -1.3, high = 1.9 },
+                    new HighChartAreaRangeChartModel { timestamp = 1488848400000, low = -0.7, high = 4.3 },
+                    new HighChartAreaRangeChartModel { timestamp = 1492214400000, low = -5.5, high = 3.2 },
+                    new HighChartAreaRangeChartModel { timestamp = 1496534400000, low = -9.9, high = -6.6 },
+                    new HighChartAreaRangeChartModel { timestamp = 1500595200000, low = -9.6, high = 0.1 },
+                    new HighChartAreaRangeChartModel { timestamp = 1501977600000, low = -0.9, high = 4 },
+                    new HighChartAreaRangeChartModel { timestamp = 1502668800000, low = -2.2, high = 2.9 },
+                    new HighChartAreaRangeChartModel { timestamp = 1503619200000, low = 1.3, high = 2.3 },
+                    new HighChartAreaRangeChartModel { timestamp = 1504137600000, low = -0.3, high = 2.9 },
+                    new HighChartAreaRangeChartModel { timestamp = 1505001600000, low = 1.1, high = 3.8 },
+                    new HighChartAreaRangeChartModel { timestamp = 1505520000000, low = 0.6, high = 2.1 },
+                    new HighChartAreaRangeChartModel { timestamp = 1507161600000, low = -3.04, high = 2.5 },
+                }
+            };
+
+            return View(model);
+        }
+
+        public IActionResult SplitPackedBubbleChart()
+        {
+            HighChartSplitPackedBubbleChartResponseModel model = new HighChartSplitPackedBubbleChartResponseModel()
+            {
+                data = new List<HighChartSplitPackedBubbleChartContinentModel>
+                {
+                    new HighChartSplitPackedBubbleChartContinentModel
+                    {
+                        name="Europe",
+                        data=new List<HighChartSplitPackedBubbleChartCountryModel>()
+                        {
+                            new HighChartSplitPackedBubbleChartCountryModel{name="Germany",value=767.1},
+                            new HighChartSplitPackedBubbleChartCountryModel{name="Croatia",value=20.7},
+                            new HighChartSplitPackedBubbleChartCountryModel{name="Belgium",value=97.2},
+                            new HighChartSplitPackedBubbleChartCountryModel{name="Czech Republic",value=111.7},
+                            new HighChartSplitPackedBubbleChartCountryModel{name="Netherlands",value=158.1},
+                            new HighChartSplitPackedBubbleChartCountryModel{name="Spain",value=241.6},
+                            new HighChartSplitPackedBubbleChartCountryModel{name="France",value=323.7},
+                            new HighChartSplitPackedBubbleChartCountryModel{name="Italy",value=337.6}
+                        }
+                    },
+                      new HighChartSplitPackedBubbleChartContinentModel
+                    {
+                        name="Africa",
+                        data=new List<HighChartSplitPackedBubbleChartCountryModel>()
+                        {
+                            new HighChartSplitPackedBubbleChartCountryModel{name="Zimbabwe",value=13.1},
+                            new HighChartSplitPackedBubbleChartCountryModel{name="Kenya",value=14.1},
+                            new HighChartSplitPackedBubbleChartCountryModel{name="Ghana",value=14.1},
+                            new HighChartSplitPackedBubbleChartCountryModel{name="Sudan",value=17.3},
+                            new HighChartSplitPackedBubbleChartCountryModel{name="Tunisia",value=24.3},
+                            new HighChartSplitPackedBubbleChartCountryModel{name="Angola",value=25},
+                        }
+                    },
+                        new HighChartSplitPackedBubbleChartContinentModel
+                    {
+                        name="Oceania",
+                        data=new List<HighChartSplitPackedBubbleChartCountryModel>()
+                        {
+                            new HighChartSplitPackedBubbleChartCountryModel{name="Australia",value=409.4},
+                            new HighChartSplitPackedBubbleChartCountryModel{name="New Zealand",value=34.1},
+                            new HighChartSplitPackedBubbleChartCountryModel{name="Papua New Guinea",value=7.1}
+                        }
+                    },
+                          new HighChartSplitPackedBubbleChartContinentModel
+                    {
+                        name="North America",
+                        data=new List<HighChartSplitPackedBubbleChartCountryModel>()
+                        {
+                            new HighChartSplitPackedBubbleChartCountryModel{name="Costa Rica",value=7.6},
+                            new HighChartSplitPackedBubbleChartCountryModel{name="Honduras",value=8.4},
+                            new HighChartSplitPackedBubbleChartCountryModel{name="Jamaica",value=8.3},
+                            new HighChartSplitPackedBubbleChartCountryModel{name="Panama",value=10.2},
+                            new HighChartSplitPackedBubbleChartCountryModel{name="Cuba",value=30.2},
+                            new HighChartSplitPackedBubbleChartCountryModel{name="USA",value=5334.5},
+                        }
+                    },
+                          new HighChartSplitPackedBubbleChartContinentModel
+                    {
+                        name="Asia",
+                        data=new List<HighChartSplitPackedBubbleChartCountryModel>()
+                        {
+                            new HighChartSplitPackedBubbleChartCountryModel{name="Singapore",value=47.8},
+                            new HighChartSplitPackedBubbleChartCountryModel{name="Hong Kong",value=49.9},
+                            new HighChartSplitPackedBubbleChartCountryModel{name="Philippines",value=96.9},
+                            new HighChartSplitPackedBubbleChartCountryModel{name="Kuwait",value=98.6},
+                            new HighChartSplitPackedBubbleChartCountryModel{name="Thailand",value=272},
+                            new HighChartSplitPackedBubbleChartCountryModel{name="Japan",value=1278.9},
+                        }
+                    }
+                }
+            };
             return View(model);
         }
     }

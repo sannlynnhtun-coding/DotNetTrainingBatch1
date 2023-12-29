@@ -295,6 +295,18 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
-     
+
+        public IActionResult SteppedLineChart()
+        {
+            ChartJsSteppedLineChartModel model = new ChartJsSteppedLineChartModel
+            {
+                Labels = new List<string> { "Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6" },
+                Label = "Dataset",
+                Data = new List<int> { 14, -74, 29,-42,1,67 },
+                BorderColor = "red"
+            };
+            return View(model);
+        }
+
     }
 }

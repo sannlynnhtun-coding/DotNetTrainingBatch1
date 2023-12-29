@@ -354,6 +354,45 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 			};
 			return View(model);
 		}
+
+		public IActionResult ErrorLineChart()
+		{
+            CanvasJsErrorLineChartResponseModel model = new CanvasJsErrorLineChartResponseModel
+            {
+                predictedData = new List<CanvasJsErrorLineChartForPredictedModel>
+                {
+                    new CanvasJsErrorLineChartForPredictedModel { y= 3.69, label= "Jan" },
+                    new CanvasJsErrorLineChartForPredictedModel { y= 3.69, label= "Jan" },
+                    new CanvasJsErrorLineChartForPredictedModel { y= 4.08, label= "Mar" },
+                    new CanvasJsErrorLineChartForPredictedModel { y= 4.06, label="Apr" },
+                    new CanvasJsErrorLineChartForPredictedModel { y= 4.48, label="May" },
+                    new CanvasJsErrorLineChartForPredictedModel { y= 3.45, label= "Jun" },
+					new CanvasJsErrorLineChartForPredictedModel { y= 4.17, label= "Jul" },
+                    new CanvasJsErrorLineChartForPredictedModel { y= 4.05, label= "Aug" },
+                    new CanvasJsErrorLineChartForPredictedModel { y= 4.05, label= "Sep" },
+                    new CanvasJsErrorLineChartForPredictedModel { y= 3.5, label= "Oct" },
+                    new CanvasJsErrorLineChartForPredictedModel { y=4.0, label="Nov" },
+                    new CanvasJsErrorLineChartForPredictedModel { y= 3.86, label="Dec" }
+                },
+
+				errors=new List<CanvasJsErrorLineChartForErrorModel>
+				{
+					new CanvasJsErrorLineChartForErrorModel{y=new List<double>{3.6, 3.8 },label="Jan"},
+                    new CanvasJsErrorLineChartForErrorModel{y=new List<double>{3.0, 3.4},label="Feb" },
+                    new CanvasJsErrorLineChartForErrorModel{y=new List<double>{3.8, 4.3},label="Mar" },
+                    new CanvasJsErrorLineChartForErrorModel{y=new List<double>{3.9, 4.2},label="Apr" },
+                    new CanvasJsErrorLineChartForErrorModel{y=new List<double>{4.3, 4.6},label="May" },
+                    new CanvasJsErrorLineChartForErrorModel{y=new List<double>{3.3, 3.6},label="Jun" },
+                    new CanvasJsErrorLineChartForErrorModel{y=new List<double>{4.0, 4.4},label="Jul" },
+                    new CanvasJsErrorLineChartForErrorModel{y=new List<double>{3.9, 4.3},label="Aug" },
+                    new CanvasJsErrorLineChartForErrorModel{y=new List<double>{3.8, 4.2},label="Sep" },
+                    new CanvasJsErrorLineChartForErrorModel{y=new List<double>{3.4, 3.7},label="Oct" },
+                    new CanvasJsErrorLineChartForErrorModel{y=new List<double>{3.8, 4.2},label="Nov" },
+                    new CanvasJsErrorLineChartForErrorModel{y=new List<double>{3.7, 4.0},label="Dec" }
+                }
+            };
+            return View(model);
+        }
 	}
 
 }
