@@ -399,7 +399,25 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
-    }
 
+		public IActionResult AreaSplineChart()
+		{
+			HighChartsAreaSplineChartResponseModel model = new HighChartsAreaSplineChartResponseModel
+			{
+				Text = "Moose and deer hunting in Norway, 2000 - 2021",
+				Series = new List<HighChartsAreaSplineChartModel>
+				{
+					new HighChartsAreaSplineChartModel {name = "Moose", data = new List<int>
+						{38000,37300,37892,38564,36770,36026,34978,35657,35620,35971,
+						36435,34643,34956,33199,31136,30835,31611,30666,30319,31766 } } ,
+
+					new HighChartsAreaSplineChartModel {name = "Deer", data = new List<int>
+						{22534,23599,24533,25195,25896,27635,29173,32646,35686,37709,
+						39143,36829,35031,36202,35140,33718,37773,42556,43820,6445,50048 } }
+				}
+			};
+			return View(model);
+		}
+	}
 }
 
