@@ -1,0 +1,59 @@
+﻿@model ChartJsMultiAxisLineChartResponseModel
+
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+
+@section scripts {
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        const DATA_COUNT = @Html.Raw(JsonConvert.SerializeObject(Model.DataCount));
+        const NUMBER_CFG = { count: DATA_COUNT, min: -100, max: 100 };
+
+        const labels = @Html.Raw(JsonConvert.SerializeObject(Model.Labels));
+        const data = {
+            labels: labels,
+            datasets: @Html.Raw(JsonConvert.SerializeObject(Model.Datasets))
+                };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                responsive: true,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                stacked: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Chart.js Line Chart - Multi Axis'
+                    }
+                },
+                scales: {
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+
+                        // grid line settings
+                        grid: {
+                            drawOnChartArea: false, // only want the grid lines for one axis to show up
+                        },
+                    },
+                }
+            },
+        };
+
+        new Chart(ctx, config);
+        Random
+    </script>
+}
