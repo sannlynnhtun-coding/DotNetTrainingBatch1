@@ -486,6 +486,12 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 			};
 			return View(model);
 		}
+
+        public IActionResult DynamicLineChart()
+        {
+            return View();
+        }
+
 	}
 }
 
