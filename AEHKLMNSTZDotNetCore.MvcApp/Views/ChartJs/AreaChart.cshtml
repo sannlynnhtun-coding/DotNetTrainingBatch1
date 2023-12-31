@@ -1,0 +1,65 @@
+﻿<div>
+    <canvas id="myChart"></canvas>
+</div>
+@model ChartJsAreaChartResponseModel
+
+@section scripts {
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        var dataList = @Html.Raw(JsonConvert.SerializeObject(Model.Data))
+
+        var months = [];
+        var improveData = [];
+        var reduceData = [];
+
+        for (let item of dataList) {
+            months.push(item.Month);
+            improveData.push(item.Improve)
+            reduceData.push(item.Reduce)
+        }
+
+        const data = {
+            labels: months,
+            datasets: [
+                {
+                    label: 'Improve',
+                    data: improveData,
+                    borderColor: 'rgb(255, 99, 132)',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    fill: true
+                },
+                {
+                    label: 'Reduce',
+                    data: reduceData,
+                    borderColor: 'rgb(54, 162, 235)',
+                    backgroundColor: 'rgb(54, 162, 235)',
+                    fill: true
+                }
+            ]
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                plugins: {
+                    filler: {
+                        propagate: false,
+                    },
+                    title: {
+                        display: true,
+                        text: (ctx) => 'drawTime: ' + ctx.chart.options.plugins.filler.drawTime
+                    }
+                },
+                pointBackgroundColor: '#fff',
+                radius: 10,
+                interaction: {
+                    intersect: false,
+                }
+            },
+        };
+
+        new Chart(ctx, config);
+    </script>
+}
