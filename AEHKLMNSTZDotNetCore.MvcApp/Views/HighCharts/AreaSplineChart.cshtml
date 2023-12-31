@@ -1,0 +1,132 @@
+﻿@model HighChartsAreaSplineChartResponseModel
+
+<figure class="highcharts-figure">
+    <div id="container"></div>
+    <p class="highcharts-description">
+        This demo shows a smoothed area chart with an x-axis plot band
+        highlighting an area of interest at the last two points. Plot bands
+        and plot lines are commonly used to draw attention to certain areas or
+        thresholds.
+    </p>
+</figure>
+
+@* @{
+    List<int> _data1 = Model.Series[0].data;
+    List<int> _data2 = Model.Series[1].data;
+    [{
+    name: "@Model.Series[0].name",
+        data: @Html.Raw(JsonConvert.SerializeObject(_data1))
+            }, {
+    name: "@Model.Series[1].name",
+        data: @Html.Raw(JsonConvert.SerializeObject(_data2))
+    }]
+} *@
+
+@section scripts {
+    <script>
+        // Retrieved from https://www.ssb.no/jord-skog-jakt-og-fiskeri/jakt
+        Highcharts.chart('container', {
+            chart: {
+                type: 'areaspline'
+            },
+            title: {
+                text: @Html.Raw(JsonConvert.SerializeObject(Model.Text)),
+                align: 'left'
+            },
+            subtitle: {
+                text: 'Source: <a href="https://www.ssb.no/jord-skog-jakt-og-fiskeri/jakt" target="_blank">SSB</a>',
+                align: 'left'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                x: 120,
+                y: 70,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor:
+                    Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF'
+            },
+            xAxis: {
+                plotBands: [{ // Highlight the two last years
+                    from: 2019,
+                    to: 2020,
+                    color: 'rgba(68, 170, 213, .2)'
+                }]
+            },
+            yAxis: {
+                title: {
+                    text: 'Quantity'
+                }
+            },
+            tooltip: {
+                shared: true,
+                headerFormat: '<b>Hunting season starting autumn {point.x}</b><br>'
+            },
+            credits: {
+                enabled: false
+            },
+            plotOptions: {
+                series: {
+                    pointStart: 2000
+                },
+                areaspline: {
+                    fillOpacity: 0.5
+                }
+            },
+            series: @Html.Raw(JsonConvert.SerializeObject(Model.Series))
+                });
+    </script>
+}
+
+@section style {
+    <style>
+        #container {
+            height: 400px;
+        }
+
+        .highcharts-figure,
+        .highcharts-data-table table {
+            min-width: 310px;
+            max-width: 800px;
+            margin: 1em auto;
+        }
+
+        .highcharts-data-table table {
+            font-family: Verdana, sans-serif;
+            border-collapse: collapse;
+            border: 1px solid #ebebeb;
+            margin: 10px auto;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .highcharts-data-table caption {
+            padding: 1em 0;
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        .highcharts-data-table th {
+            font-weight: 600;
+            padding: 0.5em;
+        }
+
+        .highcharts-data-table td,
+        .highcharts-data-table th,
+        .highcharts-data-table caption {
+            padding: 0.5em;
+        }
+
+        .highcharts-data-table thead tr,
+        .highcharts-data-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        .highcharts-data-table tr:hover {
+            background: #f1f7ff;
+        }
+    </style>
+}

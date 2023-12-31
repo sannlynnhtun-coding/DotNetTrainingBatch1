@@ -349,5 +349,52 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 
             return View(model);
         }
-    }
+
+        public IActionResult SteppedLineChart()
+        {
+            ChartJsSteppedLineChartModel model = new ChartJsSteppedLineChartModel
+            {
+                Labels = new List<string> { "Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6" },
+                Label = "Dataset",
+                Data = new List<int> { 14, -74, 29,-42,1,67 },
+                BorderColor = "red"
+            };
+            return View(model);
+        }
+
+		public IActionResult MultiAxisLineChart()
+		{
+			ChartJsMultiAxisLineChartResponseModel model = new ChartJsMultiAxisLineChartResponseModel
+			{
+				DataCount = 7,
+				Labels = new List<string> {"January",
+							"February",
+							"March",
+							"April",
+							"May",
+							"June",
+							"July"},
+				Datasets = new List<ChartJsMultiAxisLineChartModel>
+				{
+					new ChartJsMultiAxisLineChartModel
+					{
+						label = "Dataset1",
+						data = Enumerable.Range(1, 7).Select(x => GenerateData (1, 100)).ToList(),
+						borderColor = "rgb(255, 99, 132)",
+						backgroundColor = "rgb(255, 99, 132)",
+						yAxisID = "y"
+					},
+					new ChartJsMultiAxisLineChartModel
+					{
+						label = "Dataset2",
+						data = Enumerable.Range(1, 7).Select(x => GenerateData (1, 100)).ToList(),
+						borderColor = "rgb(0, 191, 255)",
+						backgroundColor = "rgb(0, 191, 255)",
+						yAxisID = "y1"
+					}
+				}
+			};
+			return View(model);
+		}
+	}
 }

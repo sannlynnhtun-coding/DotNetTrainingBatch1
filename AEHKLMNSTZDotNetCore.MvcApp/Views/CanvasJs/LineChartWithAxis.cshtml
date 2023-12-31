@@ -1,0 +1,41 @@
+﻿@model CanvasJsLineChartWithAxisResponseModel
+
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+
+@section scripts {
+	<script>
+		window.onload = function () {
+
+			var chart = new CanvasJS.Chart("chartContainer", {
+				animationEnabled: true,
+				title: {
+					text: "Website Traffic"
+				},
+				axisX: {
+					valueFormatString: "DD MMM"
+				},
+				axisY: {
+					title: "Number of Visitors",
+					scaleBreaks: {
+						autoCalculate: true
+					}
+				},
+				data: [{
+					type: "line",
+					xValueFormatString: "DD MMM",
+					color: "#F08080",
+					dataPoints: [
+						{ x: new Date("@Model.DataPoints[0].x"), y: @Html.Raw(JsonConvert.SerializeObject(Model.DataPoints[0].y)) },
+						{ x: new Date("@Model.DataPoints[1].x"), y: @Html.Raw(JsonConvert.SerializeObject(Model.DataPoints[1].y)) },
+						{ x: new Date("@Model.DataPoints[2].x"), y: @Html.Raw(JsonConvert.SerializeObject(Model.DataPoints[2].y)) },
+						{ x: new Date("@Model.DataPoints[3].x"), y: @Html.Raw(JsonConvert.SerializeObject(Model.DataPoints[3].y)) },
+						{ x: new Date("@Model.DataPoints[4].x"), y: @Html.Raw(JsonConvert.SerializeObject(Model.DataPoints[4].y)) },
+						{ x: new Date("@Model.DataPoints[5].x"), y: @Html.Raw(JsonConvert.SerializeObject(Model.DataPoints[5].y)) },
+						{ x: new Date("@Model.DataPoints[6].x"), y: @Html.Raw(JsonConvert.SerializeObject(Model.DataPoints[6].y)) },
+					]
+				}]
+			});
+			chart.render();
+		}
+	</script>
+}

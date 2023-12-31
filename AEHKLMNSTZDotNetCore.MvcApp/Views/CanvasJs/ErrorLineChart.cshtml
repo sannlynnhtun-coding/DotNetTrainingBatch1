@@ -1,0 +1,44 @@
+﻿@model CanvasJsErrorLineChartResponseModel;
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+
+@section scripts{
+	<script>
+		window.onload = function () {
+
+
+			var chart = new CanvasJS.Chart("chartContainer", {
+				animationEnabled: true,
+				title: {
+					text: "Predicted Rainfall - 2017"
+				},
+				axisX: {
+					interval: 1
+				},
+				axisY: {
+					title: "Precipitation (in inch)",
+					suffix: " in"
+				},
+				toolTip: {
+					shared: true
+				},
+				data: [{
+					type: "line",
+					name: "Predicted",
+					toolTipContent: "<b>{label}</b><br><span style=\"color:#4F81BC\">{name}</span>: {y} in",
+					markerType: "none",
+					dataPoints: @Html.Raw(JsonConvert.SerializeObject(Model.predictedData))
+
+				},
+				{
+					type: "error",
+					name: "Error Range",
+					toolTipContent: "<span style=\"color:#C0504E\">{name}</span>: {y[0]} in - {y[1]} in",
+					dataPoints: @Html.Raw(JsonConvert.SerializeObject(Model.errors))
+
+				}]
+			});
+			chart.render();
+
+		}
+	</script>
+}

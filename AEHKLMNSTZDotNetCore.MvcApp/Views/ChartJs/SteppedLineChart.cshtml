@@ -1,0 +1,40 @@
+﻿@model ChartJsSteppedLineChartModel
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+
+@section scripts {
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        const data = {
+            labels: @Html.Raw(JsonConvert.SerializeObject(Model.Labels)),
+            datasets: [{
+                label: "@Model.Label",
+                data: @Html.Raw(JsonConvert.SerializeObject(Model.Data)),
+                borderColor: "@Model.BorderColor",
+                fill: false,
+                stepped: true,
+            }]
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                responsive: true,
+                interaction: {
+                    intersect: false,
+                    axis: 'x'
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: (ctx) => 'Step ' + ctx.chart.data.datasets[0].stepped + ' Interpolation',
+                    }
+                }
+            }
+        };
+        new Chart(ctx, config);
+    </script>
+}

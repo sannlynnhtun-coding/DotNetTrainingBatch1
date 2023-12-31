@@ -1,0 +1,63 @@
+﻿@model HighChartAreaRangeChartResponseModel
+
+<figure class="highcharts-figure">
+    <div id="container"></div>
+    <p class="highcharts-description">
+        Demonstrating an arearange chart with a low and high value per point. Area range charts are commonly used to visualize a range that changes over time.
+    </p>
+</figure>
+
+@section scripts{
+    <script>
+
+        Highcharts.chart('container', {
+            chart: {
+                type: 'arearange',
+                zoomType: 'x',
+                scrollablePlotArea: {
+                    minWidth: 600,
+                    scrollPositionX: 1
+                }
+            },
+            title: {
+                text: 'Temperature variation by day'
+            },
+            xAxis: {
+                type: 'datetime',
+                accessibility: {
+                    rangeDescription: 'Range: Jan 1st 2017 to Dec 31 2017.'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: null
+                }
+            },
+            tooltip: {
+                crosshairs: true,
+                shared: true,
+                valueSuffix: '°C',
+                xDateFormat: '%A, %b %e'
+            },
+            legend: {
+                enabled: false
+            },
+            series: [{
+                name: 'Temperatures',
+                data: @Html.Raw(JsonConvert.SerializeObject(Model.data)),
+                color: {
+                    linearGradient: {
+                        x1: 0,
+                        x2: 0,
+                        y1: 0,
+                        y2: 1
+                    },
+                    stops: [
+                        [0, '#ff0000'],
+                        [1, '#0000ff']
+                    ]
+                }
+            }]
+        });
+    </script>
+}
