@@ -289,6 +289,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             return View(model);
 
         }
+
         public IActionResult ColumnPyramidChart()
         {
             HighChartColumnPyramidChartModel model = new HighChartColumnPyramidChartModel
@@ -298,7 +299,6 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
-
 
         public IActionResult AreaRangeChart()
         {

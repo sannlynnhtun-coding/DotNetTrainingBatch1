@@ -319,6 +319,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
+
         public IActionResult PolarAreaChart()
         {
             ChartJsPolarAreaChartModel model = new ChartJsPolarAreaChartModel
