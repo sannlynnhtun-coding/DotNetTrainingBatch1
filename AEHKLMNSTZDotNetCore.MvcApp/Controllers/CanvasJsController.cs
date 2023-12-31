@@ -417,6 +417,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
+
 		public IActionResult DoughnutChart()
         {
             CanvasJsDoughnutChartResponseModel model = new CanvasJsDoughnutChartResponseModel()
@@ -491,7 +492,6 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
         {
             return View();
         }
-
 	}
 }
 
