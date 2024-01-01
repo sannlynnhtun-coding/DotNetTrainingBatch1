@@ -49,6 +49,50 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             return View(model);
         }
 
+        public IActionResult BubbleChart()
+        {
+            ChartJsBubbleResponseModel model = new ChartJsBubbleResponseModel
+            {
+                
+                DataSets = new List<ChartJsBubbleModel>
+                {
+                    new ChartJsBubbleModel
+                    {
+                        Data = new List<Point>
+                        {
+                            new Point { X = -2, Y = 5 },
+                            new Point { X = 81, Y = 16 },
+                            new Point { X = -19, Y = 8 },
+                            new Point { X = -53, Y = -1 },
+                            new Point { X = 67, Y = -56 },
+                            new Point { X = 9, Y = 88 },
+                            new Point { X = 76, Y = -62 }
+                        },
+                        Label = "Dataset 1",
+                        BorderColor = "rgb(255, 99, 132)",
+                        BackgroundColor = "rgb(255, 99, 132)"
+                    },
+                    new ChartJsBubbleModel
+                    {
+                        Data = new List<Point>
+                        {
+                            new Point { X = -5, Y = 30 },
+                            new Point { X = -3, Y = 10 },
+                            new Point { X = 15, Y = -2 },
+                            new Point { X = 45, Y = 5 },
+                            new Point { X = 6, Y = -4 },
+                            new Point { X = 20, Y = -32 },
+                            new Point { X = 60, Y = -40 }
+                        },
+                        Label = "Dataset 2",
+                        BorderColor = "rgb(255, 159, 64)",
+                        BackgroundColor = "rgb(255, 159, 64)"
+                    }
+                }
+            };
+            return View(model);
+        }
+
         public IActionResult StackedBarLineChart()
         {
             ChartJsStackedBarLineChartResponseModel model = new ChartJsStackedBarLineChartResponseModel
@@ -319,6 +363,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
+
         public IActionResult PolarAreaChart()
         {
             ChartJsPolarAreaChartModel model = new ChartJsPolarAreaChartModel
@@ -397,4 +442,6 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 			return View(model);
 		}
 	}
-}
+        
+
+    }

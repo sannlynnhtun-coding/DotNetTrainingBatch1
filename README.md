@@ -232,19 +232,23 @@ GO
 - EF Entity Framework (Code First => Create Table, Database First => use in Code) (CRUD)
 RepoDB
 
-Asp.Net Core Web Api (Rest Api)
-    Ado.Net
+- Asp.Net Core Web Api (Rest Api)
     - EF
-    Dapper
-Postman
+    - Dapper
+    - Ado.Net
+- Postman
+- Html, Css, JavaScript, jQuer Plugins (SweetAlert, Notiflix, Date Picker, DataTable, iCheck, ladda button, Toast)
+- Asp.Net Core MVC
+    - EF
+    - Dapper
+    - Ado.Net
+- Chart [ApexChart, ChartJs, HighCharts, CanvasJS]
+- UI Design
+
 Api Call [Console]
     HttpClient
     RestClient
     Refit
-Asp.Net Core MVC
-    Ado.Net
-    EF
-    Dapper
 Api Call [MVC]
     HttpClient
     RestClient
@@ -253,10 +257,7 @@ Minimal Api
 Text Logging
 Db Logging
 
-Chart [ApexChart, ChartJs, HighCharts, CanvasJS]
-
 SignalR - (Insert Data => UpdateChart, Chat Message)
-UI Design
 Blazor CRUD [Server, WASM]
 ------------------------------------------------------
 Deploy WASM

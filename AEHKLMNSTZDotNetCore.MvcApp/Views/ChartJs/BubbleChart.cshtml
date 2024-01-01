@@ -1,0 +1,51 @@
+﻿@model ChartJsBubbleResponseModel
+
+
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+
+@section scripts {
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        var _datasets = @Html.Raw(Json.Serialize(Model.DataSets));
+        var data = {
+            datasets: []
+        };
+
+        _datasets.forEach(function (dataset) {
+            var jsDataset = {
+                label: dataset.label,
+                data: [],
+                borderColor: dataset.borderColor,
+                backgroundColor: dataset.backgroundColor,
+                
+            };
+
+            dataset.data.forEach(function (point) {
+                jsDataset.data.push({ x: point.x, y: point.y });
+            });
+
+            data.datasets.push(jsDataset);
+        });
+
+        const config = {
+            type: 'bubble',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Chart.js Bubble Chart'
+                    }
+                }
+            },
+        };
+        new Chart(ctx, config);
+    </script>
+}

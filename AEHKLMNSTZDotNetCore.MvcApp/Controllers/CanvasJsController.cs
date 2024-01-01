@@ -125,6 +125,44 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             return View(model);
         }
 
+        public IActionResult BubbleChart() {
+            CanvasJsBubbleChartResponseModel model = new CanvasJsBubbleChartResponseModel
+            {
+                Title = "Fertility Rate vs Life Expectancy in Different Countries - 2015",
+                XAxisTitle = "Life Expectancy (in Years)",
+                YAxisTitle = "Fertility Rate",
+                Data = new List<CanvasJsBubbleChartModel> {
+                    new CanvasJsBubbleChartModel { X = 76, Y = 1.57,Z=1371.22,Name="China"},
+                    new CanvasJsBubbleChartModel { X = 78.7, Y = 1.84,Z=320.896,Name="US"},
+                    new CanvasJsBubbleChartModel { X = 69.1, Y = 2.44, Z = 258.162, Name = "Indonesia" },
+                    new CanvasJsBubbleChartModel { X = 74.7, Y = 1.78, Z = 225.962, Name = "Brazil" },
+                    new CanvasJsBubbleChartModel { X = 76.9, Y = 2.21, Z = 125.890, Name = "Mexico" },
+                    new CanvasJsBubbleChartModel { X = 53, Y = 5.59, Z = 181.181, Name = "Nigeria" },
+                    new CanvasJsBubbleChartModel { X = 83.8, Y = 1.46, Z =127.141, Name = "Japan" },
+                    new CanvasJsBubbleChartModel { X = 82.5, Y = 1.83, Z =23.789, Name = "Australia" },
+                    new CanvasJsBubbleChartModel { X = 71.3, Y = 3.31, Z = 93.778, Name = "Egypt" },
+                    new CanvasJsBubbleChartModel { X = 81.6, Y = 1.81, Z =65.128, Name = "UK" },
+                    new CanvasJsBubbleChartModel { X = 62.1, Y = 4.26, Z = 47.236, Name = "Kenya" },
+                    new CanvasJsBubbleChartModel { X = 69.6, Y = 4.51, Z = 36.115, Name = "Iraq" },
+                    new CanvasJsBubbleChartModel { X = 60.7, Y = 4.65, Z = 33.736, Name = "Afganistan" },
+                    new CanvasJsBubbleChartModel { X = 52.7, Y = 6, Z = 27.859, Name = "Angola" },
+                    new CanvasJsBubbleChartModel { X = 68.4, Y = 2.94, Z = 101.716, Name = "Philippines" },
+                    new CanvasJsBubbleChartModel { X = 70, Y = 2.17, Z = 28.656, Name = "Nepal" },
+                    new CanvasJsBubbleChartModel { X = 71.2, Y = 1.51, Z = 45.154, Name = "Ukrain" },
+                    new CanvasJsBubbleChartModel { X = 83.4, Y = 1.62, Z = 46.447, Name = "Spain" },
+                    new CanvasJsBubbleChartModel { X = 64.6, Y = 4.28, Z = 99.873, Name = "Ethiopia" },
+                    new CanvasJsBubbleChartModel { X = 74.6, Y = 1.5, Z = 68.65, Name = "Thailand" },
+                    new CanvasJsBubbleChartModel { X = 74.2, Y = 1.88, Z = 48.228, Name = "Colombia" },
+                    new CanvasJsBubbleChartModel { X = 74.44, Y = 2.34, Z = 31.155, Name = "Venezuela" },
+                    new CanvasJsBubbleChartModel { X = 57.4, Y = 2.34, Z = 55, Name = "South Africa" },
+                    new CanvasJsBubbleChartModel { X = 59.2, Y = 3.86, Z = 15.77, Name = "Zimbabwe" },
+                    new CanvasJsBubbleChartModel { X = 55.9, Y = 4.63, Z = 22.834, Name = "Cameroon" } 
+                    }
+                
+            };
+            return View(model);
+        }
+
         public IActionResult WaterfallChart()
         {
             // Sample data for Waterfall Chart
@@ -417,6 +455,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
+
 		public IActionResult DoughnutChart()
         {
             CanvasJsDoughnutChartResponseModel model = new CanvasJsDoughnutChartResponseModel()
@@ -491,7 +530,6 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
         {
             return View();
         }
-
 	}
 }
 
