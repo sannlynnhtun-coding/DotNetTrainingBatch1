@@ -399,6 +399,36 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
+
+        public IActionResult ColumnRangeChart()
+        {
+            HighChartColumnRangeResponseModel model = new HighChartColumnRangeResponseModel 
+            { 
+                categories = new List<string> {"Jan", "Feb", "Mar", "Apr", "May", "Jun",
+			"Jul", "Aug", "Sep", "Oct", "Nov", "Dec" },
+				series = new List<HighChartColumnRangeModel>
+				{
+					new HighChartColumnRangeModel {name = "Temperatures",data = new double[][]
+                    { new double[] {-13.9, 5.2},
+                        new double[] {-16.7, 10.6},
+                        new double[] {-4.7, 11.6},
+                        new double[] {-4.4, 16.8 },
+                        new double[] {-2.1, 27.2},
+                        new double[] {5.9, 29.4},
+                        new double[] {6.5, 29.1},
+                        new double[] {4.7, 25.4},
+                        new double[] {4.3, 21.6},
+                        new double[] {-3.5, 15.1},
+                        new double[] {-9.8, 12.5},
+                        new double[] { -11.5, 8.4 }
+                    } },
+
+
+                }
+
+			};
+            return View(model);
+        }
     }
 
 }
