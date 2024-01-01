@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Net.WebSockets;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 {
@@ -448,7 +449,6 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 			};
             return View(model);
         }
-    }
 
         public IActionResult AreaChart()
         {
@@ -491,6 +491,9 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
+    }
+
+        
 	}
-}
+
 
