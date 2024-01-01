@@ -8,7 +8,7 @@
     </p>
 </figure>
 
-@section scripts{
+@section scripts {
     <script>
         let Data = @Html.Raw(JsonConvert.SerializeObject(Model.Data));
         let data = Data.map(d => [d.Pyramid, d.Value]);
@@ -48,7 +48,7 @@
     </script>
 }
 
-@section style{
+@section style {
     <style>
         #container {
             height: 400px;
