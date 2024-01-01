@@ -291,9 +291,21 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
         }
         public IActionResult ColumnPyramidChart()
         {
-            HighChartColumnPyramidChartModel model = new HighChartColumnPyramidChartModel
+            HighChartColumnPyramidChartResponseModel model = new HighChartColumnPyramidChartResponseModel
             {
-                Color = new List<string> { "#C79D6D", "#B5927B", "#CE9B84", "#B7A58C", "#C7A58C" }
+
+                Color = new List<string> { "#C79D6D", "#B5927B", "#CE9B84", "#B7A58C", "#C7A58C" },
+                Data = new List<HighChartColumnPyramidChartModel>
+        {
+            new HighChartColumnPyramidChartModel {Pyramid="Pyramid of Khufu", Value=138.8 } ,
+            new HighChartColumnPyramidChartModel {Pyramid="Pyramid of Khafre", Value=136.4 } ,
+            new HighChartColumnPyramidChartModel {Pyramid="Red Pyramid", Value=104 } ,
+            new HighChartColumnPyramidChartModel {Pyramid="Bent Pyramid", Value=101.1 } ,
+            new HighChartColumnPyramidChartModel {Pyramid="Pyramid of the Sun", Value=75 } ,
+
+        }
+
+
 
             };
             return View(model);
