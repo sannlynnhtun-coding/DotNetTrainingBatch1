@@ -1,4 +1,4 @@
-﻿@model HighChartColumnPyramidChartModel
+﻿@model HighChartColumnPyramidChartResponseModel
 <figure class="highcharts-figure">
     <div id="container"></div>
     <p class="highcharts-description">
@@ -10,6 +10,8 @@
 
 @section scripts{
     <script>
+        let Data = @Html.Raw(JsonConvert.SerializeObject(Model.Data));
+        let data = Data.map(d => [d.Pyramid, d.Value]);
         Highcharts.chart('container', {
             chart: {
                 type: 'columnpyramid'
@@ -39,13 +41,7 @@
             series: [{
                 name: 'Height',
                 colorByPoint: true,
-                data: [
-                    ['Pyramid of Khufu', 138.8],
-                    ['Pyramid of Khafre', 136.4],
-                    ['Red Pyramid', 104],
-                    ['Bent Pyramid', 101.1],
-                    ['Pyramid of the Sun', 75]
-                ],
+                data: data,
                 showInLegend: false
             }]
         });

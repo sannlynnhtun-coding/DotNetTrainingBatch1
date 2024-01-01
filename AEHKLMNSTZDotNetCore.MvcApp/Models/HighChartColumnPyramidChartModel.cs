@@ -2,6 +2,7 @@
 {
     public class HighChartColumnPyramidChartModel
     {
-        public List<string> Color { get; set; }
+        public string Pyramid { get; set; }
+        public double Value { get; set; }
     }
 }

@@ -293,9 +293,21 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 
         public IActionResult ColumnPyramidChart()
         {
-            HighChartColumnPyramidChartModel model = new HighChartColumnPyramidChartModel
+            HighChartColumnPyramidChartResponseModel model = new HighChartColumnPyramidChartResponseModel
             {
-                Color = new List<string> { "#C79D6D", "#B5927B", "#CE9B84", "#B7A58C", "#C7A58C" }
+                
+                Color = new List<string> { "#C79D6D", "#B5927B", "#CE9B84", "#B7A58C", "#C7A58C" },
+                Data =new List<HighChartColumnPyramidChartModel> 
+                {
+                    new HighChartColumnPyramidChartModel {Pyramid="Pyramid of Khufu", Value=138.8 } ,
+                    new HighChartColumnPyramidChartModel {Pyramid="Pyramid of Khafre", Value=136.4 } ,
+                    new HighChartColumnPyramidChartModel {Pyramid="Red Pyramid", Value=104 } ,
+                    new HighChartColumnPyramidChartModel {Pyramid="Bent Pyramid", Value=101.1 } ,
+                    new HighChartColumnPyramidChartModel {Pyramid="Pyramid of the Sun", Value=75 } ,
+                   
+                }
+                 
+                
 
             };
             return View(model);
@@ -429,7 +441,7 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 				series = new List<HighChartColumnRangeModel>
 				{
 					new HighChartColumnRangeModel {name = "Temperatures",data = new double[][]
-                    { new double[] {-13.9, 5.2},
+                    {   new double[] {-13.9, 5.2},
                         new double[] {-16.7, 10.6},
                         new double[] {-4.7, 11.6},
                         new double[] {-4.4, 16.8 },
