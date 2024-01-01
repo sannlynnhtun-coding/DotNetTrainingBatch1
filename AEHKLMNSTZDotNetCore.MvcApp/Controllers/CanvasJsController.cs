@@ -368,54 +368,54 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             return View(model);
         }
 
-        public IActionResult SimpleLineChart()
-        {
-            CanvasJsSimpleLineChartResponseModel model = new CanvasJsSimpleLineChartResponseModel
-            {
-                DataPoints = new List<CanvasJsSimpleLineChartModel>
-                {
-                    new CanvasJsSimpleLineChartModel { Y = 450 },
-                    new CanvasJsSimpleLineChartModel { Y = 414 },
-                    new CanvasJsSimpleLineChartModel { Y = 520, IndexLabel = "\u2191 highest", MarkerColor = "red", MarkerType = "triangle" },
-                    new CanvasJsSimpleLineChartModel { Y = 460 },
-                    new CanvasJsSimpleLineChartModel { Y = 450 },
-                    new CanvasJsSimpleLineChartModel { Y = 500 },
-                    new CanvasJsSimpleLineChartModel { Y = 480 },
-                    new CanvasJsSimpleLineChartModel { Y = 480 },
-                    new CanvasJsSimpleLineChartModel { Y = 410, IndexLabel = "\u2193 lowest", MarkerColor = "DarkSlateGrey", MarkerType = "cross" },
-                    new CanvasJsSimpleLineChartModel { Y = 500 },
-                    new CanvasJsSimpleLineChartModel { Y = 480 },
-                    new CanvasJsSimpleLineChartModel { Y = 510 }
-                },
-                ChartTitle = "Simple Line Chart",
-                XAxisTitle = "X Axis Label",
-                YAxisTitle = "Y Axis Label"
-            };
-            return View(model);
-        }
+		public IActionResult SimpleLineChart()
+		{
+			CanvasJsSimpleLineChartResponseModel model = new CanvasJsSimpleLineChartResponseModel
+			{
+				DataPoints = new List<CanvasJsSimpleLineChartModel>
+				{
+					new CanvasJsSimpleLineChartModel { Y = 450 },
+					new CanvasJsSimpleLineChartModel { Y = 414 },
+					new CanvasJsSimpleLineChartModel { Y = 520, IndexLabel = "\u2191 highest", MarkerColor = "red", MarkerType = "triangle" },
+					new CanvasJsSimpleLineChartModel { Y = 460 },
+					new CanvasJsSimpleLineChartModel { Y = 450 },
+					new CanvasJsSimpleLineChartModel { Y = 500 },
+					new CanvasJsSimpleLineChartModel { Y = 480 },
+					new CanvasJsSimpleLineChartModel { Y = 480 },
+					new CanvasJsSimpleLineChartModel { Y = 410, IndexLabel = "\u2193 lowest", MarkerColor = "DarkSlateGrey", MarkerType = "cross" },
+					new CanvasJsSimpleLineChartModel { Y = 500 },
+					new CanvasJsSimpleLineChartModel { Y = 480 },
+					new CanvasJsSimpleLineChartModel { Y = 510 }
+				},
+				ChartTitle = "Simple Line Chart",
+				XAxisTitle = "X Axis Label",
+				YAxisTitle = "Y Axis Label"
+			};
+			return View(model);
+		}
 
-        public IActionResult AreaChart()
-        {
-            List<CanvasJsChartAreaChartModel> areaChartList = new List<CanvasJsChartAreaChartModel>()
-            {
-                new CanvasJsChartAreaChartModel(){Date=new DateTime(2023,12,25),EmailRecieved=30,EmailSent=20},
-                new CanvasJsChartAreaChartModel(){Date=new DateTime(2023,12,26),EmailRecieved=50,EmailSent=30},
-                new CanvasJsChartAreaChartModel(){Date=new DateTime(2023,12,27),EmailRecieved=20,EmailSent=25},
-                new CanvasJsChartAreaChartModel(){Date=new DateTime(2023,12,28),EmailRecieved=15,EmailSent=5},
-                new CanvasJsChartAreaChartModel(){Date=new DateTime(2023,12,29),EmailRecieved=70,EmailSent=44},
-                new CanvasJsChartAreaChartModel(){Date=new DateTime(2023,12,30),EmailRecieved=18,EmailSent=120},
-                new CanvasJsChartAreaChartModel(){Date=new DateTime(2023,12,31),EmailRecieved=150,EmailSent=100},
+		public IActionResult AreaChart()
+		{
+			List<CanvasJsChartAreaChartModel> areaChartList = new List<CanvasJsChartAreaChartModel>()
+			{
+				new CanvasJsChartAreaChartModel(){Date=new DateTime(2023,12,25),EmailRecieved=30,EmailSent=20},
+				new CanvasJsChartAreaChartModel(){Date=new DateTime(2023,12,26),EmailRecieved=50,EmailSent=30},
+				new CanvasJsChartAreaChartModel(){Date=new DateTime(2023,12,27),EmailRecieved=20,EmailSent=25},
+				new CanvasJsChartAreaChartModel(){Date=new DateTime(2023,12,28),EmailRecieved=15,EmailSent=5},
+				new CanvasJsChartAreaChartModel(){Date=new DateTime(2023,12,29),EmailRecieved=70,EmailSent=44},
+				new CanvasJsChartAreaChartModel(){Date=new DateTime(2023,12,30),EmailRecieved=18,EmailSent=120},
+				new CanvasJsChartAreaChartModel(){Date=new DateTime(2023,12,31),EmailRecieved=150,EmailSent=100},
 
-            };
+			};
 
-            CanvasJsChartAreaChartResponseModel model = new CanvasJsChartAreaChartResponseModel()
-            {
-                MinimumDate = new DateTime(2023, 12, 25),
-                MaximumDate = new DateTime(2023, 12, 31),
-                Data = areaChartList
-            };
-            return View(model);
-        }
+			CanvasJsChartAreaChartResponseModel model = new CanvasJsChartAreaChartResponseModel()
+			{
+				MinimumDate = new DateTime(2023, 12, 25),
+				MaximumDate = new DateTime(2023, 12, 31),
+				Data = areaChartList
+			};
+			return View(model);
+		}
 
         public IActionResult ErrorLineChart()
         {
@@ -455,8 +455,84 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
             };
             return View(model);
         }
-    }
+
+		public IActionResult DoughnutChart()
+        {
+            CanvasJsDoughnutChartResponseModel model = new CanvasJsDoughnutChartResponseModel()
+            {
+                DataPoints = new List<CanvasJsDoughnutChartModel>
+                {
+                    new CanvasJsDoughnutChartModel {x = 67, lable = "Inbox"},
+                    new CanvasJsDoughnutChartModel {x = 28, lable = "Archives"},
+                    new CanvasJsDoughnutChartModel {x = 10, lable = "Labels"},
+                    new CanvasJsDoughnutChartModel {x = 7, lable = "Drafts"},
+                    new CanvasJsDoughnutChartModel {x = 15, lable = "Trash"},
+                    new CanvasJsDoughnutChartModel {x = 6, lable = "Spam"},
+                }
+            };
+            return View(model);
+        }
+
+		public IActionResult LineChartWithAxis()
+		{
+			CanvasJsLineChartWithAxisResponseModel model = new CanvasJsLineChartWithAxisResponseModel
+			{
+				//Type = "line",
+				//      XValueFormatString = "DD MMM",
+				//      Color = "#F08080",
+				DataPoints = new List<CanvasJsLineChartWithAxisModel>
+				{
+					new CanvasJsLineChartWithAxisModel {x = new DateTime(2017, 1, 1) ,y = 610 },
+					new CanvasJsLineChartWithAxisModel {x = new DateTime(2017, 1, 2) ,y = 680 },
+					new CanvasJsLineChartWithAxisModel {x = new DateTime(2017, 1, 3) ,y = 690 },
+					new CanvasJsLineChartWithAxisModel {x = new DateTime(2017, 1, 4) ,y = 700 },
+					new CanvasJsLineChartWithAxisModel {x = new DateTime(2017, 1, 5) ,y = 710 },
+					new CanvasJsLineChartWithAxisModel {x = new DateTime(2017, 1, 6) ,y = 658 },
+					new CanvasJsLineChartWithAxisModel {x = new DateTime(2017, 1, 7) ,y = 734 },
+					new CanvasJsLineChartWithAxisModel {x = new DateTime(2017, 1, 8) ,y = 963 },
+					new CanvasJsLineChartWithAxisModel {x = new DateTime(2017, 1, 9) ,y = 1850 },
+					new CanvasJsLineChartWithAxisModel {x = new DateTime(2017, 1, 10) ,y = 1905 },
+					new CanvasJsLineChartWithAxisModel {x = new DateTime(2017, 1, 11) ,y = 1858 },
+					new CanvasJsLineChartWithAxisModel {x = new DateTime(2017, 1, 12) ,y = 1034 },
+					new CanvasJsLineChartWithAxisModel {x = new DateTime(2017, 1, 13) ,y = 847 },
+					new CanvasJsLineChartWithAxisModel {x = new DateTime(2017, 1, 14) ,y = 853 },
+					new CanvasJsLineChartWithAxisModel {x = new DateTime(2017, 1, 15) ,y = 750 }
+				}
+			};
+			return View(model);
+		}
+
+		public IActionResult ErrorBarChart()
+		{
+			CanvasJsErrorBarChartResponseModel model = new CanvasJsErrorBarChartResponseModel
+			{
+				Datapoints1 = new List<CanvasJsErrorBarChartModel>
+				{
+					new CanvasJsErrorBarChartModel { y = 94, label = "Order Accuracy" },
+					new CanvasJsErrorBarChartModel { y = 74, label = "Packaging" },
+					new CanvasJsErrorBarChartModel { y = 80, label = "Quantity" },
+					new CanvasJsErrorBarChartModel { y = 88, label = "Quality" },
+					new CanvasJsErrorBarChartModel { y = 76, label = "Delivery" }
+				},
+				Datapoints2 = new List<CanvasJsErrorBarChartModel>
+				{
+					new CanvasJsErrorBarChartModel { y2 = new List<int> {92, 98}, label2 = "Order Accuracy" },
+					new CanvasJsErrorBarChartModel { y2 = new List<int> {70, 78}, label2 = "Packaging" },
+					new CanvasJsErrorBarChartModel { y2 = new List<int> {78, 75}, label2 = "Quantity" },
+					new CanvasJsErrorBarChartModel { y2 = new List<int> {85, 92}, label2 = "Quality" },
+					new CanvasJsErrorBarChartModel { y2 = new List<int> {72, 78}, label2 = "Delivery" }
+				}
+			};
+			return View(model);
+		}
+
+        public IActionResult DynamicLineChart()
+        {
+            return View();
+        }
+	}
 }
+
 	
 
 

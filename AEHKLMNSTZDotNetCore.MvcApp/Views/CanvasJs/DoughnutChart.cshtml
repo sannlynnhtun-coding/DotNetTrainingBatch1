@@ -1,0 +1,33 @@
+﻿@model CanvasJsDoughnutChartResponseModel
+
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+@section scripts {
+	<script>
+		window.onload = function () {
+			var chart = new CanvasJS.Chart("chartContainer", {
+				animationEnabled: true,
+				title: {
+					text: "Email Categories",
+					horizontalAlign: "left"
+				},
+				data: [{
+					type: "doughnut",
+					startAngle: 60,
+					//innerRadius: 60,
+					indexLabelFontSize: 17,
+					indexLabel: "{label} - #percent%",
+					toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+					dataPoints: [
+						{ y: @Html.Raw(JsonConvert.SerializeObject(Model.DataPoints[0].x)),label: @Html.Raw(JsonConvert.SerializeObject(Model.DataPoints[0].lable)) },
+						{ y: @Html.Raw(JsonConvert.SerializeObject(Model.DataPoints[1].x)), label: @Html.Raw(JsonConvert.SerializeObject(Model.DataPoints[1].lable)) },
+						{ y: @Html.Raw(JsonConvert.SerializeObject(Model.DataPoints[2].x)), label: @Html.Raw(JsonConvert.SerializeObject(Model.DataPoints[2].lable)) },
+						{ y: @Html.Raw(JsonConvert.SerializeObject(Model.DataPoints[3].x)), label: @Html.Raw(JsonConvert.SerializeObject(Model.DataPoints[3].lable)) },
+						{ y: @Html.Raw(JsonConvert.SerializeObject(Model.DataPoints[4].x)), label: @Html.Raw(JsonConvert.SerializeObject(Model.DataPoints[4].lable)) },
+					]
+				}]
+			});
+			chart.render();
+
+		}
+	</script>
+}

@@ -1,0 +1,118 @@
+﻿@model HighChartAreaChartResponseModel
+
+<figure class="highcharts-figure">
+    <div id="container"></div>
+    <p class="highcharts-description">
+        Demonstrating a basic area chart, also known as a mountain chart.
+        Area charts are similar to line charts, but commonly used to visualize
+        volumes.
+    </p>
+</figure>
+
+
+@section scripts {
+    <script>
+        // Data retrieved from https://fas.org/issues/nuclear-weapons/status-world-nuclear-forces/
+        Highcharts.chart('container', {
+            chart: {
+                type: 'area'
+            },
+            accessibility: {
+                description: 'Image description: An area chart compares the nuclear stockpiles of the USA and the USSR/Russia between 1945 and 2017. The number of nuclear weapons is plotted on the Y-axis and the years on the X-axis. The chart is interactive, and the year-on-year stockpile levels can be traced for each country. The US has a stockpile of 6 nuclear weapons at the dawn of the nuclear age in 1945. This number has gradually increased to 369 by 1950 when the USSR enters the arms race with 6 weapons. At this point, the US starts to rapidly build its stockpile culminating in 32,040 warheads by 1966 compared to the USSR’s 7,089. From this peak in 1966, the US stockpile gradually decreases as the USSR’s stockpile expands. By 1978 the USSR has closed the nuclear gap at 25,393. The USSR stockpile continues to grow until it reaches a peak of 45,000 in 1986 compared to the US arsenal of 24,401. From 1986, the nuclear stockpiles of both countries start to fall. By 2000, the numbers have fallen to 10,577 and 21,000 for the US and Russia, respectively. The decreases continue until 2017 at which point the US holds 4,018 weapons compared to Russia’s 4,500.'
+            },
+            title: {
+                text: 'US and USSR nuclear stockpiles'
+            },
+            subtitle: {
+                text: 'Source: <a href="https://fas.org/issues/nuclear-weapons/status-world-nuclear-forces/" ' +
+                    'target="_blank">FAS</a>'
+            },
+            xAxis: {
+                allowDecimals: false,
+                accessibility: {
+                    rangeDescription: 'Range: 1940 to 2017.'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Nuclear weapon states'
+                }
+            },
+            tooltip: {
+                pointFormat: '{series.name} had stockpiled <b>{point.y:,.0f}</b><br/>warheads in {point.x}'
+            },
+            plotOptions: {
+                area: {
+                    pointStart: 1940,
+                    marker: {
+                        enabled: false,
+                        symbol: 'circle',
+                        radius: 2,
+                        states: {
+                            hover: {
+                                enabled: true
+                            }
+                        }
+                    }
+                }
+            },
+            series: [
+                @Html.Raw(JsonConvert.SerializeObject(Model.Series[0])),
+                @Html.Raw(JsonConvert.SerializeObject(Model.Series[1])),
+            ]
+        });
+
+    </script>
+}
+
+@section style {
+	<style>
+		.highcharts-figure,
+.highcharts-data-table table {
+    min-width: 320px;
+    max-width: 800px;
+    margin: 1em auto;
+}
+
+#container {
+    height: 450px;
+}
+
+.highcharts-data-table table {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #ebebeb;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+}
+
+.highcharts-data-table th {
+    font-weight: 600;
+    padding: 0.5em;
+}
+
+.highcharts-data-table td,
+.highcharts-data-table th,
+.highcharts-data-table caption {
+    padding: 0.5em;
+}
+
+.highcharts-data-table thead tr,
+.highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+.highcharts-data-table tr:hover {
+    background: #f1f7ff;
+}
+
+	</style>
+}
