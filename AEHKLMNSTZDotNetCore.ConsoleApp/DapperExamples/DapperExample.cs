@@ -24,6 +24,7 @@ namespace AEHKLMNSTZDotNetCore.ConsoleApp.DapperExamples
                 Password = "sa@123",
             };
         }
+
         public void Run()
         {
             //Read();
@@ -33,6 +34,7 @@ namespace AEHKLMNSTZDotNetCore.ConsoleApp.DapperExamples
             //Update(2, "test 6", "test 7", "test 8");
             //Delete(2);
         }
+
         private void Read()
         {
             #region Read / Retrieve
@@ -51,6 +53,7 @@ namespace AEHKLMNSTZDotNetCore.ConsoleApp.DapperExamples
             }
             #endregion
         }
+
         private void Edit(int id)
         {
             #region Edit
@@ -76,6 +79,7 @@ namespace AEHKLMNSTZDotNetCore.ConsoleApp.DapperExamples
 
             #endregion
         }
+
         private void Create(string title, string author, string content)
         {
             #region Create
@@ -104,6 +108,7 @@ namespace AEHKLMNSTZDotNetCore.ConsoleApp.DapperExamples
 
             #endregion
         }
+
         private void Update(int id, string title, string author, string content)
         {
             #region Update
@@ -131,6 +136,7 @@ namespace AEHKLMNSTZDotNetCore.ConsoleApp.DapperExamples
 
             #endregion
         }
+
         private void Delete(int id)
         {
             #region Delete

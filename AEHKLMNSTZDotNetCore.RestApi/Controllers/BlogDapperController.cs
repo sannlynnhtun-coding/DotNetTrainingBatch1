@@ -38,6 +38,7 @@ namespace AEHKLMNSTZDotNetCore.RestApi.Controllers
             return Ok(model);
         }
 
+        [HttpPost]
         public IActionResult CreateBlog([FromBody] BlogDataModel blog)
         {
             string query = $@"INSERT INTO [dbo].[Tbl_Blog]
@@ -61,6 +62,7 @@ namespace AEHKLMNSTZDotNetCore.RestApi.Controllers
             return Ok(model);
         }
 
+        [HttpGet("{id}")]
         public IActionResult EditBlog(int id)
         {
             string query = "SELECT * FROM [Tbl_Blog] WHERE [Blog_Id] = @Blog_Id";
@@ -88,7 +90,7 @@ namespace AEHKLMNSTZDotNetCore.RestApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] BlogDataModel blog)
+        public IActionResult UpdateBlog(int id, [FromBody] BlogDataModel blog)
         {
             string query = @"UPDATE [dbo].[Tbl_Blog]
                              SET
@@ -117,7 +119,7 @@ namespace AEHKLMNSTZDotNetCore.RestApi.Controllers
         }
 
         [HttpPatch("{id}")]
-        public IActionResult PatchStudent(int id, [FromBody] BlogDataModel blog)
+        public IActionResult PatchBlog(int id, [FromBody] BlogDataModel blog)
         {
             string query = "SELECT * FROM [Tbl_Blog] WHERE [Blog_Id] = @Blog_Id";
             blog.Blog_Id = id;
@@ -164,7 +166,7 @@ namespace AEHKLMNSTZDotNetCore.RestApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteStudent(int id)
+        public IActionResult DeleteBlog(int id)
         {
             string query = @"DELETE FROM [dbo].[Tbl_Blog] WHERE [Blog_Id] = @Blog_Id";
 

@@ -15,6 +15,7 @@ namespace AEHKLMNSTZDotNetCore.ConsoleApp.EFCore_Examples
         {
             _dbContext = new AppDbContext();
         }
+
         public void Run()
         {
             //Read();
@@ -24,6 +25,7 @@ namespace AEHKLMNSTZDotNetCore.ConsoleApp.EFCore_Examples
             //Update(2004, "test 8.53", "test 2", "test 3");
             //Delete(2004);
         }
+
         private void Read()
         {
             List<BlogDataModel> lst = _dbContext.Blogs.ToList();
@@ -36,6 +38,7 @@ namespace AEHKLMNSTZDotNetCore.ConsoleApp.EFCore_Examples
                 Console.WriteLine(item.Blog_Content);
             }
         }
+
         private void Edit(int id)
         {
             
@@ -51,6 +54,7 @@ namespace AEHKLMNSTZDotNetCore.ConsoleApp.EFCore_Examples
             Console.WriteLine(item.Blog_Author);
             Console.WriteLine(item.Blog_Content);
         }
+
         private void Create(string title, string author, string content)
         {
             BlogDataModel blog = new BlogDataModel
@@ -85,6 +89,7 @@ namespace AEHKLMNSTZDotNetCore.ConsoleApp.EFCore_Examples
             string message = result > 0 ? "Updating Successful." : "Updating Failed.";
             Console.WriteLine(message);
         }
+
         private void Delete(int id)
         {
             var blog = _dbContext.Blogs.FirstOrDefault(x => x.Blog_Id == id);
