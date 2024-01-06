@@ -29,9 +29,11 @@ namespace AEHKLMNSTZDotNetCore.ConsoleApp.HttpClientExamples
             //await Edit(2);
             //await Edit(6010);
             await Create("test 8.50", "test 2", "test 3");
+            await Update(6010, "test", "test", "test");
+            await Delete(6010);
         }
 
-        public async Task Read()
+        private async Task Read()
         {
             HttpClient client = new HttpClient();
             HttpResponseMessage response = await client.GetAsync("https://localhost:7244/api/blog");
@@ -49,7 +51,7 @@ namespace AEHKLMNSTZDotNetCore.ConsoleApp.HttpClientExamples
             }
         }
 
-        public async Task Edit(int id)
+        private async Task Edit(int id)
         {
             HttpClient client = new HttpClient();
             HttpResponseMessage response = await client.GetAsync($"https://localhost:7244/api/blog/{id}");
@@ -71,7 +73,7 @@ namespace AEHKLMNSTZDotNetCore.ConsoleApp.HttpClientExamples
             }
         }
 
-        public async Task Create(string title, string author, string content)
+        private async Task Create(string title, string author, string content)
         {
             BlogDataModel blog = new BlogDataModel
             {
@@ -91,5 +93,51 @@ namespace AEHKLMNSTZDotNetCore.ConsoleApp.HttpClientExamples
                 await Console.Out.WriteLineAsync(model.Message);
             }
         }
+
+        private async Task Update(int id, string title, string author, string content)
+        {
+            BlogDataModel blog = new BlogDataModel
+            {
+                Blog_Title = title,
+                Blog_Author = author,
+                Blog_Content = content
+            };
+            string jsonBlog = JsonConvert.SerializeObject(blog);
+            HttpContent httpContent = new StringContent(jsonBlog, Encoding.UTF8, Application.Json);
+
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.PutAsync($"https://localhost:7244/api/blog/{id}", httpContent);
+            if (response.IsSuccessStatusCode)
+            {
+                string jsonStr = await response.Content.ReadAsStringAsync();
+                var model = JsonConvert.DeserializeObject<BlogResponseModel>(jsonStr);
+                await Console.Out.WriteLineAsync(model.Message);
+            }
+            else
+            {
+                string jsonStr = await response.Content.ReadAsStringAsync();
+                var model = JsonConvert.DeserializeObject<BlogResponseModel>(jsonStr);
+                Console.WriteLine(model.Message);
+            }
+        }
+
+        private async Task Delete(int id)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.DeleteAsync($"https://localhost:7244/api/blog/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                string jsonStr = await response.Content.ReadAsStringAsync();
+                var model = JsonConvert.DeserializeObject<BlogResponseModel>(jsonStr);
+                Console.WriteLine(model.Message);
+            }
+            else
+            {
+                string jsonStr = await response.Content.ReadAsStringAsync();
+                var model = JsonConvert.DeserializeObject<BlogResponseModel>(jsonStr);
+                Console.WriteLine(model.Message);
+            }
+        }
+
     }
 }
