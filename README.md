@@ -285,14 +285,14 @@ RepoDB
 - Chart [ApexChart, ChartJs, HighCharts, CanvasJS]
 - UI Design
 
-Api Call [Console]
-    HttpClient
-    RestClient
-    Refit
-Api Call [MVC]
-    HttpClient
-    RestClient
-    Refit
+- Api Call [Console]
+    - HttpClient
+    - RestClient
+    - Refit
+- Api Call [MVC]
+    - HttpClient
+    - RestClient
+    - Refit
 Minimal Api
 Text Logging
 Db Logging

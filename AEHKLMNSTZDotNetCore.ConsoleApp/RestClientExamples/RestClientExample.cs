@@ -1,15 +1,15 @@
 ﻿using AEHKLMNSTZDotNetCore.ConsoleApp.Model;
 using Newtonsoft.Json;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
-namespace AEHKLMNSTZDotNetCore.ConsoleApp.HttpClientExamples
+namespace AEHKLMNSTZDotNetCore.ConsoleApp.RestClientExamples
 {
-    public class HttpClientExample
+    internal class RestClientExample
     {
         public async Task Run()
         {
@@ -25,7 +25,7 @@ namespace AEHKLMNSTZDotNetCore.ConsoleApp.HttpClientExamples
             // patch
             // delete
 
-            //await Read();
+            await Read();
             //await Edit(2);
             //await Edit(6010);
             await Create("test 8.50", "test 2", "test 3");
@@ -35,11 +35,13 @@ namespace AEHKLMNSTZDotNetCore.ConsoleApp.HttpClientExamples
 
         private async Task Read()
         {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync("https://localhost:7244/api/blog");
+            RestRequest request = new RestRequest("https://localhost:7244/api/blog", Method.Get);
+            RestClient client = new RestClient();
+            //await client.GetAsync(request);
+            var response = await client.ExecuteAsync(request);
             if (response.IsSuccessStatusCode)
             {
-                string jsonStr = await response.Content.ReadAsStringAsync();
+                string jsonStr = response.Content!;
                 var model = JsonConvert.DeserializeObject<BlogListResponseModel>(jsonStr);
                 foreach (var item in model!.Data)
                 {
@@ -53,11 +55,12 @@ namespace AEHKLMNSTZDotNetCore.ConsoleApp.HttpClientExamples
 
         private async Task Edit(int id)
         {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync($"https://localhost:7244/api/blog/{id}");
+            RestRequest request = new RestRequest($"https://localhost:7244/api/blog/{id}", Method.Get);
+            RestClient client = new RestClient();
+            var response = await client.ExecuteAsync(request);
             if (response.IsSuccessStatusCode)
             {
-                string jsonStr = await response.Content.ReadAsStringAsync();
+                string jsonStr = response.Content!;
                 var model = JsonConvert.DeserializeObject<BlogResponseModel>(jsonStr);
                 var item = model!.Data;
                 Console.WriteLine(item.Blog_Id);
@@ -67,9 +70,9 @@ namespace AEHKLMNSTZDotNetCore.ConsoleApp.HttpClientExamples
             }
             else
             {
-                string jsonStr = await response.Content.ReadAsStringAsync();
+                string jsonStr = response.Content!;
                 var model = JsonConvert.DeserializeObject<BlogResponseModel>(jsonStr);
-                Console.WriteLine(model.Message);
+                Console.WriteLine(model!.Message);
             }
         }
 
@@ -81,14 +84,13 @@ namespace AEHKLMNSTZDotNetCore.ConsoleApp.HttpClientExamples
                 Blog_Author = author,
                 Blog_Content = content
             };
-            string jsonBlog = JsonConvert.SerializeObject(blog);
-            HttpContent httpContent = new StringContent(jsonBlog, Encoding.UTF8, Application.Json);
-
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.PostAsync("https://localhost:7244/api/blog", httpContent);
+            RestRequest request = new RestRequest("https://localhost:7244/api/blog", Method.Post);
+            request.AddJsonBody(blog);
+            RestClient client = new RestClient();
+            var response = await client.ExecuteAsync(request);
             if (response.IsSuccessStatusCode)
             {
-                string jsonStr = await response.Content.ReadAsStringAsync();
+                string jsonStr = response.Content!;
                 var model = JsonConvert.DeserializeObject<BlogResponseModel>(jsonStr);
                 await Console.Out.WriteLineAsync(model.Message);
             }
@@ -102,40 +104,40 @@ namespace AEHKLMNSTZDotNetCore.ConsoleApp.HttpClientExamples
                 Blog_Author = author,
                 Blog_Content = content
             };
-            string jsonBlog = JsonConvert.SerializeObject(blog);
-            HttpContent httpContent = new StringContent(jsonBlog, Encoding.UTF8, Application.Json);
-
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.PutAsync($"https://localhost:7244/api/blog/{id}", httpContent);
+            RestRequest request = new RestRequest($"https://localhost:7244/api/blog/{id}", Method.Put);
+            request.AddJsonBody(blog);
+            RestClient client = new RestClient();
+            var response = await client.ExecuteAsync(request);
             if (response.IsSuccessStatusCode)
             {
-                string jsonStr = await response.Content.ReadAsStringAsync();
+                string jsonStr = response.Content!;
                 var model = JsonConvert.DeserializeObject<BlogResponseModel>(jsonStr);
-                await Console.Out.WriteLineAsync(model.Message);
+                await Console.Out.WriteLineAsync(model!.Message);
             }
             else
             {
-                string jsonStr = await response.Content.ReadAsStringAsync();
+                string jsonStr = response.Content!;
                 var model = JsonConvert.DeserializeObject<BlogResponseModel>(jsonStr);
-                Console.WriteLine(model.Message);
+                Console.WriteLine(model!.Message);
             }
         }
 
         private async Task Delete(int id)
         {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.DeleteAsync($"https://localhost:7244/api/blog/{id}");
+            RestRequest request = new RestRequest($"https://localhost:7244/api/blog/{id}", Method.Delete);
+            RestClient client = new RestClient();
+            var response = await client.ExecuteAsync(request);
             if (response.IsSuccessStatusCode)
             {
-                string jsonStr = await response.Content.ReadAsStringAsync();
+                string jsonStr = response.Content!;
                 var model = JsonConvert.DeserializeObject<BlogResponseModel>(jsonStr);
-                Console.WriteLine(model.Message);
+                Console.WriteLine(model!.Message);
             }
             else
             {
-                string jsonStr = await response.Content.ReadAsStringAsync();
+                string jsonStr = response.Content!;
                 var model = JsonConvert.DeserializeObject<BlogResponseModel>(jsonStr);
-                Console.WriteLine(model.Message);
+                Console.WriteLine(model!.Message);
             }
         }
     }

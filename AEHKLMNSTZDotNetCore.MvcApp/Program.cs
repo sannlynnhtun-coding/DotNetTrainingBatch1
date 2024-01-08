@@ -1,5 +1,9 @@
 using AEHKLMNSTZDotNetCore.MvcApp.EFDbContext;
+using AEHKLMNSTZDotNetCore.MvcApp.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Refit;
+using RestSharp;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,9 +13,33 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     string? connectionString = builder.Configuration.GetConnectionString("DbConnection");
     options.UseSqlServer(connectionString);
-}, 
-ServiceLifetime.Transient, 
+},
+ServiceLifetime.Transient,
 ServiceLifetime.Transient);
+
+#region Refit
+
+builder.Services
+    .AddRefitClient<IBlogApi>()
+    .ConfigureHttpClient(c => c.BaseAddress = new Uri(builder.Configuration.GetSection("RestApiUrl").Value!));
+
+#endregion
+
+#region HttpClient
+
+//builder.Services.AddScoped<HttpClient>();
+builder.Services.AddScoped(x => new HttpClient
+{
+    BaseAddress = new Uri(builder.Configuration.GetSection("RestApiUrl").Value!)
+});
+
+#endregion
+
+#region RestClient
+
+builder.Services.AddScoped(x=> new RestClient(builder.Configuration.GetSection("RestApiUrl").Value!));
+
+#endregion
 
 var app = builder.Build();
 
