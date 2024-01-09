@@ -3,6 +3,7 @@ using AEHKLMNSTZDotNetCore.ConsoleApp.AdoDotNetExamples;
 using AEHKLMNSTZDotNetCore.ConsoleApp.DapperExamples;
 using AEHKLMNSTZDotNetCore.ConsoleApp.EFCore_Examples;
 using AEHKLMNSTZDotNetCore.ConsoleApp.HttpClientExamples;
+using AEHKLMNSTZDotNetCore.ConsoleApp.RefitExamples;
 
 
 
@@ -16,7 +17,10 @@ using AEHKLMNSTZDotNetCore.ConsoleApp.HttpClientExamples;
 Console.WriteLine("Please wait for api...");
 Console.ReadKey();
 
-HttpClientExample httpClientExample = new HttpClientExample();
-await httpClientExample.Run();
+//HttpClientExample httpClientExample = new HttpClientExample();
+//await httpClientExample.Run();
+
+RefitExample refitExample = new RefitExample();
+await refitExample.Run();
 
 Console.ReadKey();

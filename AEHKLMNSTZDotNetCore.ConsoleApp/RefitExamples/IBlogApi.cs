@@ -18,5 +18,11 @@ namespace AEHKLMNSTZDotNetCore.ConsoleApp.RefitExamples
 
         [Post("/api/blog")]
         Task<BlogResponseModel> CreateBlog(BlogDataModel blog);
+
+        [Put("/api/blog/{id}")]
+        Task<BlogResponseModel> UpdateBlog(int id, BlogDataModel blog);
+
+        [Delete("/api/blog/{id}")]
+        Task<BlogResponseModel> DeleteBlog(int id);
     }
 }
