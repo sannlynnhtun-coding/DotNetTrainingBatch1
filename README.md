@@ -1,3 +1,13 @@
+https://medium.com/checkout-com-techblog/json-handling-in-net-2a14612e0388
+```csharp
+builder.Services.ConfigureHttpJsonOptions(option =>
+{
+    option.SerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+    option.SerializerOptions.PropertyNamingPolicy = null;
+});
+```
+
+
 https://learn.microsoft.com/en-us/aspnet/core/fundamentals/app-state?view=aspnetcore-7.0
 
 ```csharp

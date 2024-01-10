@@ -1,6 +1,8 @@
 using AEHKLMNSTZDotNetCore.MinimalApi;
 using AEHKLMNSTZDotNetCore.MinimalApi.Features.Blog;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,13 @@ var builder = WebApplication.CreateBuilder(args);
 //    opt.JsonSerializerOptions.PropertyNameCaseInsensitive = false;
 //    opt.JsonSerializerOptions.PropertyNamingPolicy = null;
 //});
+
+builder.Services.ConfigureHttpJsonOptions(option =>
+{
+    option.SerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+    option.SerializerOptions.PropertyNamingPolicy = null;
+});
+
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
