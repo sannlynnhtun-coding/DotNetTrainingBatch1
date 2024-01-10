@@ -29,7 +29,7 @@ namespace AEHKLMNSTZDotNetCore.RestApi.Controllers
         }
 
         [HttpGet("{pageNo}/{pageSize}")]
-        public IActionResult GetBlogs(int pageNo, int pageSize)
+        public IActionResult GetBlogs(int pageNo = 1, int pageSize = 10)
         {
             //pageNo = 1;
             //pageSize = 10;

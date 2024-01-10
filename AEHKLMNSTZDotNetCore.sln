@@ -18,7 +18,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AEHKLMNSTZDotNetCore.RestAp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AEHKLMNSTZDotNetCore.ThemeMvcApp", "AEHKLMNSTZDotNetCore.ThemeMvcApp\AEHKLMNSTZDotNetCore.ThemeMvcApp.csproj", "{101388E8-7958-422A-9988-BF6290061448}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AEHKLMNSTZDotNetCore.LoginWebApp", "AEHKLMNSTZDotNetCore.LoginWebApp\AEHKLMNSTZDotNetCore.LoginWebApp.csproj", "{FBBDB101-3046-4FAB-840D-C702EDB2BD5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AEHKLMNSTZDotNetCore.LoginWebApp", "AEHKLMNSTZDotNetCore.LoginWebApp\AEHKLMNSTZDotNetCore.LoginWebApp.csproj", "{FBBDB101-3046-4FAB-840D-C702EDB2BD5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AEHKLMNSTZDotNetCore.MinimalApi", "AEHKLMNSTZDotNetCore.MinimalApi\AEHKLMNSTZDotNetCore.MinimalApi.csproj", "{24D079A7-9A5F-472C-950A-476BADF0F2F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +52,10 @@ Global
 		{FBBDB101-3046-4FAB-840D-C702EDB2BD5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBBDB101-3046-4FAB-840D-C702EDB2BD5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBBDB101-3046-4FAB-840D-C702EDB2BD5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24D079A7-9A5F-472C-950A-476BADF0F2F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24D079A7-9A5F-472C-950A-476BADF0F2F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24D079A7-9A5F-472C-950A-476BADF0F2F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24D079A7-9A5F-472C-950A-476BADF0F2F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
