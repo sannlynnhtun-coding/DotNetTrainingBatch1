@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllersWithViews().AddJsonOptions(opt =>
-{
-    opt.JsonSerializerOptions.PropertyNameCaseInsensitive = false;
-    opt.JsonSerializerOptions.PropertyNamingPolicy = null;
-});
+//builder.Services.AddControllersWithViews().AddJsonOptions(opt =>
+//{
+//    opt.JsonSerializerOptions.PropertyNameCaseInsensitive = false;
+//    opt.JsonSerializerOptions.PropertyNamingPolicy = null;
+//});
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
