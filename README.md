@@ -1,3 +1,8 @@
+
+Scaffold-DbContext "Server=.;Database=TestDb;User ID=sa;Password=sa@123;Trusted_Connection=True;Trust Server Certificate=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Context AppDbContext -Tables Tbl_Blog_
+
+https://www.entityframeworktutorial.net/efcore/create-model-for-existing-database-in-ef-core.aspx
+
 https://medium.com/checkout-com-techblog/json-handling-in-net-2a14612e0388
 ```csharp
 builder.Services.ConfigureHttpJsonOptions(option =>
@@ -303,7 +308,7 @@ RepoDB
     - HttpClient
     - RestClient
     - Refit
-Minimal Api
+- Minimal Api
 Text Logging
 Db Logging
 
