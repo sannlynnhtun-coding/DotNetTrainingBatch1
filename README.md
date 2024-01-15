@@ -1,3 +1,5 @@
+![Alt text](https://i.stack.imgur.com/7o9Kk.png)
+
 
 Scaffold-DbContext "Server=.;Database=TestDb;User ID=sa;Password=sa@123;Trusted_Connection=True;Trust Server Certificate=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Context AppDbContext -Tables Tbl_Blog_
 
@@ -309,7 +311,7 @@ RepoDB
     - RestClient
     - Refit
 - Minimal Api
-Text Logging
+Text Logging (serilog, nlog, log4net)
 Db Logging
 
 SignalR - (Insert Data => UpdateChart, Chat Message)

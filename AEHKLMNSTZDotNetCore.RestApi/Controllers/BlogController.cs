@@ -9,9 +9,11 @@ namespace AEHKLMNSTZDotNetCore.RestApi.Controllers
     public class BlogController : ControllerBase
     {
         private readonly AppDbContext _context;
-        public BlogController(AppDbContext context)
+        private readonly ILogger<BlogController> _logger;
+        public BlogController(AppDbContext context, ILogger<BlogController> logger)
         {
-            _context=context;
+            _context = context;
+            _logger = logger;
         }
 
         [HttpGet]
