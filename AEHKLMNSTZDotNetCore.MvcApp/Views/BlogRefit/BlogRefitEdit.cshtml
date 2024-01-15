@@ -1,0 +1,21 @@
+﻿@model BlogResponseModel
+@{
+	ViewData["Title"] = "BlogRefit Edit";
+}
+
+<form action="/blogrefit/update?id=@Model.Data.Blog_Id" method="post">
+	<div class="mb-3">
+		<label class="form-label">Title</label>
+		<input type="text" name="Blog_Title" value="@Model.Data.Blog_Title" class="form-control">
+	</div>
+	<div class="mb-3">
+		<label class="form-label">Author</label>
+		<input type="text" name="Blog_Author" value="@Model.Data.Blog_Author" class="form-control">
+	</div>
+	<div class="mb-3">
+		<label class="form-label">Content</label>
+		<input type="text" name="Blog_Content" value="@Model.Data.Blog_Content" class="form-control">
+	</div>
+	<a href="/blogrefit" class="btn btn-secondary">Cancel</a>
+	<button type="submit" class="btn btn-success">Update</button>
+</form>
