@@ -1,6 +1,9 @@
 https://learn.microsoft.com/en-us/aspnet/core/tutorials/signalr?view=aspnetcore-7.0&tabs=visual-studio
 
 
+username
+a => browser, mobile, other browser
+
 how to get the project name in Code?
 
 
