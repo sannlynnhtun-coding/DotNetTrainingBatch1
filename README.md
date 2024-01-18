@@ -1,3 +1,13 @@
+how to get the project name in Code?
+
+
+CustomLog as DbLog
+
+
+Serilog - TextLog, DbLog
+Nlog    - TextLog, DbLog
+Log4net - TextLog, DbLog
+
 ![Alt text](https://i.stack.imgur.com/7o9Kk.png)
 
 
