@@ -22,9 +22,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AEHKLMNSTZDotNetCore.LoginW
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AEHKLMNSTZDotNetCore.MinimalApi", "AEHKLMNSTZDotNetCore.MinimalApi\AEHKLMNSTZDotNetCore.MinimalApi.csproj", "{24D079A7-9A5F-472C-950A-476BADF0F2F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AEHKLMNSTZDotNetCore.DbFirstCommandApp", "AEHKLMNSTZDotNetCore.DbFirstCommandApp\AEHKLMNSTZDotNetCore.DbFirstCommandApp.csproj", "{FE4FD106-9722-4909-A679-6564E58361DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AEHKLMNSTZDotNetCore.DbFirstCommandApp", "AEHKLMNSTZDotNetCore.DbFirstCommandApp\AEHKLMNSTZDotNetCore.DbFirstCommandApp.csproj", "{FE4FD106-9722-4909-A679-6564E58361DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AEHKLMNSTZDotNetCore.LoggingConsoleApp", "AEHKLMNSTZDotNetCore.LoggingConsoleApp\AEHKLMNSTZDotNetCore.LoggingConsoleApp.csproj", "{7A1F7709-DE4C-4619-B95F-31B5F3A30CDF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AEHKLMNSTZDotNetCore.LoggingConsoleApp", "AEHKLMNSTZDotNetCore.LoggingConsoleApp\AEHKLMNSTZDotNetCore.LoggingConsoleApp.csproj", "{7A1F7709-DE4C-4619-B95F-31B5F3A30CDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AEHKLMNSTZDotNetCore.SignalRChatApp", "AEHKLMNSTZDotNetCore.SignalRChatApp\AEHKLMNSTZDotNetCore.SignalRChatApp.csproj", "{730BCC63-41AC-4668-8FCA-2A923AEC9B36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,6 +70,10 @@ Global
 		{7A1F7709-DE4C-4619-B95F-31B5F3A30CDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A1F7709-DE4C-4619-B95F-31B5F3A30CDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A1F7709-DE4C-4619-B95F-31B5F3A30CDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{730BCC63-41AC-4668-8FCA-2A923AEC9B36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{730BCC63-41AC-4668-8FCA-2A923AEC9B36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{730BCC63-41AC-4668-8FCA-2A923AEC9B36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{730BCC63-41AC-4668-8FCA-2A923AEC9B36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

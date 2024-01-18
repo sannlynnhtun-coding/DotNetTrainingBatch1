@@ -1,3 +1,6 @@
+https://learn.microsoft.com/en-us/aspnet/core/tutorials/signalr?view=aspnetcore-7.0&tabs=visual-studio
+
+
 how to get the project name in Code?
 
 
@@ -321,8 +324,8 @@ RepoDB
     - RestClient
     - Refit
 - Minimal Api
-Text Logging (serilog, nlog, log4net)
-Db Logging
+- Text Logging (serilog, nlog, log4net)
+- Db Logging
 
 SignalR - (Insert Data => UpdateChart, Chat Message)
 Blazor CRUD [Server, WASM]
