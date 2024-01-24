@@ -1,6 +1,7 @@
 ﻿using AEHKLMNSTZDotNetCore.RestApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace AEHKLMNSTZDotNetCore.RestApi.Controllers
 {
@@ -58,6 +59,8 @@ namespace AEHKLMNSTZDotNetCore.RestApi.Controllers
         [HttpGet("{id}")]
         public IActionResult GetBlog(int id)
         {
+            _logger.LogInformation("Get Blog with Id=" + id);
+
             BlogResponseModel model = new BlogResponseModel();
 
             BlogDataModel item = _context.Blogs.FirstOrDefault(x => x.Blog_Id == id);
@@ -71,6 +74,7 @@ namespace AEHKLMNSTZDotNetCore.RestApi.Controllers
             model.IsSuccess = true;
             model.Message = "Success";
             model.Data = item;
+            _logger.LogInformation("Blog =>" + JsonSerializer.Serialize(model));
             return Ok(model);
         }
 
