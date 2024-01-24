@@ -3,16 +3,19 @@ using AEHKLMNSTZDotNetCore.MvcApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using System.Text.Json;
 
 namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
 {
     public class BlogController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly ILogger<BlogController> _logger;
 
-        public BlogController(AppDbContext context)
+        public BlogController(AppDbContext context, ILogger<BlogController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         // Get / List
@@ -27,27 +30,38 @@ namespace AEHKLMNSTZDotNetCore.MvcApp.Controllers
         [ActionName("List")]
         public async Task<IActionResult> BlogList(int pageNo = 1, int pageSize = 10)
         {
-            BlogDataResponseModel model = new BlogDataResponseModel();
-            List<BlogDataModel> lst = _context.Blogs.AsNoTracking()
-                .Skip((pageNo - 1) * pageSize)
-                .Take(pageSize)
-                .ToList();
+            try
+            {
+                _logger.LogInformation("Get BlogList with pageNo=" + pageNo + " and pageSize=" + pageSize);
 
-            int rowCount = await _context.Blogs.CountAsync();
-            int pageCount = rowCount / pageSize;
-            if (rowCount % pageSize > 0)
-                pageCount++;
+                BlogDataResponseModel model = new BlogDataResponseModel();
+                List<BlogDataModel> lst = _context.Blogs.AsNoTracking()
+                    .Skip((pageNo - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToList();
 
-            model.Blogs = lst;
-            //model.PageSetting = new PageSettingModel
-            //{
-            //    PageCount = pageCount,
-            //    PageNo = pageNo,
-            //    PageSize = pageSize
-            //};
-            model.PageSetting = new PageSettingModel(pageNo, pageSize, pageCount, "/blog/list");
+                int rowCount = await _context.Blogs.CountAsync();
+                int pageCount = rowCount / pageSize;
+                if (rowCount % pageSize > 0)
+                    pageCount++;
 
-            return View("BlogList", model);
+                model.Blogs = lst;
+                //model.PageSetting = new PageSettingModel
+                //{
+                //    PageCount = pageCount,
+                //    PageNo = pageNo,
+                //    PageSize = pageSize
+                //};
+                model.PageSetting = new PageSettingModel(pageNo, pageSize, pageCount, "/blog/list");
+                _logger.LogInformation("BlogList => " + JsonSerializer.Serialize(model));
+
+                return View("BlogList", model);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("There was something wrong with message => {@e}", ex.Message);
+                throw new Exception(ex.Message);
+            }
         }
 
         [ActionName("Create")]
