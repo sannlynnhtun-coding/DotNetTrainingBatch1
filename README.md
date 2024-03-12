@@ -1,3 +1,5 @@
+# .NET Training Batch 1
+
 https://learn.microsoft.com/en-us/aspnet/core/tutorials/signalr?view=aspnetcore-7.0&tabs=visual-studio
 
 
@@ -117,10 +119,10 @@ https://www.microsoft.com/en-us/sql-server/sql-server-downloads
 
 https://medium.com/@buttertechn/qa-testing-what-is-dev-sit-uat-prod-ac97965ce4f
 
-DEV  — Development [Software developer]
-SIT  — System Integration Test [Software developer and QA engineer]
-UAT  — User Acceptance Test [Client]
-PROD — Production [Public user]
+DEV  â€” Development [Software developer]
+SIT  â€” System Integration Test [Software developer and QA engineer]
+UAT  â€” User Acceptance Test [Client]
+PROD â€” Production [Public user]
 
 https://www.dotnettricks.com/learn/mvc/viewdata-vs-viewbag-vs-tempdata-vs-session
 
